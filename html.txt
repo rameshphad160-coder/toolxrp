@@ -1,0 +1,401 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ToolxRP — Free Writing & Social Tools</title>
+  <meta name="description" content="ToolxRP — Word Counter, Character Counter, Caption Generator, Hashtag Generator, Paraphraser. Fast, mobile-friendly, SEO-ready." />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  <style>
+    /* Basic Reset */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;color:#0f172a;background:linear-gradient(180deg,#0f1226 0%, #1b1337 60%);-webkit-font-smoothing:antialiased}/* Container */
+.wrap{max-width:1100px;margin:28px auto;padding:20px}
+header{display:flex;align-items:center;gap:18px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#7c3aed,#06b6d4);display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:18px;box-shadow:0 8px 30px rgba(124,58,237,0.12)}
+h1{color:white;margin:0;font-size:20px}
+p.lead{margin:0;color:rgba(255,255,255,0.8)}
+
+/* Card */
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border-radius:12px;padding:18px;margin-top:18px;box-shadow:0 6px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+
+/* Nav Tabs */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.tab{padding:10px 14px;border-radius:10px;background:transparent;color:rgba(255,255,255,0.9);border:1px solid transparent;cursor:pointer}
+.tab.active{background:linear-gradient(90deg,#7c3aed 0%,#06b6d4 100%);box-shadow:0 6px 18px rgba(7,9,26,0.6)}
+
+/* Tool area */
+.tool-area{display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:18px}
+@media(max-width:900px){.tool-area{grid-template-columns:1fr}}
+
+textarea.input{width:100%;min-height:260px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);padding:14px;background:transparent;color:white;font-size:15px}
+.controls{display:flex;gap:8px;align-items:center;margin-top:10px}
+button{cursor:pointer;border:0;padding:10px 12px;border-radius:10px;font-weight:700}
+.btn-primary{background:linear-gradient(90deg,#7c3aed,#06b6d4);color:white}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.9)}
+
+.stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.stat{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:10px;color:rgba(255,255,255,0.9);font-weight:700}
+
+aside.panel{background:rgba(255,255,255,0.02);padding:14px;border-radius:10px;color:rgba(255,255,255,0.9)}
+.panel h3{margin:6px 0 10px}
+.small{font-size:13px;color:rgba(255,255,255,0.7)}
+
+/* Result boxes */
+.result{background:rgba(0,0,0,0.25);padding:12px;border-radius:8px;margin-top:10px;color:white;white-space:pre-wrap}
+
+footer{text-align:center;color:rgba(255,255,255,0.6);margin-top:18px;font-size:13px}
+
+/* Tiny form inputs */
+input[type=text]{width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:white}
+select{padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:white}
+
+/* badge */
+.badge{display:inline-block;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.06);font-weight:700;color:white}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">RP</div>
+        <div>
+          <h1>ToolxRP</h1>
+          <p class="lead">Fast, free writing & social media tools — Word counter, Caption & Hashtag helpers, Paraphraser.</p>
+        </div>
+      </div>
+      <div style="margin-left:auto;display:flex;gap:10px;align-items:center">
+        <a class="badge" href="#tools">Launch Tools</a>
+      </div>
+    </header><div class="card">
+  <div style="display:flex;align-items:center;gap:14px;justify-content:space-between;flex-wrap:wrap">
+    <div>
+      <h2 style="color:white;margin:0">All-in-one Mini Writing Toolkit</h2>
+      <p class="small">Selected 5 tools to get fast traffic & conversions. English UI (easy to translate). Mobile-first design.</p>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button id="btn-copy-site" class="btn-ghost">Copy Site (HTML)</button>
+      <button id="btn-demo" class="btn-primary">Open Demo</button>
+    </div>
+  </div>
+
+  <div class="tabs" id="tabs">
+    <div class="tab active" data-tool="word">Word Counter</div>
+    <div class="tab" data-tool="char">Character Counter</div>
+    <div class="tab" data-tool="caption">Caption Gen</div>
+    <div class="tab" data-tool="hashtag">Hashtag Gen</div>
+    <div class="tab" data-tool="para">Paraphraser</div>
+  </div>
+
+  <div id="tools" class="tool-area">
+    <main>
+      <textarea id="input" class="input" placeholder="Paste or type your text here... (English works best)"></textarea>
+
+      <div class="controls">
+        <button id="action-run" class="btn-primary">Run</button>
+        <button id="action-copy" class="btn-ghost">Copy Output</button>
+        <button id="action-reset" class="btn-ghost">Reset</button>
+        <div id="status" style="margin-left:auto;color:rgba(255,255,255,0.8);font-weight:700"></div>
+      </div>
+
+      <div class="stats" id="stats"></div>
+
+      <div id="output-area"></div>
+    </main>
+
+    <aside class="panel">
+      <h3>Quick Tips</h3>
+      <p class="small">Use these tools to create content faster. Combine Caption + Hashtag for Instagram reels. Use Paraphraser to rewrite & improve tone. Affiliate links get best results when placed in relevant flows.</p>
+
+      <h3 style="margin-top:12px">Monetization</h3>
+      <p class="small">Place Adwords in high-usage pages, add affiliate CTA for grammar & AI writing tools, offer premium export & history behind paywall.</p>
+      <div style="margin-top:12px">
+        <strong class="small">Domain:</strong> toolxrp.com<br>
+        <strong class="small">Host:</strong> GitHub Pages / Netlify / Vercel
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer>
+  Built for ToolxRP — Save this file as <code>index.html</code> and host. Need white-label or custom features? Contact RP.
+
+  <section style="max-width:1100px;margin:18px auto;padding:20px">
+    <div class="card">
+      <h3 style="color:white;margin:0">Monetization & Affiliate Placeholders (Added)</h3>
+      <p class="small" style="margin-top:8px">I added ready-to-use affiliate CTA banners and sample copy for high-converting partners. Replace <code>#aff-grammarly</code>, <code>#aff-quillbot</code>, <code>#aff-hostinger</code> with your real affiliate links in the hosted site.</p><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+    <!-- Grammarly CTA -->
+    <div style="flex:1;min-width:220px;padding:12px;background:linear-gradient(90deg,#ffedd5,#fce7f3);border-radius:10px;color:#08121a">
+      <strong>Editor Boost → Grammarly</strong>
+      <p class="small" style="margin:6px 0">Improve grammar & clarity instantly. Perfect for writers using ToolxRP.</p>
+      <a href="#aff-grammarly" style="display:inline-block;padding:8px 10px;border-radius:8px;background:#0f172a;color:white;text-decoration:none;font-weight:700">Try Grammarly — Free</a>
+    </div>
+
+    <!-- Quillbot CTA -->
+    <div style="flex:1;min-width:220px;padding:12px;background:linear-gradient(90deg,#eef2ff,#f0f9ff);border-radius:10px;color:#08121a">
+      <strong>Paraphrase Faster → QuillBot</strong>
+      <p class="small" style="margin:6px 0">Use QuillBot for powerful paraphrasing and synonyms alongside our Paraphraser tool.</p>
+      <a href="#aff-quillbot" style="display:inline-block;padding:8px 10px;border-radius:8px;background:#0f172a;color:white;text-decoration:none;font-weight:700">Get QuillBot — Try</a>
+    </div>
+
+    <!-- Hostinger CTA -->
+    <div style="flex:1;min-width:220px;padding:12px;background:linear-gradient(90deg,#ecfccb,#e8fdf5);border-radius:10px;color:#08121a">
+      <strong>Host & Scale → Hostinger</strong>
+      <p class="small" style="margin:6px 0">Affordable hosting for high-traffic tool websites. Recommended for ToolxRP.</p>
+      <a href="#aff-hostinger" style="display:inline-block;padding:8px 10px;border-radius:8px;background:#0f172a;color:white;text-decoration:none;font-weight:700">Host with Hostinger</a>
+    </div>
+  </div>
+
+  <h4 style="color:white;margin-top:12px">Suggested placement & copy</h4>
+  <ul class="small" style="color:rgba(255,255,255,0.9)">
+    <li>Place Grammarly CTA on Paraphraser and Caption pages (high intent to improve writing).</li>
+    <li>Place QuillBot CTA on Paraphraser & Caption generator flows where user rewrites content.</li>
+    <li>Hostinger CTA in footer + hosting page / pricing comparison.</li>
+    <li>Use unobtrusive 728x90 or responsive ad slots between tools for AdSense (after approval).</li>
+  </ul>
+
+  <h4 style="color:white;margin-top:12px">Ready marketing snippets</h4>
+  <div class="small" style="background:rgba(0,0,0,0.2);padding:10px;border-radius:8px;margin-top:8px;color:rgba(255,255,255,0.9)">
+    <strong>Short CTA:</strong> "Write better — try Grammarly free" — link to <code>#aff-grammarly</code><br>
+    <strong>Promo caption:</strong> "Boost your captions with ToolxRP + QuillBot — rewrite in seconds. Try now!" — link to <code>#aff-quillbot</code>
+  </div>
+
+  <p class="small" style="margin-top:12px">When you're ready I will: 1) insert your real affiliate links, 2) add ad zones (AdSense-ready), 3) create 3 short social creatives for Instagram Reels + YouTube Shorts to drive first traffic.</p>
+</div>
+
+  </section>  </footer>
+  </div>  <script>
+    // ---------- Utility functions ----------
+    const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => document.querySelectorAll(sel);
+
+    function safeText(s){ return String(s||''); }
+
+    // Tabs logic
+    const tabs = document.getElementById('tabs');
+    const tabButtons = tabs.querySelectorAll('.tab');
+    let activeTool = 'word';
+    tabButtons.forEach(t=> t.addEventListener('click', ()=>{
+      tabButtons.forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+      activeTool = t.dataset.tool;
+      renderToolUI();
+    }));
+
+    const inputEl = document.getElementById('input');
+    const statsEl = document.getElementById('stats');
+    const outputArea = document.getElementById('output-area');
+    const status = document.getElementById('status');
+
+    function renderToolUI(){
+      // common
+      statsEl.innerHTML = '';
+      outputArea.innerHTML = '';
+      status.textContent = activeTool.toUpperCase();
+
+      if(activeTool === 'word'){
+        // show live word/char stats
+        updateStats();
+      } else if(activeTool === 'char'){
+        updateStats();
+      } else if(activeTool === 'caption'){
+        outputArea.innerHTML = `\n<div class=\"card\" style=\"padding:12px;background:rgba(255,255,255,0.02);border-radius:8px;margin-top:12px;color:white\">\n  <label class=\"small\">Tone</label>\n  <select id=\"cap-tone\" style=\"width:100%;margin-top:6px\">\n    <option value=\"funny\">Funny / Witty</option>\n    <option value=\"inspirational\">Inspirational</option>\n    <option value=\"short\">Short & Punchy</option>\n    <option value=\"long\">Long & Descriptive</option>\n  </select>\n  <div id=\"cap-result\" class=\"result\" style=\"min-height:80px;margin-top:10px\">Caption output will appear here...</div>\n</div>`;
+      } else if(activeTool === 'hashtag'){
+        outputArea.innerHTML = `\n<div class=\"card\" style=\"padding:12px;background:rgba(255,255,255,0.02);border-radius:8px;margin-top:12px;color:white\">\n  <label class=\"small\">Target (comma separated keywords)</label>\n  <input id=\"tag-input\" placeholder=\"e.g. fitness, gym, workout\" />\n  <div id=\"tag-result\" class=\"result\" style=\"min-height:80px;margin-top:10px\">Generated hashtags will appear here...</div>\n</div>`;
+      } else if(activeTool === 'para'){
+        outputArea.innerHTML = `\n<div class=\"card\" style=\"padding:12px;background:rgba(255,255,255,0.02);border-radius:8px;margin-top:12px;color:white\">\n  <label class=\"small\">Paraphrase strength</label>\n  <select id=\"para-strength\">\n    <option value=\"mild\">Mild (small edits)</option>\n    <option value=\"medium\">Medium (reword sentences)</option>\n    <option value=\"high\">High (rewrite)</option>\n  </select>
+  <div id=\"para-result\" class=\"result\" style=\"min-height:120px;margin-top:10px\">Paraphrased text will appear here...</div>
+</div>`;
+      }
+    }
+
+    // Initial render
+    renderToolUI();
+
+    // Stats updater
+    function updateStats(){
+      const text = inputEl.value.trim();
+      const words = text === '' ? 0 : text.split(/\s+/).filter(Boolean).length;
+      const chars = text.length;
+      const nospace = text.replace(/\s/g, '').length;
+      const sentences = text === '' ? 0 : (text.split(/[.!?]+/).filter(s=>s.trim().length>0).length);
+      const readTime = Math.max(1, Math.round(words/200));
+
+      statsEl.innerHTML = `\n      <div class=\"stat\">Words: ${words}</div>\n      <div class=\"stat\">Chars: ${chars}</div>\n      <div class=\"stat\">Chars (no spaces): ${nospace}</div>\n      <div class=\"stat\">Sentences: ${sentences}</div>\n      <div class=\"stat\">Reading: ${readTime} min</div>`;
+    }
+
+    inputEl.addEventListener('input', ()=>{
+      if(activeTool==='word' || activeTool==='char') updateStats();
+    });
+
+    // ---------- Tool Functions ----------
+    function generateCaption(text, tone){
+      // Simple prompt-based caption generator using templates
+      const base = safeText(text).substring(0,200);
+      const templates = {
+        funny: [
+          `When life gives you ${base.split(' ')[0] || 'lemons'}... make memes. 😂`,
+          `Oops I did it again — ${base} #cantstop`,
+          `${base} — and honestly, that's peak energy.`
+        ],
+        inspirational: [
+          `${base} — keep going, your story is just beginning.`,
+          `Turn ${base} into fuel. This is your moment.`,
+          `${base} — small steps create big changes.`
+        ],
+        short: [
+          `${base} ✨`,
+          `${base} — now.`,
+          `${base} #real` 
+        ],
+        long: [
+          `${base} — here's why this matters: be consistent, stay curious, and improve every day.`,
+          `${base} — a short story: keep pushing and success will follow.`,
+          `${base} — share if you agree and tag someone who needs to see this.`
+        ]
+      };
+      const picks = templates[tone] || templates['short'];
+      return picks[Math.floor(Math.random()*picks.length)];
+    }
+
+    function generateHashtags(keywords){
+      const kws = keywords.split(',').map(k=>k.trim()).filter(Boolean);
+      const gen = [];
+      kws.forEach(k=>{
+        const base = k.replace(/\s+/g,'');
+        gen.push('#'+base.toLowerCase());
+        gen.push('#'+base.toLowerCase()+'life');
+        gen.push('#'+base.toLowerCase()+'tips');
+        gen.push('#'+base.toLowerCase()+'daily');
+      });
+      // add generic tags
+      gen.push('#instagood','#trending','#reels');
+      // unique: limit to 30
+      return Array.from(new Set(gen)).slice(0,30).join(' ');
+    }
+
+    // very naive paraphraser: sentence shuffle + synonym map
+    const SYN = {
+      'good':'great', 'important':'crucial', 'help':'assist', 'use':'utilize', 'start':'begin', 'fast':'quick', 'easy':'simple', 'improve':'enhance'
+    };
+    function paraphraseText(text, strength){
+      if(!text) return '';
+      // split into sentences
+      const sents = text.split(/([.!?]+)/).filter(Boolean);
+      // rebuild
+      let out = '';
+      for(let i=0;i<sents.length;i+=2){
+        let sent = (sents[i]||'').trim();
+        const punct = sents[i+1] || '';
+        if(strength==='mild'){
+          // replace a few words
+          sent = sent.split(' ').map(w=> SYN[w.toLowerCase()] ? SYN[w.toLowerCase()] : w).join(' ');
+        } else if(strength==='medium'){
+          // replace + reorder clauses (naive)
+          sent = sent.split(/,| and | but /).reverse().join(', ');
+          sent = sent.split(' ').map(w=>SYN[w.toLowerCase()]||w).join(' ');
+        } else {
+          // high: shorter sentences, replace more
+          const words = sent.split(' ').map(w=>SYN[w.toLowerCase()]||w);
+          // take only first 80% words and rephrase
+          const cut = Math.max(3, Math.floor(words.length*0.85));
+          sent = words.slice(0,cut).join(' ') + (words.length>cut? '...' : '');
+        }
+        out += sent + (punct||'.') + ' ';
+      }
+      return out.trim();
+    }
+
+    // ---------- Actions ----------
+    document.getElementById('action-run').addEventListener('click', ()=>{
+      const text = inputEl.value.trim();
+      if(!text){ alert('Please enter text first'); return; }
+      if(activeTool==='word' || activeTool==='char'){
+        updateStats();
+        document.getElementById('status').textContent = 'Updated ✓';
+      } else if(activeTool==='caption'){
+        const tone = document.getElementById('cap-tone') ? document.getElementById('cap-tone').value : 'short';
+        const cap = generateCaption(text, tone);
+        const res = document.getElementById('cap-result');
+        if(res) res.textContent = cap;
+        document.getElementById('status').textContent = 'Caption ready';
+      } else if(activeTool==='hashtag'){
+        const tagInput = document.getElementById('tag-input');
+        const tags = generateHashtags(tagInput ? tagInput.value || text.split('\n')[0] : text);
+        const res = document.getElementById('tag-result');
+        if(res) res.textContent = tags;
+        document.getElementById('status').textContent = 'Hashtags ready';
+      } else if(activeTool==='para'){
+        const strength = document.getElementById('para-strength') ? document.getElementById('para-strength').value : 'mild';
+        const para = paraphraseText(text, strength);
+        const res = document.getElementById('para-result');
+        if(res) res.textContent = para;
+        document.getElementById('status').textContent = 'Paraphrased';
+      }
+    });
+
+    document.getElementById('action-copy').addEventListener('click', async ()=>{
+      // copy relevant output
+      let out = '';
+      if(activeTool==='word' || activeTool==='char'){
+        out = inputEl.value;
+      } else if(activeTool==='caption'){
+        out = document.getElementById('cap-result') ? document.getElementById('cap-result').textContent : '';
+      } else if(activeTool==='hashtag'){
+        out = document.getElementById('tag-result') ? document.getElementById('tag-result').textContent : '';
+      } else if(activeTool==='para'){
+        out = document.getElementById('para-result') ? document.getElementById('para-result').textContent : '';
+      }
+      if(!out){ alert('Nothing to copy'); return; }
+      try{ await navigator.clipboard.writeText(out); alert('Copied to clipboard'); }catch(e){ prompt('Copy manually, output:', out); }
+    });
+
+    document.getElementById('action-reset').addEventListener('click', ()=>{
+      inputEl.value = '';
+      renderToolUI();
+      updateStats();
+      status.textContent = '';
+    });
+
+    // extra handlers for dynamic UI (delegation)
+    outputArea.addEventListener('change', (e)=>{});
+    outputArea.addEventListener('click', (e)=>{
+      if(e.target && e.target.id==='cap-tone'){
+        // noop
+      }
+    });
+
+    // copy site button (download current html)
+    document.getElementById('btn-copy-site').addEventListener('click', ()=>{
+      const html = '<!-- Save this file as index.html - ToolxRP single-file app -->\n' + document.documentElement.outerHTML;
+      const blob = new Blob([html], {type:'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'toolxrp-index.html'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+
+    document.getElementById('btn-demo').addEventListener('click', ()=>{
+      window.scrollTo({top:0,behavior:'smooth'});
+      alert('This file is the Demo. Save and host to make it public. For analytics, connect Google Analytics and AdSense.');
+    });
+
+    // initial stats
+    updateStats();
+
+    // small helper: when switching tools, ensure dynamic controls attach
+    document.addEventListener('click', ()=>{
+      // attach more dynamic listeners after render
+      const capTone = document.getElementById('cap-tone');
+      if(capTone){ capTone.addEventListener('change', ()=>{ document.getElementById('cap-result').textContent = generateCaption(inputEl.value, capTone.value); }); }
+      const tagIn = document.getElementById('tag-input');
+      if(tagIn){ tagIn.addEventListener('input', ()=>{ document.getElementById('tag-result').textContent = generateHashtags(tagIn.value); }); }
+      const paraStr = document.getElementById('para-strength');
+      if(paraStr){ paraStr.addEventListener('change', ()=>{ document.getElementById('para-result').textContent = paraphraseText(inputEl.value, paraStr.value); }); }
+    });
+
+  </script></body>
+</html>
