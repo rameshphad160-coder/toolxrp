@@ -1,101 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>ToolxRP – Free Writing & Social Media Tools</title>
-
-<meta name="description" content="Free online writing tools – word counter, caption generator, hashtag generator and AI paraphrasing tools.">
-
-<style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family: Arial, sans-serif;
-}
-body{
-    min-height:100vh;
-    background:linear-gradient(180deg,#0f1226,#1b1337);
-    color:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-.container{
-    text-align:center;
-    max-width:700px;
-    padding:20px;
-}
-h1{
-    font-size:48px;
-    margin-bottom:10px;
-}
-p{
-    opacity:0.85;
-    margin-bottom:30px;
-}
-.buttons{
-    display:flex;
-    flex-wrap:wrap;
-    gap:15px;
-    justify-content:center;
-}
-a.btn{
-    text-decoration:none;
-    padding:14px 22px;
-    background:#2a2f6f;
-    border-radius:8px;
-    color:white;
-    font-size:16px;
-    transition:0.3s;
-}
-a.btn:hover{
-    background:#3b41a5;
-}
-.footer{
-    margin-top:30px;
-    font-size:13px;
-    opacity:0.6;
-}
-</style>
+  <title>ToolxRP</title>
+  <meta charset="UTF-8">
 </head>
+<body style="font-family:sans-serif; text-align:center; margin-top:40px;">
+  <h1>ToolxRP</h1>
+  <p>Free writing & social media tools</p>
 
-<body>
-<div class="container">
+  <div style="margin-top:20px;">
+    <a href="word-counter.html">Word Counter</a> |
+    <a href="character-counter.html">Character Counter</a> |
+    <a href="caption-generator.html">Caption Generator</a> |
+    <a href="hashtag-generator.html">Hashtag Generator</a> |
+    <a href="paraphraser.html">Paraphraser</a>
+  </div>
 
-<h1>ToolxRP</h1>
-<p>Free writing & social media tools to create content faster.</p>
-
-<div class="buttons">
-
-<a class="btn" target="_blank" href="YOUR_AFFILIATE_LINK">
-Word Counter
+  <div style="margin-top:30px;">
+    <a href="affiliate.html" target="_blank"
+       style="background:#ff9800; color:white; padding:10px 20px; text-decoration:none; border-radius:5px;">
+      🛒 Affiliate Product
+    </a>
+  </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head><title>Word Counter Tool</title></head>
+<body style="text-align:center; font-family:sans-serif;">
+<a href="index.html">← Back to Home</a>
+<h2>Word Counter Tool</h2>
+<textarea id="text" rows="10" cols="50"></textarea><br>
+<button onclick="countWords()">Count Words</button>
+<p id="result"></p>
+<script>
+function countWords() {
+  let text = document.getElementById("text").value.trim();
+  let words = text.split(/\s+/).filter(w => w.length>0);
+  document.getElementById("result").innerText = "Word Count: " + words.length;
+}
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head><title>Character Counter Tool</title></head>
+<body style="text-align:center; font-family:sans-serif;">
+<a href="index.html">← Back to Home</a>
+<h2>Character Counter Tool</h2>
+<textarea id="text" rows="10" cols="50"></textarea><br>
+<button onclick="countChars()">Count Characters</button>
+<p id="result"></p>
+<script>
+function countChars() {
+  let text = document.getElementById("text").value;
+  document.getElementById("result").innerText = "Character Count: " + text.length;
+}
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head><title>Caption Generator</title></head>
+<body style="text-align:center; font-family:sans-serif;">
+<a href="index.html">← Back to Home</a>
+<h2>Caption Generator</h2>
+<input id="topic" placeholder="Enter a topic..."/>
+<button onclick="generateCaption()">Generate Caption</button>
+<p id="result"></p>
+<script>
+function generateCaption() {
+  let topic = document.getElementById("topic").value.trim();
+  if(!topic){document.getElementById("result").innerText="Please enter a topic.";return;}
+  let captions=[
+    "Unlock the power of "+topic+" today!",
+    topic+" made simple and fun!",
+    "Discover the magic of "+topic+"!",
+    "Why "+topic+" is trending now!",
+    "Top 5 tips about "+topic+" you must know!"
+  ];
+  document.getElementById("result").innerText=captions[Math.floor(Math.random()*captions.length)];
+}
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head><title>Hashtag Generator</title></head>
+<body style="text-align:center; font-family:sans-serif;">
+<a href="index.html">← Back to Home</a>
+<h2>Hashtag Generator</h2>
+<input id="keyword" placeholder="Enter a keyword..."/>
+<button onclick="generateHashtags()">Generate Hashtags</button>
+<p id="result"></p>
+<script>
+function generateHashtags(){
+  let k=document.getElementById("keyword").value.trim().replace(/\s+/g,"");
+  if(!k){document.getElementById("result").innerText="Please enter a keyword.";return;}
+  let hashtags=["#"+k,"#love"+k,"#insta"+k,"#"+k+"life","#"+k+"daily"];
+  document.getElementById("result").innerText=hashtags.join(" ");
+}
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head><title>Paraphraser Tool</title></head>
+<body style="text-align:center; font-family:sans-serif;">
+<a href="index.html">← Back to Home</a>
+<h2>Paraphraser Tool</h2>
+<textarea id="text" rows="6" cols="50"></textarea><br>
+<button onclick="paraphrase()">Paraphrase</button>
+<p id="result"></p>
+<script>
+function paraphrase(){
+  let text=document.getElementById("text").value.trim();
+  if(!text){document.getElementById("result").innerText="Please enter a sentence.";return;}
+  let synonyms={"quick":"fast","brown":"dark","fox":"animal","jumps":"leaps","over":"above","lazy":"idle","dog":"canine"};
+  let words=text.split(" ");
+  let paraphrased=words.map(w=>synonyms[w.toLowerCase()]||w).join(" ");
+  document.getElementById("result").innerText=paraphrased;
+}
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head><title>Affiliate Promotion</title></head>
+<body style="text-align:center; font-family:sans-serif;">
+<a href="index.html">← Back to Home</a>
+<h2>🔥 Special Offer</h2>
+<p>Check out this amazing product that can boost your productivity and income!</p>
+<a href="https://www.digistore24.com/redir/123456/rameshphad1/" target="_blank"
+   style="background:#28a745;color:white;padding:10px 20px;text-decoration:none;border-radius:5px;">
+👉 View Product
 </a>
-
-<a class="btn" target="_blank" href="YOUR_AFFILIATE_LINK">
-Character Counter
-</a>
-
-<a class="btn" target="_blank" href="YOUR_AFFILIATE_LINK">
-Caption Generator
-</a>
-
-<a class="btn" target="_blank" href="YOUR_AFFILIATE_LINK">
-Hashtag Generator
-</a>
-
-<a class="btn" target="_blank" href="YOUR_AFFILIATE_LINK">
-Paraphrasing Tool
-</a>
-
-</div>
-
-<div class="footer">
-Powered by ToolxRP
-</div>
-
-</div>
 </body>
 </html>
