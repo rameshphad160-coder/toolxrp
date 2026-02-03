@@ -1,173 +1,105 @@
 <!DOCTYPE html>
-<html lang="mr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolxRP - Free Writing Tools</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>ToolxRP - Professional Content Tools</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #2563eb; /* Bright Blue */
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-dark: #1e293b;
-            --accent: #f59e0b; /* Special Offer Orange */
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-
-        /* Navigation Bar */
-        nav {
-            background: #0f172a;
-            color: white;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .logo { font-size: 1.5rem; font-weight: 600; letter-spacing: 1px; }
-
-        /* Hero Section */
-        header {
-            text-align: center;
-            padding: 50px 20px;
-            background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
-            color: white;
-        }
-
-        /* Tool Grid */
-        .container {
-            max-width: 1200px;
-            margin: -40px auto 40px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-            padding: 20px;
-        }
-
-        .tool-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-            border: 1px solid #e2e8f0;
-        }
-
-        .tool-card:hover { transform: translateY(-10px); }
-
-        .tool-card h3 { color: var(--primary-color); margin-top: 0; }
-
-        textarea, input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            box-sizing: border-box;
-            outline: none;
-        }
-
-        textarea:focus { border-color: var(--primary-color); }
-
-        .btn {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            width: 100%;
-            transition: 0.3s;
-        }
-
-        .btn:hover { background: #1d4ed8; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
-
-        /* Special Offer */
-        .offer-section {
-            background: #fffbeb;
-            border: 2px dashed var(--accent);
-            padding: 30px;
-            text-align: center;
-            border-radius: 15px;
-            margin: 20px;
-        }
-
-        .offer-btn {
-            background: #10b981; /* Green for profit/view */
-            padding: 15px 30px;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 15px;
-        }
-
-        footer { text-align: center; padding: 20px; color: #64748b; font-size: 0.9rem; }
+        :root { --primary: #2563eb; --bg: #f8fafc; --card: #ffffff; --text: #0f172a; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; }
+        nav { background: #1e293b; color: white; padding: 1rem 5%; text-align: center; font-weight: 700; font-size: 1.8rem; }
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+        .card { background: var(--card); padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; display: flex; flex-direction: column; }
+        h2 { font-size: 1.1rem; margin-top: 0; color: var(--primary); border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+        textarea, input { width: 100%; padding: 10px; border: 2px solid #e2e8f0; border-radius: 6px; font-size: 0.9rem; box-sizing: border-box; outline: none; margin-bottom: 10px; }
+        .btn { background: var(--primary); color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; font-weight: 600; transition: 0.3s; }
+        .btn:hover { background: #1d4ed8; }
+        .result-box { margin-top: 10px; padding: 10px; background: #f1f5f9; border-radius: 6px; font-size: 0.85rem; display: none; min-height: 40px; }
+        .footer { text-align: center; padding: 40px; color: #64748b; }
     </style>
 </head>
 <body>
 
-<nav>
-    <div class="logo">ToolxRP</div>
-    <div>Free Writing & Social Media Tools</div>
-</nav>
-
-<header>
-    <h1>तुमची कामे सोपी करा</h1>
-    <p>Professional tools for professional creators.</p>
-</header>
+<nav>ToolxRP</nav>
 
 <div class="container">
-    <div class="tool-card">
-        <h3>📝 Word Counter</h3>
-        <p>तुमचा मजकूर पेस्ट करा</p>
-        <textarea rows="5" id="wordInput" placeholder="येथे लिहा..."></textarea>
-        <button class="btn" onclick="countWords()">Count Words</button>
-        <p id="wordResult" style="font-weight: bold; margin-top: 10px;"></p>
-    </div>
+    <div class="tool-grid">
+        
+        <div class="card">
+            <h2>📝 Word & Char Counter</h2>
+            <textarea id="wordInput" rows="4" placeholder="Type or paste text..."></textarea>
+            <button class="btn" onclick="analyzeText()">Analyze Text</button>
+            <div id="wordResult" class="result-box"></div>
+        </div>
 
-    <div class="tool-card">
-        <h3># Hashtag Generator</h3>
-        <p>कीवर्ड टाका</p>
-        <input type="text" placeholder="e.g. Marathi, Travel">
-        <button class="btn">Generate Hashtags</button>
-    </div>
+        <div class="card">
+            <h2># Hashtag Generator</h2>
+            <input type="text" id="tagInput" placeholder="Enter topic (e.g. Gym, Travel)">
+            <button class="btn" onclick="generateTags()">Generate Tags</button>
+            <div id="tagResult" class="result-box"></div>
+        </div>
 
-    <div class="tool-card">
-        <h3>🔄 Paraphraser Tool</h3>
-        <p>मजकूर पुन्हा लिहा</p>
-        <textarea rows="5" placeholder="मजकूर पेस्ट करा..."></textarea>
-        <button class="btn">Paraphrase Now</button>
+        <div class="card">
+            <h2>✍️ Caption Generator</h2>
+            <input type="text" id="capInput" placeholder="What is your photo about?">
+            <button class="btn" onclick="generateCaption()">Get Caption</button>
+            <div id="capResult" class="result-box"></div>
+        </div>
+
+        <div class="card">
+            <h2>🔄 Paraphraser</h2>
+            <textarea id="paraInput" rows="4" placeholder="Paste sentence to rewrite..."></textarea>
+            <button class="btn" onclick="paraphraseText()">Rewrite Now</button>
+            <div id="paraResult" class="result-box"></div>
+        </div>
+
     </div>
 </div>
 
-<div class="offer-section">
-    <h2>🔥 Special Offer</h2>
-    <p>आमच्या विशेष प्रॉडक्टसह तुमचे उत्पन्न वाढवा!</p>
-    <a href="#" class="btn offer-btn">👉 View Product & Start Earning</a>
+<div class="footer">
+    © 2026 ToolxRP | All Tools Active
 </div>
-
-<footer>
-    © 2026 ToolxRP | All Rights Reserved.
-</footer>
 
 <script>
-    function countWords() {
-        let text = document.getElementById("wordInput").value;
-        let count = text.trim().split(/\s+/).filter(word => word.length > 0).length;
-        document.getElementById("wordResult").innerText = "एकूण शब्द: " + count;
+    // Analyze Text
+    function analyzeText() {
+        let text = document.getElementById("wordInput").value.trim();
+        let words = text ? text.split(/\s+/).length : 0;
+        let res = document.getElementById("wordResult");
+        res.style.display = "block";
+        res.innerHTML = `Words: ${words} | Characters: ${text.length}`;
+    }
+
+    // Hashtag Logic
+    function generateTags() {
+        const input = document.getElementById("tagInput").value.toLowerCase().trim();
+        const res = document.getElementById("tagResult");
+        const bank = {
+            "gym": ["#fitness", "#workout", "#gymmotivation", "#health", "#bodybuilding"],
+            "travel": ["#adventure", "#explore", "#nature", "#travelgram", "#trip"],
+            "tech": ["#ai", "#coding", "#future", "#gadgets", "#innovation"]
+        };
+        let tags = bank[input] || ["#trending", "#viral", "#foryou", "#explorepage", "#popular"];
+        res.style.display = "block";
+        res.innerHTML = tags.sort(() => 0.5 - Math.random()).join(" ");
+    }
+
+    // Caption Logic
+    function generateCaption() {
+        const res = document.getElementById("capResult");
+        const caps = ["Keep shining!", "Living my best life.", "Focus on the good.", "Stay humble, hustle hard.", "Dream big, work harder."];
+        res.style.display = "block";
+        res.innerHTML = caps[Math.floor(Math.random() * caps.length)];
+    }
+
+    // Paraphraser Logic (Simple Example)
+    function paraphraseText() {
+        let text = document.getElementById("paraInput").value;
+        let res = document.getElementById("paraResult");
+        res.style.display = "block";
+        res.innerHTML = "Rewritten: " + text.replace("good", "excellent").replace("happy", "joyful").replace("hard", "challenging");
     }
 </script>
 
