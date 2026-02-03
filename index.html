@@ -3,103 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolxRP - Professional Content Tools</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>ToolxRP - Free Content Creator Tools</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #2563eb; --bg: #f8fafc; --card: #ffffff; --text: #0f172a; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; }
-        nav { background: #1e293b; color: white; padding: 1rem 5%; text-align: center; font-weight: 700; font-size: 1.8rem; }
-        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-        .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
-        .card { background: var(--card); padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; display: flex; flex-direction: column; }
-        h2 { font-size: 1.1rem; margin-top: 0; color: var(--primary); border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
-        textarea, input { width: 100%; padding: 10px; border: 2px solid #e2e8f0; border-radius: 6px; font-size: 0.9rem; box-sizing: border-box; outline: none; margin-bottom: 10px; }
-        .btn { background: var(--primary); color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; font-weight: 600; transition: 0.3s; }
-        .btn:hover { background: #1d4ed8; }
-        .result-box { margin-top: 10px; padding: 10px; background: #f1f5f9; border-radius: 6px; font-size: 0.85rem; display: none; min-height: 40px; }
-        .footer { text-align: center; padding: 40px; color: #64748b; }
+        :root { --primary: #2563eb; --secondary: #10b981; --bg: #f8fafc; --nav-dark: #0f172a; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); margin: 0; padding: 0; }
+        
+        /* Navbar */
+        nav { background: var(--nav-dark); color: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.6rem; font-weight: 700; color: #fff; text-decoration: none; }
+
+        /* Hero Banner */
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%); color: white; text-align: center; padding: 70px 20px; }
+        .hero h1 { margin: 0; font-size: 2.8rem; }
+        .hero p { opacity: 0.9; font-size: 1.1rem; }
+
+        /* Tools Grid */
+        .container { max-width: 1200px; margin: -50px auto 40px; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; transition: 0.3s; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-8px); }
+        h2 { color: var(--primary); font-size: 1.25rem; margin-top: 0; display: flex; align-items: center; gap: 10px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+        
+        textarea, input { width: 100%; padding: 12px; margin: 10px 0; border: 1.5px solid #e2e8f0; border-radius: 8px; box-sizing: border-box; font-family: inherit; font-size: 0.95rem; outline: none; }
+        textarea:focus, input:focus { border-color: var(--primary); }
+
+        .btn-group { display: flex; gap: 10px; margin-top: 5px; }
+        .btn { flex: 1; background: var(--primary); color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.3s; }
+        .btn-copy { background: var(--secondary); }
+        .btn:hover { opacity: 0.9; transform: scale(1.02); }
+
+        /* Result Box */
+        .res { margin-top: 15px; padding: 12px; background: #f1f5f9; border-radius: 8px; font-size: 0.9rem; display: none; word-wrap: break-word; color: #1e293b; border-left: 4px solid var(--primary); }
+
+        /* Special Offer & Footer */
+        .special-box { max-width: 1100px; margin: 20px auto; background: #fffbeb; border: 2px dashed #f59e0b; padding: 30px; border-radius: 15px; text-align: center; }
+        .offer-btn { background: #059669; color: white; text-decoration: none; padding: 14px 35px; border-radius: 8px; display: inline-block; margin-top: 15px; font-weight: 700; }
+        footer { text-align: center; padding: 40px; color: #64748b; font-size: 0.9rem; background: #f1f5f9; margin-top: 40px; }
+        footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
     </style>
 </head>
 <body>
 
-<nav>ToolxRP</nav>
+<nav>
+    <a href="#" class="logo">ToolxRP</a>
+    <div style="font-size: 0.85rem; opacity: 0.8;">Smart Content Tools</div>
+</nav>
+
+<div class="hero">
+    <h1>Create Better Content</h1>
+    <p>Free, Fast, and Professional writing tools for creators.</p>
+</div>
 
 <div class="container">
-    <div class="tool-grid">
-        
-        <div class="card">
-            <h2>📝 Word & Char Counter</h2>
-            <textarea id="wordInput" rows="4" placeholder="Type or paste text..."></textarea>
-            <button class="btn" onclick="analyzeText()">Analyze Text</button>
-            <div id="wordResult" class="result-box"></div>
+    <div class="card">
+        <h2>📝 Word Counter</h2>
+        <textarea id="wordIn" rows="4" placeholder="Paste your text here..."></textarea>
+        <div class="btn-group">
+            <button class="btn" onclick="doWord()">Analyze</button>
+            <button class="btn btn-copy" onclick="copyIt('wordRes')">Copy</button>
         </div>
+        <div id="wordRes" class="res"></div>
+    </div>
 
-        <div class="card">
-            <h2># Hashtag Generator</h2>
-            <input type="text" id="tagInput" placeholder="Enter topic (e.g. Gym, Travel)">
-            <button class="btn" onclick="generateTags()">Generate Tags</button>
-            <div id="tagResult" class="result-box"></div>
+    <div class="card">
+        <h2># Hashtag Generator</h2>
+        <input type="text" id="tagIn" placeholder="Enter topic (e.g. Gym, Tech, Travel)">
+        <div class="btn-group">
+            <button class="btn" onclick="doTags()">Generate</button>
+            <button class="btn btn-copy" onclick="copyIt('tagRes')">Copy Tags</button>
         </div>
+        <div id="tagRes" class="res"></div>
+    </div>
 
-        <div class="card">
-            <h2>✍️ Caption Generator</h2>
-            <input type="text" id="capInput" placeholder="What is your photo about?">
-            <button class="btn" onclick="generateCaption()">Get Caption</button>
-            <div id="capResult" class="result-box"></div>
+    <div class="card">
+        <h2>✍️ Caption Generator</h2>
+        <input type="text" id="capIn" placeholder="What's your photo about?">
+        <div class="btn-group">
+            <button class="btn" onclick="doCaps()">Generate</button>
+            <button class="btn btn-copy" onclick="copyIt('capRes')">Copy</button>
         </div>
+        <div id="capRes" class="res"></div>
+    </div>
 
-        <div class="card">
-            <h2>🔄 Paraphraser</h2>
-            <textarea id="paraInput" rows="4" placeholder="Paste sentence to rewrite..."></textarea>
-            <button class="btn" onclick="paraphraseText()">Rewrite Now</button>
-            <div id="paraResult" class="result-box"></div>
+    <div class="card">
+        <h2>🔄 Paraphraser Tool</h2>
+        <textarea id="paraIn" rows="4" placeholder="Paste sentence to rewrite..."></textarea>
+        <div class="btn-group">
+            <button class="btn" onclick="doPara()">Rewrite</button>
+            <button class="btn btn-copy" onclick="copyIt('paraRes')">Copy</button>
         </div>
-
+        <div id="paraRes" class="res"></div>
     </div>
 </div>
 
-<div class="footer">
-    © 2026 ToolxRP | All Tools Active
+<div class="special-box">
+    <h3>🔥 Special Offer</h3>
+    <p>Boost your productivity and income with our premium product!</p>
+    <a href="YOUR_AFFILIATE_LINK_HERE" class="offer-btn">👉 View Product & Start Earning</a>
 </div>
 
+<footer>
+    <p>© 2026 ToolxRP | All Rights Reserved</p>
+    <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+</footer>
+
 <script>
-    // Analyze Text
-    function analyzeText() {
-        let text = document.getElementById("wordInput").value.trim();
-        let words = text ? text.split(/\s+/).length : 0;
-        let res = document.getElementById("wordResult");
-        res.style.display = "block";
-        res.innerHTML = `Words: ${words} | Characters: ${text.length}`;
+    // --- Shared Copy Function ---
+    function copyIt(id) {
+        let text = document.getElementById(id).innerText;
+        if (!text || text.includes("Total")) { alert("Generate result first!"); return; }
+        navigator.clipboard.writeText(text).then(() => alert("Copied to clipboard! ✅"));
     }
 
-    // Hashtag Logic
-    function generateTags() {
-        const input = document.getElementById("tagInput").value.toLowerCase().trim();
-        const res = document.getElementById("tagResult");
+    // --- 1. Word Counter ---
+    function doWord() {
+        let t = document.getElementById("wordIn").value.trim();
+        let w = t ? t.split(/\s+/).length : 0;
+        let r = document.getElementById("wordRes");
+        r.style.display = "block"; r.innerText = "Word Count: " + w + " | Characters: " + t.length;
+    }
+
+    // --- 2. Hashtag Generator (Unlimited/Shuffle) ---
+    function doTags() {
+        let i = document.getElementById("tagIn").value.toLowerCase().trim();
+        let r = document.getElementById("tagRes");
         const bank = {
-            "gym": ["#fitness", "#workout", "#gymmotivation", "#health", "#bodybuilding"],
-            "travel": ["#adventure", "#explore", "#nature", "#travelgram", "#trip"],
-            "tech": ["#ai", "#coding", "#future", "#gadgets", "#innovation"]
+            "gym": ["#fitness", "#workout", "#gymlife", "#motivation", "#health", "#bodybuilding", "#training", "#fitfam", "#lifestyle", "#muscle", "#exercise", "#gymmotivation"],
+            "travel": ["#travel", "#nature", "#adventure", "#explore", "#wanderlust", "#travelgram", "#landscape", "#trip", "#vacation", "#beautifullocations", "#travelblogger"],
+            "tech": ["#technology", "#coding", "#ai", "#innovation", "#gadgets", "#software", "#developer", "#programming", "#future", "#techworld", "#datascience"],
+            "food": ["#foodie", "#yummy", "#instafood", "#cooking", "#delicious", "#foodstagram", "#healthyfood", "#dinner", "#chef", "#foodlover"]
         };
-        let tags = bank[input] || ["#trending", "#viral", "#foryou", "#explorepage", "#popular"];
-        res.style.display = "block";
-        res.innerHTML = tags.sort(() => 0.5 - Math.random()).join(" ");
+        let base = bank[i] || ["#trending", "#viral", "#foryou", "#explorepage", "#instagood", "#popular", "#follow", "#success", "#instagram"];
+        let shuffled = base.sort(() => 0.5 - Math.random()).slice(0, 12).join(" ");
+        r.style.display = "block"; r.innerText = shuffled;
     }
 
-    // Caption Logic
-    function generateCaption() {
-        const res = document.getElementById("capResult");
-        const caps = ["Keep shining!", "Living my best life.", "Focus on the good.", "Stay humble, hustle hard.", "Dream big, work harder."];
-        res.style.display = "block";
-        res.innerHTML = caps[Math.floor(Math.random() * caps.length)];
+    // --- 3. Caption Generator ---
+    function doCaps() {
+        let r = document.getElementById("capRes");
+        const list = [
+            "Making every single moment count.", 
+            "Success is not final, failure is not fatal.", 
+            "Adventure is out there, go find it.", 
+            "Stay focused and never give up.", 
+            "Collect moments, not things.",
+            "Dream big. Work hard. Stay humble."
+        ];
+        r.style.display = "block";
+        r.innerText = list[Math.floor(Math.random() * list.length)];
     }
 
-    // Paraphraser Logic (Simple Example)
-    function paraphraseText() {
-        let text = document.getElementById("paraInput").value;
-        let res = document.getElementById("paraResult");
-        res.style.display = "block";
-        res.innerHTML = "Rewritten: " + text.replace("good", "excellent").replace("happy", "joyful").replace("hard", "challenging");
+    // --- 4. Paraphraser ---
+    function doPara() {
+        let t = document.getElementById("paraIn").value;
+        let r = document.getElementById("paraRes");
+        if(!t) return;
+        r.style.display = "block";
+        r.innerText = "Suggested: " + t.replace(/good/g, "excellent").replace(/hard/g, "challenging").replace(/happy/g, "joyful").replace(/easy/g, "simple");
     }
 </script>
 
