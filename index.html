@@ -140,7 +140,37 @@
 
     <div class="tool-card">
         <h3># Hashtag Generator</h3>
-        <p>कीवर्ड टाका</p>
+      <div class="tool-card">
+    <h3># English Hashtag Generator</h3>
+    <p>Enter a topic (e.g. Travel, Gym, Tech)</p>
+    <input type="text" id="tagInput" placeholder="Type here...">
+    <button class="btn" onclick="generateHashtags()">Generate Tags</button>
+    <div id="tagResult" style="margin-top: 15px; font-weight: bold; color: #2563eb; background: #e2e8f0; padding: 10px; border-radius: 5px; display: none;">
+    </div>
+</div>
+
+<script>
+function generateHashtags() {
+    const input = document.getElementById("tagInput").value.toLowerCase().trim();
+    const resultDiv = document.getElementById("tagResult");
+    
+    const hashtagData = {
+        "travel": "#travel #nature #adventure #explore #wanderlust #travelgram",
+        "gym": "#fitness #workout #gymlife #motivation #health #bodybuilding",
+        "tech": "#technology #coding #ai #innovation #gadgets #software",
+        "food": "#foodie #yummy #instafood #cooking #delicious #foodstagram"
+    };
+
+    if (input === "") {
+        alert("Please enter a word!");
+        return;
+    }
+
+    let foundTags = hashtagData[input] || "#trending #viral #foryou #explorepage";
+    resultDiv.style.display = "block";
+    resultDiv.innerText = foundTags;
+}
+</script>  <p>कीवर्ड टाका</p>
         <input type="text" placeholder="e.g. Marathi, Travel">
         <button class="btn">Generate Hashtags</button>
     </div>
