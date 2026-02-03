@@ -1,139 +1,175 @@
 <!DOCTYPE html>
-<html>
+<html lang="mr">
 <head>
-  <title>ToolxRP</title>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolxRP - Free Writing Tools</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb; /* Bright Blue */
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-dark: #1e293b;
+            --accent: #f59e0b; /* Special Offer Orange */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: #0f172a;
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 600; letter-spacing: 1px; }
+
+        /* Hero Section */
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
+            color: white;
+        }
+
+        /* Tool Grid */
+        .container {
+            max-width: 1200px;
+            margin: -40px auto 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+
+        .tool-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .tool-card:hover { transform: translateY(-10px); }
+
+        .tool-card h3 { color: var(--primary-color); margin-top: 0; }
+
+        textarea, input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        textarea:focus { border-color: var(--primary-color); }
+
+        .btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .btn:hover { background: #1d4ed8; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
+
+        /* Special Offer */
+        .offer-section {
+            background: #fffbeb;
+            border: 2px dashed var(--accent);
+            padding: 30px;
+            text-align: center;
+            border-radius: 15px;
+            margin: 20px;
+        }
+
+        .offer-btn {
+            background: #10b981; /* Green for profit/view */
+            padding: 15px 30px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        footer { text-align: center; padding: 20px; color: #64748b; font-size: 0.9rem; }
+    </style>
 </head>
-<body style="font-family:sans-serif; text-align:center; margin-top:40px;">
-  <h1>ToolxRP</h1>
-  <p>Free writing & social media tools</p>
+<body>
 
-  <div style="margin-top:20px;">
-    <a href="word-counter.html">Word Counter</a> |
-    <a href="character-counter.html">Character Counter</a> |
-    <a href="caption-generator.html">Caption Generator</a> |
-    <a href="hashtag-generator.html">Hashtag Generator</a> |
-    <a href="paraphraser.html">Paraphraser</a>
-  </div>
+<nav>
+    <div class="logo">ToolxRP</div>
+    <div>Free Writing & Social Media Tools</div>
+</nav>
 
-  <div style="margin-top:30px;">
-    <a href="affiliate.html" target="_blank"
-       style="background:#ff9800; color:white; padding:10px 20px; text-decoration:none; border-radius:5px;">
-      🛒 Affiliate Product
-    </a>
-  </div>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head><title>Word Counter Tool</title></head>
-<body style="text-align:center; font-family:sans-serif;">
-<a href="index.html">← Back to Home</a>
-<h2>Word Counter Tool</h2>
-<textarea id="text" rows="10" cols="50"></textarea><br>
-<button onclick="countWords()">Count Words</button>
-<p id="result"></p>
+<header>
+    <h1>तुमची कामे सोपी करा</h1>
+    <p>Professional tools for professional creators.</p>
+</header>
+
+<div class="container">
+    <div class="tool-card">
+        <h3>📝 Word Counter</h3>
+        <p>तुमचा मजकूर पेस्ट करा</p>
+        <textarea rows="5" id="wordInput" placeholder="येथे लिहा..."></textarea>
+        <button class="btn" onclick="countWords()">Count Words</button>
+        <p id="wordResult" style="font-weight: bold; margin-top: 10px;"></p>
+    </div>
+
+    <div class="tool-card">
+        <h3># Hashtag Generator</h3>
+        <p>कीवर्ड टाका</p>
+        <input type="text" placeholder="e.g. Marathi, Travel">
+        <button class="btn">Generate Hashtags</button>
+    </div>
+
+    <div class="tool-card">
+        <h3>🔄 Paraphraser Tool</h3>
+        <p>मजकूर पुन्हा लिहा</p>
+        <textarea rows="5" placeholder="मजकूर पेस्ट करा..."></textarea>
+        <button class="btn">Paraphrase Now</button>
+    </div>
+</div>
+
+<div class="offer-section">
+    <h2>🔥 Special Offer</h2>
+    <p>आमच्या विशेष प्रॉडक्टसह तुमचे उत्पन्न वाढवा!</p>
+    <a href="#" class="btn offer-btn">👉 View Product & Start Earning</a>
+</div>
+
+<footer>
+    © 2026 ToolxRP | All Rights Reserved.
+</footer>
+
 <script>
-function countWords() {
-  let text = document.getElementById("text").value.trim();
-  let words = text.split(/\s+/).filter(w => w.length>0);
-  document.getElementById("result").innerText = "Word Count: " + words.length;
-}
+    function countWords() {
+        let text = document.getElementById("wordInput").value;
+        let count = text.trim().split(/\s+/).filter(word => word.length > 0).length;
+        document.getElementById("wordResult").innerText = "एकूण शब्द: " + count;
+    }
 </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head><title>Character Counter Tool</title></head>
-<body style="text-align:center; font-family:sans-serif;">
-<a href="index.html">← Back to Home</a>
-<h2>Character Counter Tool</h2>
-<textarea id="text" rows="10" cols="50"></textarea><br>
-<button onclick="countChars()">Count Characters</button>
-<p id="result"></p>
-<script>
-function countChars() {
-  let text = document.getElementById("text").value;
-  document.getElementById("result").innerText = "Character Count: " + text.length;
-}
-</script>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head><title>Caption Generator</title></head>
-<body style="text-align:center; font-family:sans-serif;">
-<a href="index.html">← Back to Home</a>
-<h2>Caption Generator</h2>
-<input id="topic" placeholder="Enter a topic..."/>
-<button onclick="generateCaption()">Generate Caption</button>
-<p id="result"></p>
-<script>
-function generateCaption() {
-  let topic = document.getElementById("topic").value.trim();
-  if(!topic){document.getElementById("result").innerText="Please enter a topic.";return;}
-  let captions=[
-    "Unlock the power of "+topic+" today!",
-    topic+" made simple and fun!",
-    "Discover the magic of "+topic+"!",
-    "Why "+topic+" is trending now!",
-    "Top 5 tips about "+topic+" you must know!"
-  ];
-  document.getElementById("result").innerText=captions[Math.floor(Math.random()*captions.length)];
-}
-</script>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head><title>Hashtag Generator</title></head>
-<body style="text-align:center; font-family:sans-serif;">
-<a href="index.html">← Back to Home</a>
-<h2>Hashtag Generator</h2>
-<input id="keyword" placeholder="Enter a keyword..."/>
-<button onclick="generateHashtags()">Generate Hashtags</button>
-<p id="result"></p>
-<script>
-function generateHashtags(){
-  let k=document.getElementById("keyword").value.trim().replace(/\s+/g,"");
-  if(!k){document.getElementById("result").innerText="Please enter a keyword.";return;}
-  let hashtags=["#"+k,"#love"+k,"#insta"+k,"#"+k+"life","#"+k+"daily"];
-  document.getElementById("result").innerText=hashtags.join(" ");
-}
-</script>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head><title>Paraphraser Tool</title></head>
-<body style="text-align:center; font-family:sans-serif;">
-<a href="index.html">← Back to Home</a>
-<h2>Paraphraser Tool</h2>
-<textarea id="text" rows="6" cols="50"></textarea><br>
-<button onclick="paraphrase()">Paraphrase</button>
-<p id="result"></p>
-<script>
-function paraphrase(){
-  let text=document.getElementById("text").value.trim();
-  if(!text){document.getElementById("result").innerText="Please enter a sentence.";return;}
-  let synonyms={"quick":"fast","brown":"dark","fox":"animal","jumps":"leaps","over":"above","lazy":"idle","dog":"canine"};
-  let words=text.split(" ");
-  let paraphrased=words.map(w=>synonyms[w.toLowerCase()]||w).join(" ");
-  document.getElementById("result").innerText=paraphrased;
-}
-</script>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head><title>Affiliate Promotion</title></head>
-<body style="text-align:center; font-family:sans-serif;">
-<a href="index.html">← Back to Home</a>
-<h2>🔥 Special Offer</h2>
-<p>Check out this amazing product that can boost your productivity and income!</p>
-<a href="https://www.digistore24.com/redir/123456/rameshphad1/" target="_blank"
-   style="background:#28a745;color:white;padding:10px 20px;text-decoration:none;border-radius:5px;">
-👉 View Product
-</a>
+
 </body>
 </html>
