@@ -1,90 +1,173 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolxRP - Ultimate Content Creator Tools</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>ToolxRP - Free Writing Tools</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2563eb;
-            --bg: #f8fafc;
-            --card: #ffffff;
-            --text: #0f172a;
+            --primary-color: #2563eb; /* Bright Blue */
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-dark: #1e293b;
+            --accent: #f59e0b; /* Special Offer Orange */
         }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; }
-        nav { background: #1e293b; color: white; padding: 1rem 5%; text-align: center; font-weight: 700; font-size: 1.5rem; }
-        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
-        .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .card { background: var(--card); padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
-        h2 { font-size: 1.25rem; margin-bottom: 15px; color: var(--primary); }
-        textarea, input { width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; box-sizing: border-box; outline: none; transition: 0.3s; }
-        textarea:focus, input:focus { border-color: var(--primary); }
-        .btn { background: var(--primary); color: white; border: none; width: 100%; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 1rem; margin-top: 15px; transition: 0.3s; }
-        .btn:hover { background: #1d4ed8; transform: translateY(-2px); }
-        .result-box { margin-top: 20px; padding: 15px; background: #f1f5f9; border-radius: 8px; border-left: 5px solid var(--primary); font-size: 0.95rem; display: none; word-wrap: break-word; }
-        .footer { text-align: center; padding: 40px; color: #64748b; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: #0f172a;
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 600; letter-spacing: 1px; }
+
+        /* Hero Section */
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
+            color: white;
+        }
+
+        /* Tool Grid */
+        .container {
+            max-width: 1200px;
+            margin: -40px auto 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+
+        .tool-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .tool-card:hover { transform: translateY(-10px); }
+
+        .tool-card h3 { color: var(--primary-color); margin-top: 0; }
+
+        textarea, input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        textarea:focus { border-color: var(--primary-color); }
+
+        .btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .btn:hover { background: #1d4ed8; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
+
+        /* Special Offer */
+        .offer-section {
+            background: #fffbeb;
+            border: 2px dashed var(--accent);
+            padding: 30px;
+            text-align: center;
+            border-radius: 15px;
+            margin: 20px;
+        }
+
+        .offer-btn {
+            background: #10b981; /* Green for profit/view */
+            padding: 15px 30px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        footer { text-align: center; padding: 20px; color: #64748b; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
-<nav>ToolxRP</nav>
+<nav>
+    <div class="logo">ToolxRP</div>
+    <div>Free Writing & Social Media Tools</div>
+</nav>
+
+<header>
+    <h1>तुमची कामे सोपी करा</h1>
+    <p>Professional tools for professional creators.</p>
+</header>
 
 <div class="container">
-    <div class="tool-grid">
-        <div class="card">
-            <h2>📝 Word Counter</h2>
-            <textarea id="wordInput" rows="5" placeholder="Paste your text here..."></textarea>
-            <button class="btn" onclick="countWords()">Analyze Text</button>
-            <div id="wordResult" class="result-box"></div>
-        </div>
+    <div class="tool-card">
+        <h3>📝 Word Counter</h3>
+        <p>तुमचा मजकूर पेस्ट करा</p>
+        <textarea rows="5" id="wordInput" placeholder="येथे लिहा..."></textarea>
+        <button class="btn" onclick="countWords()">Count Words</button>
+        <p id="wordResult" style="font-weight: bold; margin-top: 10px;"></p>
+    </div>
 
-        <div class="card">
-            <h2># Hashtag Generator</h2>
-            <input type="text" id="tagInput" placeholder="Enter topic (e.g. Travel, Gym, AI)">
-            <button class="btn" onclick="generateTags()">Generate Unlimited Tags</button>
-            <div id="tagResult" class="result-box"></div>
-        </div>
+    <div class="tool-card">
+        <h3># Hashtag Generator</h3>
+        <p>कीवर्ड टाका</p>
+        <input type="text" placeholder="e.g. Marathi, Travel">
+        <button class="btn">Generate Hashtags</button>
+    </div>
+
+    <div class="tool-card">
+        <h3>🔄 Paraphraser Tool</h3>
+        <p>मजकूर पुन्हा लिहा</p>
+        <textarea rows="5" placeholder="मजकूर पेस्ट करा..."></textarea>
+        <button class="btn">Paraphrase Now</button>
     </div>
 </div>
 
-<div class="footer">
-    © 2026 ToolxRP | Professional Content Tools
+<div class="offer-section">
+    <h2>🔥 Special Offer</h2>
+    <p>आमच्या विशेष प्रॉडक्टसह तुमचे उत्पन्न वाढवा!</p>
+    <a href="#" class="btn offer-btn">👉 View Product & Start Earning</a>
 </div>
 
+<footer>
+    © 2026 ToolxRP | All Rights Reserved.
+</footer>
+
 <script>
-    // Word Counter Logic
     function countWords() {
-        let text = document.getElementById("wordInput").value.trim();
-        let words = text ? text.split(/\s+/).length : 0;
-        let characters = text.length;
-        let res = document.getElementById("wordResult");
-        res.style.display = "block";
-        res.innerHTML = `<strong>Words:</strong> ${words} <br> <strong>Characters:</strong> ${characters}`;
-    }
-
-    // Unlimited Hashtag Logic
-    function generateTags() {
-        const input = document.getElementById("tagInput").value.toLowerCase().trim();
-        const res = document.getElementById("tagResult");
-        
-        // Huge Database of Tags
-        const tagBank = {
-            "travel": ["#travel", "#nature", "#adventure", "#explore", "#wanderlust", "#travelgram", "#landscape", "#trip", "#vacation", "#beautifullocations", "#travelblogger", "#world", "#tourism"],
-            "gym": ["#fitness", "#workout", "#gymlife", "#motivation", "#health", "#bodybuilding", "#training", "#fitfam", "#lifestyle", "#muscle", "#exercise", "#gymmotivation"],
-            "tech": ["#technology", "#coding", "#ai", "#innovation", "#gadgets", "#software", "#developer", "#programming", "#future", "#techworld", "#datascience", "#cybersecurity"],
-            "food": ["#foodie", "#yummy", "#instafood", "#cooking", "#delicious", "#foodstagram", "#healthyfood", "#dinner", "#chef", "#foodlover", "#breakfast"],
-            "business": ["#marketing", "#success", "#entrepreneur", "#money", "#growth", "#startup", "#branding", "#digitalmarketing", "#mindset", "#smallbusiness"]
-        };
-
-        let baseTags = tagBank[input] || ["#trending", "#viral", "#foryou", "#explorepage", "#instagood", "#popular", "#follow", "#like", "#bestoftheday"];
-        
-        // Mix and Shuffle Tags (To prevent repeats and make them unlimited)
-        let shuffled = baseTags.sort(() => 0.5 - Math.random());
-        let finalTags = shuffled.slice(0, 15).join(" "); // Shows 15 random tags each time
-
-        res.style.display = "block";
-        res.innerHTML = `<strong>Generated Tags:</strong><br><br>${finalTags}`;
+        let text = document.getElementById("wordInput").value;
+        let count = text.trim().split(/\s+/).filter(word => word.length > 0).length;
+        document.getElementById("wordResult").innerText = "एकूण शब्द: " + count;
     }
 </script>
 
