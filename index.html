@@ -41,13 +41,13 @@ body {
 nav { 
     background: var(--dark); 
     color:white; 
-    padding:15px 5%; 
+    padding:10px 5%; 
     display:flex; 
     justify-content:space-between;
     align-items: center;
 }
 
-.logo { font-weight: 800; font-size: 1.4rem; letter-spacing: -0.5px; }
+.logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; }
 .logo span { color: var(--secondary); }
 
 .hero { 
@@ -55,26 +55,26 @@ nav {
     background-image: radial-gradient(circle at top right, #1e293b, #0f172a);
     color:white; 
     text-align:center; 
-    padding:40px 20px 80px; 
+    padding:20px 20px 60px; 
     position: relative;
 }
 
-.hero h1 { font-size: 2.2rem; margin-bottom: 5px; font-weight: 800; }
-.hero p { opacity: 0.8; font-size: 1rem; margin-top: 0; }
+.hero h1 { font-size: 1.8rem; margin-bottom: 5px; font-weight: 800; }
+.hero p { opacity: 0.8; font-size: 0.9rem; margin-top: 0; }
 
 .container { 
     max-width:1200px; 
-    margin:-60px auto 0; 
+    margin:-40px auto 0; 
     padding:0 20px 40px; 
     display:grid; 
     grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); 
-    gap:25px; 
+    gap:20px; 
 }
 
 .card { 
     background: white; 
-    padding:25px; 
-    border-radius:20px; 
+    padding:20px; 
+    border-radius:18px; 
     box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
     transition: transform 0.3s ease;
     border: 1px solid rgba(0,0,0,0.05);
@@ -84,58 +84,61 @@ nav {
     margin-top: 0; 
     display: flex; 
     align-items: center; 
-    gap: 10px; 
+    gap: 8px; 
     color: var(--dark);
-    font-size: 1.25rem;
+    font-size: 1.15rem;
 }
 
 .card i { color: var(--primary); }
 
 textarea, input { 
     width:100%; 
-    padding:12px 15px; 
-    margin:15px 0; 
+    padding:10px 12px; 
+    margin:12px 0; 
     border:2px solid #e2e8f0; 
-    border-radius:12px; 
+    border-radius:10px; 
     font-family: inherit;
     box-sizing: border-box;
+    font-size: 0.9rem;
 }
 
-.btn-group { display: flex; gap: 10px; }
+.btn-group { display: flex; gap: 8px; }
 
 button { 
     flex: 1;
-    padding:12px; 
+    padding:10px; 
     border:none; 
-    border-radius:10px; 
+    border-radius:8px; 
     cursor:pointer; 
     font-weight:600; 
     display: flex; 
     align-items: center; 
     justify-content: center; 
-    gap: 8px;
+    gap: 6px;
+    font-size: 0.9rem;
 }
 
 .btn-primary { background: var(--gradient); color:white; }
 .btn-copy { background: #e0f2fe; color: var(--primary); }
 
 .result-box { 
-    margin-top:15px; 
-    padding: 12px;
+    margin-top:12px; 
+    padding: 10px;
     background: #f8fafc;
     border-radius: 8px;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     min-height: 20px;
     color: #475569;
     border-left: 4px solid var(--secondary);
+    white-space: pre-wrap;
 }
 
 .special { 
     background: white; 
     text-align:center; 
-    padding:50px 20px; 
+    padding:40px 20px; 
     border: 2px solid #4f46e5;
-    margin:40px auto; 
+    margin:30px auto; 
     max-width: 800px;
     border-radius:24px; 
 }
@@ -146,11 +149,10 @@ button {
     gap: 10px;
     background: #fbbf24; 
     color: #78350f; 
-    padding:15px 30px; 
-    border-radius:14px; 
+    padding:12px 25px; 
+    border-radius:12px; 
     text-decoration:none; 
     font-weight:800; 
-    font-size: 1.1rem;
 }
 
 .sticky-bar { 
@@ -163,21 +165,21 @@ button {
     display:flex; 
     justify-content:center; 
     align-items:center; 
-    padding:12px; 
-    gap:20px; 
+    padding:10px; 
+    gap:15px; 
     z-index:1000;
 }
 
 .sticky-bar a { 
     background: var(--gradient); 
     color:white; 
-    padding:8px 15px; 
-    border-radius:8px; 
+    padding:6px 12px; 
+    border-radius:6px; 
     text-decoration:none; 
     font-weight:bold; 
 }
 
-footer { text-align: center; padding: 20px; opacity: 0.7; }
+footer { text-align: center; padding: 20px; opacity: 0.7; font-size: 0.8rem; }
 </style>
 </head>
 
@@ -197,22 +199,22 @@ footer { text-align: center; padding: 20px; opacity: 0.7; }
 
 <div class="card">
     <h3><i class="fa-solid fa-arrow-down-9-1"></i> Word Counter</h3>
-    <textarea id="wordIn" rows="4" placeholder="Paste your text here..."></textarea>
+    <textarea id="wordIn" rows="3" placeholder="Paste your text here..."></textarea>
     <div class="btn-group">
         <button class="btn-primary" onclick="doWord()"><i class="fa-solid fa-calculator"></i> Analyze</button>
         <button class="btn-copy" onclick="copyText('wordRes')"><i class="fa-solid fa-copy"></i></button>
     </div>
-    <div id="wordRes" class="result-box">Word count will appear here...</div>
+    <div id="wordRes" class="result-box">Word count results...</div>
 </div>
 
 <div class="card">
     <h3><i class="fa-solid fa-hashtag"></i> Hashtag Generator</h3>
-    <input id="tagIn" placeholder="Enter topic (e.g. Gym, Tech, Cooking)">
+    <input id="tagIn" placeholder="e.g. Gym, Travel, Food, Tech">
     <div class="btn-group">
         <button class="btn-primary" onclick="doTags()"><i class="fa-solid fa-bolt"></i> Generate</button>
         <button class="btn-copy" onclick="copyText('tagRes')"><i class="fa-solid fa-copy"></i></button>
     </div>
-    <div id="tagRes" class="result-box">Relevant hashtags will appear here...</div>
+    <div id="tagRes" class="result-box">Niche hashtags will appear here...</div>
 </div>
 
 <div class="card">
@@ -222,26 +224,26 @@ footer { text-align: center; padding: 20px; opacity: 0.7; }
         <button class="btn-primary" onclick="doCaption()"><i class="fa-solid fa-sparkles"></i> Create</button>
         <button class="btn-copy" onclick="copyText('capRes')"><i class="fa-solid fa-copy"></i></button>
     </div>
-    <div id="capRes" class="result-box">Attractive caption will be generated here...</div>
+    <div id="capRes" class="result-box">AI generated captions...</div>
 </div>
 
 <div class="card">
     <h3><i class="fa-solid fa-rotate"></i> Paraphraser</h3>
-    <textarea id="paraIn" rows="3" placeholder="Type sentence to rewrite..."></textarea>
+    <textarea id="paraIn" rows="2" placeholder="Rewrite any sentence..."></textarea>
     <div class="btn-group">
         <button class="btn-primary" onclick="doPara()"><i class="fa-solid fa-sync"></i> Rewrite</button>
         <button class="btn-copy" onclick="copyText('paraRes')"><i class="fa-solid fa-copy"></i></button>
     </div>
-    <div id="paraRes" class="result-box">Rewritten sentence will appear here...</div>
+    <div id="paraRes" class="result-box">Smartly rewritten text...</div>
 </div>
 
 </div>
 
 <div class="special">
-    <span style="background:#fef3c7; color:#d97706; padding:5px 15px; border-radius:20px; font-weight:bold; font-size:0.8rem;">LIMITED TIME OFFER</span>
-    <h2 style="font-size:1.8rem; margin:15px 0;">🚀 स्वतःचा यशस्वी व्यवसाय सुरू करा!</h2>
-    <p style="font-size:1.1rem; color:#64748b;">नवीन उद्योजकांसाठी संपूर्ण मराठी ई-बुक मार्गदर्शक.</p>
-    <p style="font-size:1.5rem; font-weight:800; color:var(--dark);">फक्त <span style="color:var(--success)">₹99</span> <del style="font-size:1rem; opacity:0.5;">₹499</del></p>
+    <span style="background:#fef3c7; color:#d97706; padding:4px 12px; border-radius:20px; font-weight:bold; font-size:0.75rem;">LIMITED TIME OFFER</span>
+    <h2 style="font-size:1.6rem; margin:12px 0;">🚀 स्वतःचा यशस्वी व्यवसाय सुरू करा!</h2>
+    <p style="font-size:1rem; color:#64748b;">नवीन उद्योजकांसाठी संपूर्ण मराठी ई-बुक मार्गदर्शक.</p>
+    <p style="font-size:1.3rem; font-weight:800; color:var(--dark);">फक्त <span style="color:var(--success)">₹99</span> <del style="font-size:0.9rem; opacity:0.5;">₹499</del></p>
 
     <a href="https://imojo.in/10ucjGy" target="_blank" onclick="trackEbookClick('Main_Button');" class="offer-btn">
         <i class="fa-solid fa-cart-shopping"></i> ई-बुक आता घ्या
@@ -255,38 +257,76 @@ footer { text-align: center; padding: 20px; opacity: 0.7; }
 <div class="sticky-bar">
     <span>📘 यशस्वी व्यवसायाचे रहस्य (Marathi E-Book)</span>
     <a href="https://imojo.in/10ucjGy" target="_blank" onclick="trackEbookClick('Sticky_Bar');">
-        ऑफर ₹99 मध्ये घ्या
+        Get Offer @ ₹99
     </a>
 </div>
 
 <script>
+// Word Counter
 function doWord(){
  let t=document.getElementById("wordIn").value.trim();
  let words=t? t.split(/\s+/).length:0;
- document.getElementById("wordRes").innerHTML="Total Words: <strong>"+words+"</strong>";
+ let chars=t.length;
+ document.getElementById("wordRes").innerHTML="Words: <strong>"+words+"</strong> | Characters: <strong>"+chars+"</strong>";
 }
 
+// Smart Dynamic Hashtags
 function doTags(){
  let topic = document.getElementById("tagIn").value.trim().toLowerCase();
  if(!topic) { alert("Please enter a topic!"); return; }
- let smartTags = "#" + topic + " #success #business #viral #trending";
- document.getElementById("tagRes").innerText = smartTags;
+ 
+ const tagDb = {
+    gym: "#fitness #workout #gymlife #training #bodybuilding #health",
+    travel: "#travelgram #wanderlust #explore #nature #travelphotography #adventure",
+    food: "#foodie #instafood #delicious #recipe #yummy #cooking",
+    tech: "#technology #coding #innovation #software #gadgets #future",
+    photo: "#photography #portrait #landscape #click #visuals #art",
+    default: "#trending #viral #explorepage #instadaily #foryou"
+ };
+
+ let result = "";
+ if(tagDb[topic]) result = tagDb[topic];
+ else result = "#" + topic + " #" + topic + "life #" + topic + "tips " + tagDb.default;
+ 
+ document.getElementById("tagRes").innerText = result;
 }
 
+// Dynamic Random Captions
 function doCaption(){
- document.getElementById("capRes").innerText = "Success is the result of preparation, hard work, and learning from failure. ✨";
+ let topic = document.getElementById("capIn").value.trim();
+ const quotes = [
+    "Work hard in silence, let your success be your noise. ✨",
+    "Life is better when you're laughing. 😊",
+    "Focus on the goal, not the obstacles. 🔥",
+    "Collect moments, not things. 📸",
+    "Every day is a second chance. 🌟",
+    "Stay consistent, results will follow. 🚀"
+ ];
+ let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+ document.getElementById("capRes").innerText = topic ? topic + " - " + randomQuote : randomQuote;
 }
 
+// Smart Paraphraser
 function doPara(){
- let text=document.getElementById("paraIn").value;
- document.getElementById("paraRes").innerText= text.replace(/business/gi,"enterprise");
+ let text=document.getElementById("paraIn").value.trim();
+ if(!text) return;
+ 
+ // शब्दांचे समानार्थी शब्द बदलणे
+ let rewritten = text
+    .replace(/\bbusiness\b/gi, "enterprise")
+    .replace(/\bstart\b/gi, "launch")
+    .replace(/\bgood\b/gi, "excellent")
+    .replace(/\bmake\b/gi, "create")
+    .replace(/\bhappy\b/gi, "joyful");
+    
+ document.getElementById("paraRes").innerText = rewritten;
 }
 
 function copyText(id){
  let text=document.getElementById(id).innerText;
- if(text.includes("here")) return;
+ if(text.includes("...")) return;
  navigator.clipboard.writeText(text);
- alert("Copied to clipboard!");
+ alert("Copied!");
 }
 </script>
 
