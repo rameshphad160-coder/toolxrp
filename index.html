@@ -41,11 +41,10 @@ body {
 nav { 
     background: var(--dark); 
     color:white; 
-    padding:18px 5%; 
+    padding:15px 5%; 
     display:flex; 
     justify-content:space-between;
     align-items: center;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
 }
 
 .logo { font-weight: 800; font-size: 1.4rem; letter-spacing: -0.5px; }
@@ -56,16 +55,16 @@ nav {
     background-image: radial-gradient(circle at top right, #1e293b, #0f172a);
     color:white; 
     text-align:center; 
-    padding:80px 20px;
+    padding:40px 20px 80px; 
     position: relative;
 }
 
-.hero h1 { font-size: 2.8rem; margin-bottom: 10px; font-weight: 800; }
-.hero p { opacity: 0.8; font-size: 1.1rem; }
+.hero h1 { font-size: 2.2rem; margin-bottom: 5px; font-weight: 800; }
+.hero p { opacity: 0.8; font-size: 1rem; margin-top: 0; }
 
 .container { 
     max-width:1200px; 
-    margin:-50px auto 0; 
+    margin:-60px auto 0; 
     padding:0 20px 40px; 
     display:grid; 
     grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); 
@@ -80,8 +79,6 @@ nav {
     transition: transform 0.3s ease;
     border: 1px solid rgba(0,0,0,0.05);
 }
-
-.card:hover { transform: translateY(-5px); }
 
 .card h3 { 
     margin-top: 0; 
@@ -137,10 +134,7 @@ button {
     background: white; 
     text-align:center; 
     padding:50px 20px; 
-    border: 3px solid transparent;
-    background-image: linear-gradient(white, white), var(--gradient);
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
+    border: 2px solid #4f46e5;
     margin:40px auto; 
     max-width: 800px;
     border-radius:24px; 
@@ -152,19 +146,18 @@ button {
     gap: 10px;
     background: #fbbf24; 
     color: #78350f; 
-    padding:18px 35px; 
+    padding:15px 30px; 
     border-radius:14px; 
     text-decoration:none; 
     font-weight:800; 
-    font-size: 1.2rem;
-    transition: 0.3s;
+    font-size: 1.1rem;
 }
 
 .sticky-bar { 
     position:fixed; 
     bottom:0; 
     width:100%; 
-    background: rgba(15, 23, 42, 0.9);
+    background: rgba(15, 23, 42, 0.95);
     backdrop-filter: blur(10px);
     color:white; 
     display:flex; 
@@ -178,7 +171,7 @@ button {
 .sticky-bar a { 
     background: var(--gradient); 
     color:white; 
-    padding:10px 20px; 
+    padding:8px 15px; 
     border-radius:8px; 
     text-decoration:none; 
     font-weight:bold; 
@@ -246,12 +239,12 @@ footer { text-align: center; padding: 20px; opacity: 0.7; }
 
 <div class="special">
     <span style="background:#fef3c7; color:#d97706; padding:5px 15px; border-radius:20px; font-weight:bold; font-size:0.8rem;">LIMITED TIME OFFER</span>
-    <h2 style="font-size:2rem; margin:15px 0;">🚀 Start Your Successful Business!</h2>
-    <p style="font-size:1.1rem; color:#64748b;">Complete Marathi guide for new entrepreneurs.</p>
-    <p style="font-size:1.5rem; font-weight:800; color:var(--dark);">Only <span style="color:var(--success)">₹99</span> <del style="font-size:1rem; opacity:0.5;">₹499</del></p>
+    <h2 style="font-size:1.8rem; margin:15px 0;">🚀 स्वतःचा यशस्वी व्यवसाय सुरू करा!</h2>
+    <p style="font-size:1.1rem; color:#64748b;">नवीन उद्योजकांसाठी संपूर्ण मराठी ई-बुक मार्गदर्शक.</p>
+    <p style="font-size:1.5rem; font-weight:800; color:var(--dark);">फक्त <span style="color:var(--success)">₹99</span> <del style="font-size:1rem; opacity:0.5;">₹499</del></p>
 
     <a href="https://imojo.in/10ucjGy" target="_blank" onclick="trackEbookClick('Main_Button');" class="offer-btn">
-        <i class="fa-solid fa-cart-shopping"></i> Get E-Book Now
+        <i class="fa-solid fa-cart-shopping"></i> ई-बुक आता घ्या
     </a>
 </div>
 
@@ -260,9 +253,9 @@ footer { text-align: center; padding: 20px; opacity: 0.7; }
 </footer>
 
 <div class="sticky-bar">
-    <span>📘 The Secret of Successful Business (Marathi E-Book)</span>
+    <span>📘 यशस्वी व्यवसायाचे रहस्य (Marathi E-Book)</span>
     <a href="https://imojo.in/10ucjGy" target="_blank" onclick="trackEbookClick('Sticky_Bar');">
-        Get Offer @ ₹99
+        ऑफर ₹99 मध्ये घ्या
     </a>
 </div>
 
@@ -281,12 +274,12 @@ function doTags(){
 }
 
 function doCaption(){
- document.getElementById("capRes").innerText = "Success is not just about what you accomplish, it's about what you inspire others to do. ✨";
+ document.getElementById("capRes").innerText = "Success is the result of preparation, hard work, and learning from failure. ✨";
 }
 
 function doPara(){
  let text=document.getElementById("paraIn").value;
- document.getElementById("paraRes").innerText= "Rewritten: " + text.replace(/business/gi,"enterprise");
+ document.getElementById("paraRes").innerText= text.replace(/business/gi,"enterprise");
 }
 
 function copyText(id){
