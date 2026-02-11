@@ -12,115 +12,47 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-YQ4HJN24W3');
+
+// ===== Ebook Click Tracking =====
+function trackEbookClick(label){
+  gtag('event','ebook_click',{
+    event_category:'engagement',
+    event_label:label
+  });
+}
+
+// ===== Purchase Tracking (Success Page) =====
+function trackPurchase(){
+  gtag('event','purchase',{
+    event_category:'ecommerce',
+    event_label:'ebook_purchase',
+    value:99,
+    currency:'INR',
+    items:[{
+      item_name:'यशस्वी व्यवसायाचे रहस्य',
+      item_id:'ebook_001',
+      price:99,
+      quantity:1
+    }]
+  });
+}
 </script>
 
 <style>
-body {
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:#f5f7fa;
-}
-
-nav {
-    background:#0f172a;
-    color:white;
-    padding:15px 20px;
-    display:flex;
-    justify-content:space-between;
-}
-
-.hero {
-    background:linear-gradient(135deg,#1e3a8a,#2563eb);
-    color:white;
-    text-align:center;
-    padding:60px 20px;
-}
-
-.container {
-    max-width:1100px;
-    margin:auto;
-    padding:30px 20px;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
-}
-
-.card {
-    background:white;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
-}
-
-textarea,input {
-    width:100%;
-    padding:10px;
-    margin:10px 0;
-}
-
-button {
-    padding:10px 15px;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.btn-primary {
-    background:#2563eb;
-    color:white;
-}
-
-.btn-copy {
-    background:#10b981;
-    color:white;
-}
-
-.special {
-    background:#fff8dc;
-    text-align:center;
-    padding:40px 20px;
-    border:2px dashed orange;
-    margin:40px 20px;
-    border-radius:12px;
-}
-
-.offer-btn {
-    display:inline-block;
-    background:#2a9d8f;
-    color:white;
-    padding:15px 30px;
-    border-radius:8px;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-footer {
-    text-align:center;
-    padding:20px;
-    background:#e5e7eb;
-}
-
-.sticky-bar {
-    position:fixed;
-    bottom:0;
-    width:100%;
-    background:#1e3a8a;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:10px;
-    gap:15px;
-}
-.sticky-bar a {
-    background:#ff9800;
-    color:white;
-    padding:8px 15px;
-    border-radius:6px;
-    text-decoration:none;
-    font-weight:bold;
-}
+body { margin:0; font-family:Arial, sans-serif; background:#f5f7fa; }
+nav { background:#0f172a; color:white; padding:15px 20px; display:flex; justify-content:space-between; }
+.hero { background:linear-gradient(135deg,#1e3a8a,#2563eb); color:white; text-align:center; padding:60px 20px; }
+.container { max-width:1100px; margin:auto; padding:30px 20px; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px; }
+.card { background:white; padding:20px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.08); }
+textarea,input { width:100%; padding:10px; margin:10px 0; }
+button { padding:10px 15px; border:none; border-radius:6px; cursor:pointer; font-weight:bold; }
+.btn-primary { background:#2563eb; color:white; }
+.btn-copy { background:#10b981; color:white; }
+.special { background:#fff8dc; text-align:center; padding:40px 20px; border:2px dashed orange; margin:40px 20px; border-radius:12px; }
+.offer-btn { display:inline-block; background:#2a9d8f; color:white; padding:15px 30px; border-radius:8px; text-decoration:none; font-weight:bold; }
+footer { text-align:center; padding:20px; background:#e5e7eb; }
+.sticky-bar { position:fixed; bottom:0; width:100%; background:#1e3a8a; color:white; display:flex; justify-content:center; align-items:center; padding:10px; gap:15px; }
+.sticky-bar a { background:#ff9800; color:white; padding:8px 15px; border-radius:6px; text-decoration:none; font-weight:bold; }
 </style>
 </head>
 
@@ -138,18 +70,40 @@ footer {
 
 <div class="container">
 
+<!-- Word Counter -->
 <div class="card">
 <h3>Word Counter</h3>
 <textarea id="wordIn" placeholder="Paste your text..."></textarea>
 <button class="btn-primary" onclick="doWord()">Analyze</button>
+<button class="btn-copy" onclick="copyText('wordRes')">Copy</button>
 <div id="wordRes"></div>
 </div>
 
+<!-- Hashtag Generator -->
 <div class="card">
 <h3>Hashtag Generator</h3>
-<input id="tagIn" placeholder="Enter topic">
+<input id="tagIn" placeholder="Enter topic (e.g. Gym, Tech, Travel)">
 <button class="btn-primary" onclick="doTags()">Generate</button>
+<button class="btn-copy" onclick="copyText('tagRes')">Copy Tags</button>
 <div id="tagRes"></div>
+</div>
+
+<!-- Caption Generator -->
+<div class="card">
+<h3>Caption Generator</h3>
+<input id="capIn" placeholder="What's your photo about?">
+<button class="btn-primary" onclick="doCaption()">Generate</button>
+<button class="btn-copy" onclick="copyText('capRes')">Copy</button>
+<div id="capRes"></div>
+</div>
+
+<!-- Paraphraser Tool -->
+<div class="card">
+<h3>Paraphraser Tool</h3>
+<textarea id="paraIn" placeholder="Paste sentence to rewrite..."></textarea>
+<button class="btn-primary" onclick="doPara()">Rewrite</button>
+<button class="btn-copy" onclick="copyText('paraRes')">Copy</button>
+<div id="paraRes"></div>
 </div>
 
 </div>
@@ -161,7 +115,7 @@ footer {
 <p><strong>Launch Offer फक्त ₹99</strong></p>
 
 <a href="https://imojo.in/10ucjGy" target="_blank"
-onclick="gtag('event','ebook_click',{event_category:'engagement',event_label:'Main_Button'});"
+onclick="trackEbookClick('Main_Button');"
 class="offer-btn">
 👉 ई-बुक घ्या (₹99)
 </a>
@@ -175,23 +129,39 @@ class="offer-btn">
 
 <!-- Sticky Bottom Bar -->
 <div class="sticky-bar">
-<span>📘 व्यवसाय सुरू करणार?</span>
+<span>📘 यशस्वी व्यवसायाचे रहस्य</span>
 <a href="https://imojo.in/10ucjGy" target="_blank"
-onclick="gtag('event','ebook_click',{event_category:'engagement',event_label:'Sticky_Bar'});">
-ई-बुक ₹99 मध्ये घ्या
+onclick="trackEbookClick('Sticky_Bar');">
+👉 Launch Offer ₹99 मध्ये घ्या
 </a>
 </div>
 
 <script>
 function doWord(){
-let t=document.getElementById("wordIn").value.trim();
-let words=t? t.split(/\s+/).length:0;
-document.getElementById("wordRes").innerText="Words: "+words;
+ let t=document.getElementById("wordIn").value.trim();
+ let words=t? t.split(/\s+/).length:0;
+ document.getElementById("wordRes").innerText="Words: "+words;
 }
 
 function doTags(){
-let topic=document.getElementById("tagIn").value;
-document.getElementById("tagRes").innerText="#"+topic+" #viral #success #entrepreneur #business";
+ let topic=document.getElementById("tagIn").value;
+ document.getElementById("tagRes").innerText="#"+topic+" #viral #success #entrepreneur #business";
+}
+
+function doCaption(){
+ let topic=document.getElementById("capIn").value;
+ document.getElementById("capRes").innerText="Best caption for "+topic+" ✨";
+}
+
+function doPara(){
+ let text=document.getElementById("paraIn").value;
+ document.getElementById("paraRes").innerText="Rewritten: "+text.replace(/business/gi,"enterprise");
+}
+
+function copyText(id){
+ let text=document.getElementById(id).innerText;
+ navigator.clipboard.writeText(text);
+ alert("Copied: "+text);
 }
 </script>
 
