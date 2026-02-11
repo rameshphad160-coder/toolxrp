@@ -16,172 +16,175 @@ gtag('js', new Date());
 gtag('config', 'G-YQ4HJN24W3');
 
 function trackEbookClick(label){
-  gtag('event','ebook_click',{'event_category':'engagement','event_label':label});
+  gtag('event','ebook_click',{
+    event_category:'engagement',
+    event_label:label
+  });
 }
 </script>
 
 <style>
-:root {
-    --primary: #4f46e5;
-    --secondary: #06b6d4;
-    --dark: #0f172a;
-    --light: #f8fafc;
-    --success: #10b981;
-    --gradient: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+:root{
+ --primary:#4f46e5;
+ --secondary:#06b6d4;
+ --dark:#0f172a;
+ --success:#10b981;
+ --gradient:linear-gradient(135deg,#4f46e5 0%,#06b6d4 100%);
 }
 
-body { 
-    margin:0; 
-    font-family: 'Plus Jakarta Sans', sans-serif; 
-    background:#f1f5f9; 
-    color: #334155;
-    padding-bottom: 80px;
+body{
+ margin:0;
+ font-family:'Plus Jakarta Sans',sans-serif;
+ background:#f1f5f9;
+ color:#334155;
+ padding-bottom:80px;
 }
 
-nav { 
-    background: var(--dark); 
-    color:white; 
-    padding:10px 5%; 
-    display:flex; 
-    justify-content:space-between;
-    align-items: center;
+/* NAV */
+nav{
+ background:var(--dark);
+ color:white;
+ padding:8px 5%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ font-size:14px;
 }
 
-.logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; }
-.logo span { color: var(--secondary); }
+.logo{font-weight:800;font-size:1.1rem;}
+.logo span{color:var(--secondary);}
 
-.hero { 
-    background: var(--dark);
-    background-image: radial-gradient(circle at top right, #1e293b, #0f172a);
-    color:white; 
-    text-align:center; 
-    padding:20px 20px 60px; 
-    position: relative;
-}
-.hero {
-    padding:20px 20px 30px;  /* bottom कमी */
-}
-.hero h1 { font-size: 1.8rem; margin-bottom: 5px; font-weight: 800; }
-.hero p { opacity: 0.8; font-size: 0.9rem; margin-top: 0; }
-
-.container { 
-   max-width:1200px; 
-    margin:-40px auto 0; 
-    padding:0 20px 40px; 
-    display:grid; 
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); 
-    gap:20px; 
+/* HERO (लहान केला) */
+.hero{
+ background:var(--dark);
+ color:white;
+ text-align:center;
+ padding:12px 15px 35px;
 }
 
-.card { 
-    background: white; 
-    padding:20px; 
-    border-radius:18px; 
-    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease;
-    border: 1px solid rgba(0,0,0,0.05);
+.hero h1{
+ font-size:1.5rem;
+ margin:5px 0;
 }
 
-.card h3 { 
-    margin-top: 0; 
-    display: flex; 
-    align-items: center; 
-    gap: 8px; 
-    color: var(--dark);
-    font-size: 1.15rem;
+.hero p{
+ font-size:0.85rem;
+ opacity:0.8;
+ margin:0;
 }
 
-.card i { color: var(--primary); }
-
-textarea, input { 
-    width:100%; 
-    padding:10px 12px; 
-    margin:12px 0; 
-    border:2px solid #e2e8f0; 
-    border-radius:10px; 
-    font-family: inherit;
-    box-sizing: border-box;
-    font-size: 0.9rem;
+/* CARDS */
+.container{
+ max-width:1200px;
+ margin:-25px auto 0;
+ padding:0 20px 40px;
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+ gap:18px;
 }
 
-.btn-group { display: flex; gap: 8px; }
-
-button { 
-    flex: 1;
-    padding:10px; 
-    border:none; 
-    border-radius:8px; 
-    cursor:pointer; 
-    font-weight:600; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    gap: 6px;
-    font-size: 0.9rem;
+.card{
+ background:white;
+ padding:18px;
+ border-radius:16px;
+ box-shadow:0 8px 12px rgba(0,0,0,0.05);
 }
 
-.btn-primary { background: var(--gradient); color:white; }
-.btn-copy { background: #e0f2fe; color: var(--primary); }
-
-.result-box { 
-    margin-top:12px; 
-    padding: 10px;
-    background: #f8fafc;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    min-height: 20px;
-    color: #475569;
-    border-left: 4px solid var(--secondary);
-    white-space: pre-wrap;
+.card h3{
+ margin:0 0 8px;
+ font-size:1rem;
+ display:flex;
+ align-items:center;
+ gap:6px;
 }
 
-.special { 
-    background: white; 
-    text-align:center; 
-    padding:40px 20px; 
-    border: 2px solid #4f46e5;
-    margin:30px auto; 
-    max-width: 800px;
-    border-radius:24px; 
+textarea,input{
+ width:100%;
+ padding:8px 10px;
+ margin:8px 0;
+ border:1px solid #dbeafe;
+ border-radius:8px;
+ font-size:0.85rem;
 }
 
-.offer-btn { 
-    display:inline-flex; 
-    align-items: center;
-    gap: 10px;
-    background: #fbbf24; 
-    color: #78350f; 
-    padding:12px 25px; 
-    border-radius:12px; 
-    text-decoration:none; 
-    font-weight:800; 
+.btn-group{display:flex;gap:6px;}
+
+button{
+ flex:1;
+ padding:8px;
+ border:none;
+ border-radius:6px;
+ font-size:0.8rem;
+ cursor:pointer;
 }
 
-.sticky-bar { 
-    position:fixed; 
-    bottom:0; 
-    width:100%; 
-    background: rgba(15, 23, 42, 0.95);
-    backdrop-filter: blur(10px);
-    color:white; 
-    display:flex; 
-    justify-content:center; 
-    align-items:center; 
-    padding:10px; 
-    gap:15px; 
-    z-index:1000;
+.btn-primary{background:var(--gradient);color:white;}
+.btn-copy{background:#e0f2fe;color:var(--primary);}
+
+.result-box{
+ margin-top:8px;
+ padding:8px;
+ background:#f8fafc;
+ border-left:3px solid var(--secondary);
+ font-size:0.8rem;
+ white-space:pre-wrap;
 }
 
-.sticky-bar a { 
-    background: var(--gradient); 
-    color:white; 
-    padding:6px 12px; 
-    border-radius:6px; 
-    text-decoration:none; 
-    font-weight:bold; 
+/* OFFER BOX (आडवा लांब केला) */
+.special{
+ background:white;
+ margin:40px auto;
+ padding:35px 30px;
+ max-width:1000px;
+ border-radius:20px;
+ border:2px solid var(--primary);
+ text-align:center;
 }
 
-footer { text-align: center; padding: 20px; opacity: 0.7; font-size: 0.8rem; }
+.special h2{
+ font-size:1.4rem;
+ margin:10px 0;
+}
+
+.offer-btn{
+ display:inline-block;
+ background:#fbbf24;
+ color:#78350f;
+ padding:10px 22px;
+ border-radius:10px;
+ text-decoration:none;
+ font-weight:700;
+}
+
+/* STICKY BAR */
+.sticky-bar{
+ position:fixed;
+ bottom:0;
+ width:100%;
+ background:rgba(15,23,42,0.95);
+ color:white;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ gap:12px;
+ padding:8px;
+ font-size:13px;
+}
+
+.sticky-bar a{
+ background:var(--gradient);
+ color:white;
+ padding:5px 10px;
+ border-radius:6px;
+ text-decoration:none;
+}
+
+footer{
+ text-align:center;
+ font-size:12px;
+ padding:15px;
+ opacity:0.7;
+}
 </style>
 </head>
 
@@ -189,146 +192,102 @@ footer { text-align: center; padding: 20px; opacity: 0.7; font-size: 0.8rem; }
 
 <nav>
 <div class="logo">Toolx<span>RP</span></div>
-<div><i class="fa-solid fa-wand-magic-sparkles"></i> AI Tools</div>
+<div>AI Tools</div>
 </nav>
 
 <div class="hero">
-    <h1>Create Better Content</h1>
-    <p>Professional writing tools for modern creators</p>
+<h1>Create Better Content</h1>
+<p>Smart tools for creators</p>
 </div>
 
 <div class="container">
 
 <div class="card">
-    <h3><i class="fa-solid fa-arrow-down-9-1"></i> Word Counter</h3>
-    <textarea id="wordIn" rows="3" placeholder="Paste your text here..."></textarea>
-    <div class="btn-group">
-        <button class="btn-primary" onclick="doWord()"><i class="fa-solid fa-calculator"></i> Analyze</button>
-        <button class="btn-copy" onclick="copyText('wordRes')"><i class="fa-solid fa-copy"></i></button>
-    </div>
-    <div id="wordRes" class="result-box">Word count results...</div>
+<h3><i class="fa-solid fa-arrow-down-9-1"></i> Word Counter</h3>
+<textarea id="wordIn" rows="2" placeholder="Paste text..."></textarea>
+<div class="btn-group">
+<button class="btn-primary" onclick="doWord()">Analyze</button>
+<button class="btn-copy" onclick="copyText('wordRes')">Copy</button>
+</div>
+<div id="wordRes" class="result-box">Word results...</div>
 </div>
 
 <div class="card">
-    <h3><i class="fa-solid fa-hashtag"></i> Hashtag Generator</h3>
-    <input id="tagIn" placeholder="e.g. Gym, Travel, Food, Tech">
-    <div class="btn-group">
-        <button class="btn-primary" onclick="doTags()"><i class="fa-solid fa-bolt"></i> Generate</button>
-        <button class="btn-copy" onclick="copyText('tagRes')"><i class="fa-solid fa-copy"></i></button>
-    </div>
-    <div id="tagRes" class="result-box">Niche hashtags will appear here...</div>
+<h3><i class="fa-solid fa-hashtag"></i> Smart Hashtags</h3>
+<input id="tagIn" placeholder="Enter topic">
+<div class="btn-group">
+<button class="btn-primary" onclick="doTags()">Generate</button>
+<button class="btn-copy" onclick="copyText('tagRes')">Copy</button>
+</div>
+<div id="tagRes" class="result-box">Hashtags...</div>
 </div>
 
 <div class="card">
-    <h3><i class="fa-solid fa-pen-nib"></i> Caption Generator</h3>
-    <input id="capIn" placeholder="What is your photo about?">
-    <div class="btn-group">
-        <button class="btn-primary" onclick="doCaption()"><i class="fa-solid fa-sparkles"></i> Create</button>
-        <button class="btn-copy" onclick="copyText('capRes')"><i class="fa-solid fa-copy"></i></button>
-    </div>
-    <div id="capRes" class="result-box">AI generated captions...</div>
+<h3><i class="fa-solid fa-pen"></i> Caption</h3>
+<input id="capIn" placeholder="Topic">
+<div class="btn-group">
+<button class="btn-primary" onclick="doCaption()">Create</button>
+<button class="btn-copy" onclick="copyText('capRes')">Copy</button>
 </div>
-
-<div class="card">
-    <h3><i class="fa-solid fa-rotate"></i> Paraphraser</h3>
-    <textarea id="paraIn" rows="2" placeholder="Rewrite any sentence..."></textarea>
-    <div class="btn-group">
-        <button class="btn-primary" onclick="doPara()"><i class="fa-solid fa-sync"></i> Rewrite</button>
-        <button class="btn-copy" onclick="copyText('paraRes')"><i class="fa-solid fa-copy"></i></button>
-    </div>
-    <div id="paraRes" class="result-box">Smartly rewritten text...</div>
+<div id="capRes" class="result-box">Captions...</div>
 </div>
 
 </div>
 
 <div class="special">
-    <span style="background:#fef3c7; color:#d97706; padding:4px 12px; border-radius:20px; font-weight:bold; font-size:0.75rem;">LIMITED TIME OFFER</span>
-    <h2 style="font-size:1.6rem; margin:12px 0;">🚀 स्वतःचा यशस्वी व्यवसाय सुरू करा!</h2>
-    <p style="font-size:1rem; color:#64748b;">नवीन उद्योजकांसाठी संपूर्ण मराठी ई-बुक मार्गदर्शक.</p>
-    <p style="font-size:1.3rem; font-weight:800; color:var(--dark);">फक्त <span style="color:var(--success)">₹99</span> <del style="font-size:0.9rem; opacity:0.5;">₹499</del></p>
+<h2>🚀 स्वतःचा यशस्वी व्यवसाय सुरू करा!</h2>
+<p>नवीन उद्योजकांसाठी संपूर्ण मराठी ई-बुक</p>
+<p><strong style="color:var(--success);">फक्त ₹99</strong></p>
 
-    <a href="https://imojo.in/10ucjGy" target="_blank" onclick="trackEbookClick('Main_Button');" class="offer-btn">
-        <i class="fa-solid fa-cart-shopping"></i> ई-बुक आता घ्या
-    </a>
+<a href="https://imojo.in/10ucjGy" target="_blank"
+onclick="trackEbookClick('Main_Button');"
+class="offer-btn">
+ई-बुक घ्या
+</a>
 </div>
 
 <footer>
-    <p>© 2026 <strong>ToolxRP</strong> | Made for Creators</p>
+© 2026 ToolxRP
 </footer>
 
 <div class="sticky-bar">
-    <span>📘 यशस्वी व्यवसायाचे रहस्य (Marathi E-Book)</span>
-    <a href="https://imojo.in/10ucjGy" target="_blank" onclick="trackEbookClick('Sticky_Bar');">
-        Get Offer @ ₹99
-    </a>
+<span>📘 Marathi Business E-Book</span>
+<a href="https://imojo.in/10ucjGy" target="_blank"
+onclick="trackEbookClick('Sticky_Bar');">
+Get @ ₹99
+</a>
 </div>
 
 <script>
-// Word Counter
 function doWord(){
  let t=document.getElementById("wordIn").value.trim();
- let words=t? t.split(/\s+/).length:0;
- let chars=t.length;
- document.getElementById("wordRes").innerHTML="Words: <strong>"+words+"</strong> | Characters: <strong>"+chars+"</strong>";
+ let w=t? t.split(/\s+/).length:0;
+ document.getElementById("wordRes").innerText="Words: "+w;
 }
 
-// Smart Dynamic Hashtags
 function doTags(){
- let topic = document.getElementById("tagIn").value.trim().toLowerCase();
- if(!topic) { alert("Please enter a topic!"); return; }
- 
- const tagDb = {
-    gym: "#fitness #workout #gymlife #training #bodybuilding #health",
-    travel: "#travelgram #wanderlust #explore #nature #travelphotography #adventure",
-    food: "#foodie #instafood #delicious #recipe #yummy #cooking",
-    tech: "#technology #coding #innovation #software #gadgets #future",
-    photo: "#photography #portrait #landscape #click #visuals #art",
-    default: "#trending #viral #explorepage #instadaily #foryou"
- };
+ let topic=document.getElementById("tagIn").value.trim().toLowerCase();
+ if(!topic)return;
 
- let result = "";
- if(tagDb[topic]) result = tagDb[topic];
- else result = "#" + topic + " #" + topic + "life #" + topic + "tips " + tagDb.default;
- 
- document.getElementById("tagRes").innerText = result;
+ let tags="#"+topic+" #"+topic+"tips #"+topic+"life #"+topic+"2026 #trending #viral";
+ document.getElementById("tagRes").innerText=tags;
 }
 
-// Dynamic Random Captions
 function doCaption(){
- let topic = document.getElementById("capIn").value.trim();
- const quotes = [
-    "Work hard in silence, let your success be your noise. ✨",
-    "Life is better when you're laughing. 😊",
-    "Focus on the goal, not the obstacles. 🔥",
-    "Collect moments, not things. 📸",
-    "Every day is a second chance. 🌟",
-    "Stay consistent, results will follow. 🚀"
+ let topic=document.getElementById("capIn").value.trim();
+ let captions=[
+ "Consistency beats motivation.",
+ "Success loves preparation.",
+ "Dream big. Start small.",
+ "Your growth starts today."
  ];
- let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
- document.getElementById("capRes").innerText = topic ? topic + " - " + randomQuote : randomQuote;
-}
-
-// Smart Paraphraser
-function doPara(){
- let text=document.getElementById("paraIn").value.trim();
- if(!text) return;
- 
- // शब्दांचे समानार्थी शब्द बदलणे
- let rewritten = text
-    .replace(/\bbusiness\b/gi, "enterprise")
-    .replace(/\bstart\b/gi, "launch")
-    .replace(/\bgood\b/gi, "excellent")
-    .replace(/\bmake\b/gi, "create")
-    .replace(/\bhappy\b/gi, "joyful");
-    
- document.getElementById("paraRes").innerText = rewritten;
+ let random=captions[Math.floor(Math.random()*captions.length)];
+ document.getElementById("capRes").innerText= topic? topic+" - "+random:random;
 }
 
 function copyText(id){
- let text=document.getElementById(id).innerText;
- if(text.includes("...")) return;
- navigator.clipboard.writeText(text);
- alert("Copied!");
+ let t=document.getElementById(id).innerText;
+ navigator.clipboard.writeText(t);
 }
 </script>
 
