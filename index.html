@@ -5,169 +5,292 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ToolxRP - Smart Content Tools</title>
 
-<!-- Google Analytics GA4 -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-YQ4HJN24W3"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-YQ4HJN24W3');
+
+function trackEbookClick(label){
+  gtag('event','ebook_click',{
+    event_category:'engagement',
+    event_label:label
+  });
+}
 </script>
 
 <style>
-body {
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:#f5f7fa;
+:root {
+    --primary: #4f46e5;
+    --secondary: #06b6d4;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --success: #10b981;
+    --gradient: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
 }
-nav {
-    background:#0f172a;
-    color:white;
-    padding:15px 20px;
-    display:flex;
+
+body { 
+    margin:0; 
+    font-family: 'Plus Jakarta Sans', sans-serif; 
+    background:#f1f5f9; 
+    color:#334155;
+    padding-bottom:80px;
+}
+
+nav { 
+    background:var(--dark); 
+    color:white; 
+    padding:15px 5%; 
+    display:flex; 
     justify-content:space-between;
+    align-items:center;
 }
-.hero {
-    background:linear-gradient(135deg,#1e3a8a,#2563eb);
-    color:white;
-    text-align:center;
-    padding:60px 20px;
+
+.logo { font-weight:800; font-size:1.4rem; }
+.logo span { color:var(--secondary); }
+
+.hero { 
+    background:radial-gradient(circle at top right,#1e293b,#0f172a);
+    color:white; 
+    text-align:center; 
+    padding:40px 20px 80px;
 }
-.container {
-    max-width:1100px;
-    margin:auto;
-    padding:30px 20px;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+.container { 
+    max-width:1200px; 
+    margin:-60px auto 0; 
+    padding:0 20px 40px; 
+    display:grid; 
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); 
     gap:25px;
 }
-.card {
-    background:white;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+
+.card { 
+    background:white; 
+    padding:25px; 
+    border-radius:20px; 
+    box-shadow:0 10px 15px -3px rgba(0,0,0,0.05);
 }
-textarea,input {
-    width:100%;
-    padding:10px;
-    margin:10px 0;
-}
-button {
-    padding:10px 15px;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
-    font-weight:bold;
-}
-.btn-primary { background:#2563eb; color:white; }
-.btn-copy { background:#10b981; color:white; }
-.special {
-    background:#fff8dc;
-    text-align:center;
-    padding:40px 20px;
-    border:2px dashed orange;
-    margin:40px 20px;
+
+.card h3 { display:flex; gap:10px; }
+
+textarea,input { 
+    width:100%; 
+    padding:12px; 
+    margin:15px 0; 
+    border:2px solid #e2e8f0; 
     border-radius:12px;
 }
-.offer-btn {
-    display:inline-block;
-    background:#2a9d8f;
-    color:white;
-    padding:15px 30px;
+
+.btn-group { display:flex; gap:10px; }
+
+button { 
+    flex:1;
+    padding:12px; 
+    border:none; 
+    border-radius:10px; 
+    cursor:pointer; 
+    font-weight:600;
+}
+
+.btn-primary { background:var(--gradient); color:white; }
+.btn-copy { background:#e0f2fe; color:var(--primary); }
+
+.result-box { 
+    margin-top:15px; 
+    padding:12px;
+    background:#f8fafc;
     border-radius:8px;
-    text-decoration:none;
-    font-weight:bold;
+    min-height:20px;
+    border-left:4px solid var(--secondary);
 }
-footer {
-    text-align:center;
-    padding:20px;
-    background:#e5e7eb;
+
+.special { 
+    background:white; 
+    text-align:center; 
+    padding:50px 20px; 
+    border:2px solid #4f46e5;
+    margin:40px auto; 
+    max-width:800px;
+    border-radius:24px;
 }
-.sticky-bar {
-    position:fixed;
-    bottom:0;
-    width:100%;
-    background:#1e3a8a;
-    color:white;
-    display:flex;
-    justify-content:center;
+
+.offer-btn { 
+    display:inline-flex; 
     align-items:center;
-    padding:10px;
-    gap:15px;
+    gap:10px;
+    background:#fbbf24; 
+    color:#78350f; 
+    padding:15px 30px; 
+    border-radius:14px; 
+    text-decoration:none; 
+    font-weight:800;
 }
-.sticky-bar a {
-    background:#ff9800;
-    color:white;
-    padding:8px 15px;
-    border-radius:6px;
-    text-decoration:none;
+
+.sticky-bar { 
+    position:fixed; 
+    bottom:0; 
+    width:100%; 
+    background:#0f172a; 
+    color:white; 
+    display:flex; 
+    justify-content:center; 
+    align-items:center; 
+    padding:12px; 
+    gap:20px; 
+}
+
+.sticky-bar a { 
+    background:var(--gradient); 
+    color:white; 
+    padding:8px 15px; 
+    border-radius:8px; 
+    text-decoration:none; 
     font-weight:bold;
 }
+
+footer { text-align:center; padding:20px; opacity:0.7; }
 </style>
 </head>
 
 <body>
 
 <nav>
-<div><strong>ToolxRP</strong></div>
-<div>Smart Content Tools</div>
+<div class="logo">Toolx<span>RP</span></div>
+<div><i class="fa-solid fa-wand-magic-sparkles"></i> AI Tools</div>
 </nav>
 
 <div class="hero">
-<h1>Create Better Content</h1>
-<p>Free, Fast and Professional writing tools</p>
+    <h1>Create Better Content</h1>
+    <p>Professional writing tools for modern creators</p>
 </div>
 
 <div class="container">
 
-<!-- Word Counter -->
 <div class="card">
-<h3>Word Counter</h3>
-<textarea id="wordIn" placeholder="Paste your text..."></textarea>
-<button class="btn-primary" onclick="doWord()">Analyze</button>
-<button class="btn-copy" onclick="copyText('wordRes')">Copy</button>
-<div id="wordRes"></div>
+    <h3><i class="fa-solid fa-arrow-down-9-1"></i> Word Counter</h3>
+    <textarea id="wordIn" rows="4" placeholder="Paste your text here..."></textarea>
+    <div class="btn-group">
+        <button class="btn-primary" onclick="doWord()">Analyze</button>
+        <button class="btn-copy" onclick="copyText('wordRes')">Copy</button>
+    </div>
+    <div id="wordRes" class="result-box"></div>
 </div>
 
-<!-- Hashtag Generator -->
 <div class="card">
-<h3>Hashtag Generator</h3>
-<input id="tagIn" placeholder="Enter topic (e.g. Gym, Tech, Travel)">
-<button class="btn-primary" onclick="doTags()">Generate</button>
-<button class="btn-copy" onclick="copyText('tagRes')">Copy Tags</button>
-<div id="tagRes"></div>
+    <h3><i class="fa-solid fa-hashtag"></i> Hashtag Generator</h3>
+    <input id="tagIn" placeholder="Enter topic (e.g. Business, Gym, Tech)">
+    <div class="btn-group">
+        <button class="btn-primary" onclick="doTags()">Generate</button>
+        <button class="btn-copy" onclick="copyText('tagRes')">Copy</button>
+    </div>
+    <div id="tagRes" class="result-box"></div>
 </div>
 
-<!-- Caption Generator -->
 <div class="card">
-<h3>Caption Generator</h3>
-<input id="capIn" placeholder="What's your photo about?">
-<button class="btn-primary" onclick="doCaption()">Generate</button>
-<button class="btn-copy" onclick="copyText('capRes')">Copy</button>
-<div id="capRes"></div>
+    <h3><i class="fa-solid fa-pen-nib"></i> Caption Generator</h3>
+    <input id="capIn" placeholder="What is your photo about?">
+    <div class="btn-group">
+        <button class="btn-primary" onclick="doCaption()">Create</button>
+        <button class="btn-copy" onclick="copyText('capRes')">Copy</button>
+    </div>
+    <div id="capRes" class="result-box"></div>
 </div>
 
-<!-- Paraphraser Tool -->
 <div class="card">
-<h3>Paraphraser Tool</h3>
-<textarea id="paraIn" placeholder="Paste sentence to rewrite..."></textarea>
-<button class="btn-primary" onclick="doPara()">Rewrite</button>
-<button class="btn-copy" onclick="copyText('paraRes')">Copy</button>
-<div id="paraRes"></div>
+    <h3><i class="fa-solid fa-rotate"></i> Paraphraser</h3>
+    <textarea id="paraIn" rows="3" placeholder="Type sentence to rewrite..."></textarea>
+    <div class="btn-group">
+        <button class="btn-primary" onclick="doPara()">Rewrite</button>
+        <button class="btn-copy" onclick="copyText('paraRes')">Copy</button>
+    </div>
+    <div id="paraRes" class="result-box"></div>
 </div>
 
 </div>
 
-<!-- Special Offer -->
 <div class="special">
-<h2>🚀 स्वतःचा व्यवसाय सुरू करायचा आहे?</h2>
-<p>नवीन उद्योजकांसाठी संपूर्ण मराठी मार्गदर्शक.</p>
-<p><strong>Launch Offer फक्त ₹99</strong></p>
-
-<a href="https://imojo.in/10ucjGy" target="_blank"
-onclick="gtag('event','ebook_click',{event_category:'engagement',event_label:'Main_Button'});"
-class="offer-btn">
-👉 ई-बुक घ्या (₹99)
+<h2>🚀 स्वतःचा यशस्वी व्यवसाय सुरू करा!</h2>
+<p>नवीन उद्योजकांसाठी संपूर्ण मराठी ई-बुक.</p>
+<p><strong>फक्त ₹99</strong> <del>₹499</del></p>
+<a href="https://imojo.in/10ucjGy" target="_blank" onclick="trackEbookClick('Main_Button');" class="offer-btn">
+ई-बुक आता घ्या
 </a>
+</div>
 
-<p style="margin-top:15px;font-size:14px;">मर
+<footer>
+<p>© 2026 ToolxRP</p>
+</footer>
+
+<div class="sticky-bar">
+<span>📘 Marathi Business E-Book</span>
+<a href="https://imojo.in/10ucjGy" target="_blank" onclick="trackEbookClick('Sticky_Bar');">
+₹99 मध्ये घ्या
+</a>
+</div>
+
+<script>
+function doWord(){
+ let t=document.getElementById("wordIn").value.trim();
+ let words=t? t.split(/\s+/).length:0;
+ document.getElementById("wordRes").innerHTML="Total Words: "+words;
+}
+
+function doTags(){
+ let topicInput=document.getElementById("tagIn").value.trim();
+ if(!topicInput){ alert("कृपया विषय टाका"); return; }
+
+ let topic=topicInput.toLowerCase().replace(/[^a-zA-Z0-9\u0900-\u097F\s]/g,"");
+ let base=topic.split(/\s+/).join("");
+
+ const smart=[
+ "viral","trending","explorepage","foryou",
+ "growth","success","india","marathi",
+ "entrepreneur","digital","2026"
+ ];
+
+ let tags=new Set();
+ tags.add("#"+base);
+ tags.add("#"+base+"tips");
+ tags.add("#"+base+"guide");
+ tags.add("#"+base+"ideas");
+
+ smart.forEach(w=>{
+   tags.add("#"+base+w);
+   tags.add("#"+w);
+ });
+
+ let finalTags=Array.from(tags)
+ .sort(()=>0.5-Math.random())
+ .slice(0,15)
+ .join(" ");
+
+ document.getElementById("tagRes").innerText=finalTags;
+}
+
+function doCaption(){
+ document.getElementById("capRes").innerText=
+ "Success begins with small consistent actions. Keep building. 🚀";
+}
+
+function doPara(){
+ let text=document.getElementById("paraIn").value;
+ document.getElementById("paraRes").innerText=
+ text.replace(/business/gi,"enterprise");
+}
+
+function copyText(id){
+ let text=document.getElementById(id).innerText;
+ if(!text) return;
+ navigator.clipboard.writeText(text);
+ alert("Copied!");
+}
+</script>
+
+</body>
+</html>
