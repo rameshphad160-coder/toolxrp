@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ToolxRP - Smart Content Tools</title>
 
-<!-- ===== Google Analytics ===== -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-YQ4HJN24W3"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -13,166 +12,37 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-YQ4HJN24W3');
 
-/* ===== Ebook Click Tracking ===== */
 function trackEbookClick(label){
   gtag('event','ebook_click',{
-    event_category:'engagement',
-    event_label:label
+    'event_category':'engagement',
+    'event_label':label
   });
-}
-
-/* ===== Purchase Auto Tracking =====
-   SUCCESS PAGE URL असेल:
-   yoursite.com/?success=true
-*/
-window.onload = function(){
-  const urlParams = new URLSearchParams(window.location.search);
-  if(urlParams.get('success') === 'true'){
-      gtag('event','purchase',{
-          transaction_id: "T_" + new Date().getTime(),
-          value: 99.00,
-          currency: "INR",
-          items: [{
-            item_id: "ebook_001",
-            item_name: "Business Marathi E-Book",
-            price: 99.00,
-            quantity: 1
-          }]
-      });
-  }
 }
 </script>
 
 <style>
-body{
- margin:0;
- font-family:Arial, sans-serif;
- background:#f4f6fb;
- padding-bottom:70px;
-}
-
-nav{
- background:#0f172a;
- color:white;
- padding:12px 20px;
- display:flex;
- justify-content:space-between;
- align-items:center;
- font-weight:bold;
-}
-
-.hero{
- background:linear-gradient(135deg,#1e3a8a,#2563eb);
- color:white;
- text-align:center;
- padding:45px 20px;
-}
-
-.hero h1{ margin:0; font-size:26px; }
-.hero p{ margin:5px 0 0; font-size:14px; }
-
-.container{
- max-width:1100px;
- margin:auto;
- padding:30px 20px;
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
- gap:20px;
-}
-
-.card{
- background:white;
- padding:18px;
- border-radius:10px;
- box-shadow:0 8px 20px rgba(0,0,0,0.06);
-}
-
-textarea,input{
- width:100%;
- padding:8px;
- margin:8px 0;
- border:1px solid #ddd;
- border-radius:6px;
- box-sizing:border-box;
-}
-
-button{
- padding:8px 12px;
- border:none;
- border-radius:6px;
- cursor:pointer;
- font-weight:bold;
- margin-top:5px;
-}
-
-.btn-primary{ background:#2563eb; color:white; }
-.btn-copy{ background:#10b981; color:white; }
-
-.result{
- margin-top:10px;
- font-weight:bold;
- color:#1e3a8a;
- word-wrap:break-word;
- font-size:14px;
-}
-
-.special{
- background:#fff8dc;
- text-align:center;
- padding:40px 20px;
- border:2px dashed orange;
- margin:40px auto;
- border-radius:12px;
- max-width:900px;
-}
-
-.offer-btn{
- display:inline-block;
- background:#2a9d8f;
- color:white;
- padding:12px 25px;
- border-radius:8px;
- text-decoration:none;
- font-weight:bold;
- margin-top:10px;
-}
-
-footer{
- text-align:center;
- padding:20px;
- background:#e5e7eb;
- font-size:13px;
-}
-
-.sticky-bar{
- position:fixed;
- bottom:0;
- width:100%;
- background:#1e3a8a;
- color:white;
- display:flex;
- justify-content:center;
- align-items:center;
- padding:8px;
- gap:15px;
- font-size:14px;
-}
-
-.sticky-bar a{
- background:#ff9800;
- color:white;
- padding:6px 12px;
- border-radius:6px;
- text-decoration:none;
- font-weight:bold;
-}
+body { margin:0; font-family:Arial; background:#f5f7fa; padding-bottom:70px; }
+nav { background:#0f172a; color:white; padding:12px 20px; display:flex; justify-content:space-between; }
+.hero { background:linear-gradient(135deg,#1e3a8a,#2563eb); color:white; text-align:center; padding:40px 20px; }
+.container { max-width:1100px; margin:auto; padding:30px 20px; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; }
+.card { background:white; padding:20px; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.08); }
+textarea,input { width:100%; padding:10px; margin:10px 0; border:1px solid #ddd; border-radius:6px; box-sizing:border-box; }
+button { padding:8px 12px; border:none; border-radius:6px; cursor:pointer; font-weight:bold; margin-right:5px; }
+.btn-primary { background:#2563eb; color:white; }
+.btn-copy { background:#10b981; color:white; }
+.result { margin-top:10px; font-weight:bold; color:#1e3a8a; word-wrap:break-word; }
+.special { background:#fff8dc; text-align:center; padding:40px 20px; border:2px dashed orange; margin:40px 20px; border-radius:12px; }
+.offer-btn { display:inline-block; background:#2a9d8f; color:white; padding:12px 25px; border-radius:8px; text-decoration:none; font-weight:bold; }
+footer { text-align:center; padding:20px; background:#e5e7eb; }
+.sticky-bar { position:fixed; bottom:0; width:100%; background:#1e3a8a; color:white; display:flex; justify-content:center; align-items:center; padding:10px; gap:15px; z-index:1000; }
+.sticky-bar a { background:#ff9800; color:white; padding:6px 12px; border-radius:6px; text-decoration:none; font-weight:bold; }
 </style>
 </head>
 
 <body>
 
 <nav>
-<div>ToolxRP</div>
+<div><strong>ToolxRP</strong></div>
 <div>Smart Content Tools</div>
 </nav>
 
@@ -193,7 +63,7 @@ footer{
 
 <div class="card">
 <h3>Hashtag Generator</h3>
-<input id="tagIn" placeholder="Enter topic (e.g. Gym, Travel)">
+<input id="tagIn" placeholder="Enter topic (e.g. gym, tech, travel)">
 <button class="btn-primary" onclick="doTags()">Generate</button>
 <button class="btn-copy" onclick="copyText('tagRes')">Copy</button>
 <div id="tagRes" class="result"></div>
@@ -201,7 +71,7 @@ footer{
 
 <div class="card">
 <h3>Caption Generator</h3>
-<input id="capIn" placeholder="What is your post about?">
+<input id="capIn" placeholder="Enter your topic (e.g. vlog, motivation)">
 <button class="btn-primary" onclick="doCaption()">Generate</button>
 <button class="btn-copy" onclick="copyText('capRes')">Copy</button>
 <div id="capRes" class="result"></div>
@@ -217,21 +87,17 @@ footer{
 
 </div>
 
-<!-- ===== MARATHI OFFER SECTION ===== -->
 <div class="special">
 <h2>🚀 स्वतःचा व्यवसाय सुरू करायचा आहे?</h2>
 <p>नवीन उद्योजकांसाठी संपूर्ण मराठी मार्गदर्शक.</p>
-<p><strong>फक्त ₹99 मध्ये ई-बुक घ्या</strong></p>
+<p><strong>ई-बुक घ्या (₹99)</strong></p>
+<p style="font-size:14px;">मर्यादित काळासाठी विशेष किंमत</p>
 
 <a href="https://imojo.in/10ucjGy" target="_blank"
 onclick="trackEbookClick('Main_Button');"
 class="offer-btn">
-ई-बुक घ्या (₹99)
+Buy Now
 </a>
-
-<p style="margin-top:12px;font-size:13px;">
-मर्यादित काळासाठी विशेष किंमत
-</p>
 </div>
 
 <footer>
@@ -239,7 +105,7 @@ class="offer-btn">
 </footer>
 
 <div class="sticky-bar">
-<span>📘 Marathi Business E-Book</span>
+<span>Marathi Business E-Book</span>
 <a href="https://imojo.in/10ucjGy" target="_blank"
 onclick="trackEbookClick('Sticky_Bar');">
 Get Offer @ ₹99
@@ -247,6 +113,8 @@ Get Offer @ ₹99
 </div>
 
 <script>
+
+// WORD COUNTER
 function doWord(){
  let t=document.getElementById("wordIn").value.trim();
  let words=t? t.split(/\s+/).length:0;
@@ -254,29 +122,82 @@ function doWord(){
  document.getElementById("wordRes").innerText="Words: "+words+" | Characters: "+chars;
 }
 
+// SMART HASHTAGS
 function doTags(){
  let topic=document.getElementById("tagIn").value.trim().toLowerCase();
  if(!topic){ alert("Enter topic"); return; }
- document.getElementById("tagRes").innerText=
- "#"+topic+" #trending #viral #explore #contentcreator";
+
+ const tagDB={
+   gym:["#fitness","#workout","#gymlife","#bodybuilding","#health"],
+   tech:["#technology","#coding","#innovation","#gadgets","#ai"],
+   travel:["#travelgram","#wanderlust","#explore","#adventure","#nature"],
+   food:["#foodie","#recipe","#delicious","#cooking","#yummy"],
+   vlog:["#vlogger","#dailyvlog","#youtube","#contentcreator","#creatorlife"]
+ };
+
+ let finalTags="";
+
+ for(let key in tagDB){
+   if(topic.includes(key)){
+     finalTags=tagDB[key].join(" ");
+     break;
+   }
+ }
+
+ if(!finalTags){
+   finalTags="#"+topic+" #"+topic+"life #"+topic+"tips #trending #viral";
+ }
+
+ document.getElementById("tagRes").innerText=finalTags;
 }
 
+// SMART CAPTIONS
 function doCaption(){
- const caps=[
-  "Consistency beats motivation.",
-  "Focus. Execute. Win.",
-  "Dream big. Work smart.",
-  "Small steps create big success."
- ];
- document.getElementById("capRes").innerText=
- caps[Math.floor(Math.random()*caps.length)];
+ let topic=document.getElementById("capIn").value.trim().toLowerCase();
+ if(!topic){ alert("Enter topic"); return; }
+
+ const captionDB={
+   vlog:[
+     "Lights, camera, vlog life 🎥",
+     "Welcome to my daily adventure 🚀",
+     "Real life. Real moments."
+   ],
+   motivation:[
+     "Push yourself beyond limits 💪",
+     "Success starts with discipline 🔥",
+     "Dream big. Execute bigger."
+   ],
+   fitness:[
+     "Train hard, stay focused 🏋️",
+     "No excuses. Just results.",
+     "Sweat today, shine tomorrow."
+   ]
+ };
+
+ let finalCaption="";
+
+ for(let key in captionDB){
+   if(topic.includes(key)){
+     let arr=captionDB[key];
+     finalCaption=arr[Math.floor(Math.random()*arr.length)];
+     break;
+   }
+ }
+
+ if(!finalCaption){
+   finalCaption=topic.charAt(0).toUpperCase()+topic.slice(1)+" vibes only ✨";
+ }
+
+ document.getElementById("capRes").innerText=finalCaption;
 }
 
+// PARAPHRASER
 function doPara(){
  let text=document.getElementById("paraIn").value;
- let rewritten=text.replace(/business/gi,"enterprise")
-                   .replace(/start/gi,"launch")
-                   .replace(/make/gi,"create");
+ let rewritten=text
+  .replace(/business/gi,"enterprise")
+  .replace(/start/gi,"launch")
+  .replace(/make/gi,"create");
  document.getElementById("paraRes").innerText=rewritten;
 }
 
@@ -286,6 +207,7 @@ function copyText(id){
  navigator.clipboard.writeText(text);
  alert("Copied!");
 }
+
 </script>
 
 </body>
