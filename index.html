@@ -12,47 +12,97 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-YQ4HJN24W3');
-
-// ===== Ebook Click Tracking =====
-function trackEbookClick(label){
-  gtag('event','ebook_click',{
-    event_category:'engagement',
-    event_label:label
-  });
-}
-
-// ===== Purchase Tracking (Success Page) =====
-function trackPurchase(){
-  gtag('event','purchase',{
-    event_category:'ecommerce',
-    event_label:'ebook_purchase',
-    value:99,
-    currency:'INR',
-    items:[{
-      item_name:'यशस्वी व्यवसायाचे रहस्य',
-      item_id:'ebook_001',
-      price:99,
-      quantity:1
-    }]
-  });
-}
 </script>
 
 <style>
-body { margin:0; font-family:Arial, sans-serif; background:#f5f7fa; }
-nav { background:#0f172a; color:white; padding:12px 20px; display:flex; justify-content:space-between; }
-.hero { background:linear-gradient(135deg,#1e3a8a,#2563eb); color:white; text-align:center; padding:25px 20px; } /* बारिक केलेलं */
-.container { max-width:1100px; margin:auto; padding:30px 20px; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px; }
-.card { background:white; padding:20px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.08); }
-textarea,input { width:100%; padding:10px; margin:10px 0; }
-button { padding:10px 15px; border:none; border-radius:6px; cursor:pointer; font-weight:bold; }
+body {
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f5f7fa;
+}
+nav {
+    background:#0f172a;
+    color:white;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+}
+.hero {
+    background:linear-gradient(135deg,#1e3a8a,#2563eb);
+    color:white;
+    text-align:center;
+    padding:60px 20px;
+}
+.container {
+    max-width:1100px;
+    margin:auto;
+    padding:30px 20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+.card {
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+textarea,input {
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+}
+button {
+    padding:10px 15px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+}
 .btn-primary { background:#2563eb; color:white; }
 .btn-copy { background:#10b981; color:white; }
-.special { background:#fff8dc; text-align:center; padding:40px 20px; border:2px dashed orange; margin:40px 20px; border-radius:12px; }
-.offer-btn { display:inline-block; background:#2a9d8f; color:white; padding:15px 30px; border-radius:8px; text-decoration:none; font-weight:bold; }
-footer { text-align:center; padding:20px; background:#e5e7eb; }
-.sticky-bar { position:fixed; bottom:0; width:100%; background:#1e3a8a; color:white; display:flex; justify-content:center; align-items:center; padding:10px; gap:15px; }
-.sticky-bar a { background:#ff9800; color:white; padding:8px 15px; border-radius:6px; text-decoration:none; font-weight:bold; }
+.special {
+    background:#fff8dc;
+    text-align:center;
+    padding:40px 20px;
+    border:2px dashed orange;
+    margin:40px 20px;
+    border-radius:12px;
+}
+.offer-btn {
+    display:inline-block;
+    background:#2a9d8f;
+    color:white;
+    padding:15px 30px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+}
+footer {
+    text-align:center;
+    padding:20px;
+    background:#e5e7eb;
+}
+.sticky-bar {
+    position:fixed;
+    bottom:0;
+    width:100%;
+    background:#1e3a8a;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:10px;
+    gap:15px;
+}
+.sticky-bar a {
+    background:#ff9800;
+    color:white;
+    padding:8px 15px;
+    border-radius:6px;
+    text-decoration:none;
+    font-weight:bold;
+}
 </style>
 </head>
 
@@ -97,22 +147,13 @@ footer { text-align:center; padding:20px; background:#e5e7eb; }
 <div id="capRes"></div>
 </div>
 
-<!-- Bio Generator -->
+<!-- Paraphraser Tool -->
 <div class="card">
-<h3>Bio Generator</h3>
-<input id="bioIn" placeholder="Enter your niche">
-<button class="btn-primary" onclick="doBio()">Generate</button>
-<button class="btn-copy" onclick="copyText('bioRes')">Copy</button>
-<div id="bioRes"></div>
-</div>
-
-<!-- Reel Hook Generator -->
-<div class="card">
-<h3>Reel Hook Generator</h3>
-<input id="hookIn" placeholder="Enter topic">
-<button class="btn-primary" onclick="doHook()">Generate</button>
-<button class="btn-copy" onclick="copyText('hookRes')">Copy</button>
-<div id="hookRes"></div>
+<h3>Paraphraser Tool</h3>
+<textarea id="paraIn" placeholder="Paste sentence to rewrite..."></textarea>
+<button class="btn-primary" onclick="doPara()">Rewrite</button>
+<button class="btn-copy" onclick="copyText('paraRes')">Copy</button>
+<div id="paraRes"></div>
 </div>
 
 </div>
@@ -124,63 +165,9 @@ footer { text-align:center; padding:20px; background:#e5e7eb; }
 <p><strong>Launch Offer फक्त ₹99</strong></p>
 
 <a href="https://imojo.in/10ucjGy" target="_blank"
-onclick="trackEbookClick('Main_Button');"
+onclick="gtag('event','ebook_click',{event_category:'engagement',event_label:'Main_Button'});"
 class="offer-btn">
 👉 ई-बुक घ्या (₹99)
 </a>
 
-<p style="margin-top:15px;font-size:14px;">मर्यादित काळासाठी विशेष किंमत</p>
-</div>
-
-<footer>
-© 2026 ToolxRP | All Rights Reserved
-</footer>
-
-<!-- Sticky Bottom Bar -->
-<div class="sticky-bar">
-<span>📘 यशस्वी व्यवसायाचे रहस्य</span>
-<a href="https://imojo.in/10ucjGy" target="_blank"
-onclick="trackEbookClick('Sticky_Bar');">
-👉 Launch Offer ₹99 मध्ये घ्या
-</a>
-</div>
-
-<script>
-// WORD COUNTER
-function doWord(){
- let t=document.getElementById("wordIn").value.trim();
- let w=t?t.split(/\s+/).length:0;
- document.getElementById("wordRes").innerText="Total Words: "+w;
-}
-
-// SMART HASHTAG GENERATOR
-function doTags(){
- let topic=document.getElementById("tagIn").value.trim().toLowerCase();
- if(!topic) return;
- const baseTags=["#viral","#trending","#explorepage","#growth","#contentcreator","#india","#success","#creatorlife"];
- const nicheTags=["#"+topic,"#"+topic+"tips","#"+topic+"life","#"+topic+"growth","#"+topic+"daily","#"+topic+"reels","#"+topic+"content","#"+topic+"community"];
- let all=nicheTags.concat(baseTags).sort(()=>0.5-Math.random()).slice(0,10).join(" ");
- document.getElementById("tagRes").innerText=all;
-}
-
-// SMART CAPTION GENERATOR
-function doCaption(){
- let topic=document.getElementById("capIn").value.trim();
- if(!topic) return;
- const captions=["Success in "+topic+" comes from daily discipline 🚀","Nobody talks about this in "+topic+" 😳","If you are serious about "+topic+", read this 👇","Consistency beats talent in "+topic+" 🔥","This is how I improved my "+topic+" game 💯"];
- document.getElementById("capRes").innerText=captions[Math.floor(Math.random()*captions.length)];
-}
-
-// SMART BIO GENERATOR
-function doBio(){
- let niche=document.getElementById("bioIn").value.trim();
- if(!niche) return;
- const bios=["🚀 Growing in "+niche+"\n🔥 Daily value\n📈 Learn & build","🎯 "+niche+" Creator\n💡 Sharing insights\n🚀 Follow for growth","🔥 Helping you master "+niche+"\n📊 Smart content\n🎯 Results matter","💥 "+niche+" Hustler\n📘 Practical knowledge\n🚀 Level up daily"];
- document.getElementById("bioRes").innerText=bios[Math.floor(Math.random()*bios.length)];
-}
-
-// SMART REEL HOOK
-function doHook(){
- let topic=document.getElementById("hookIn").value.trim();
- if(!topic) return;
- const hooks=["Stop scrolling! "+topic+" secret revealed 🔥","This mistake ruins your "+topic+" growth 🤯","Nobody tells you this about "+topic+" 😳","If you care about "+topic+", watch this 👀","This changed my "+
+<p style="margin-top:15px;font-size:14px;">मर
