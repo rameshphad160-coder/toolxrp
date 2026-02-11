@@ -38,7 +38,6 @@ body {
     padding-bottom: 80px;
 }
 
-/* Navigation */
 nav { 
     background: var(--dark); 
     color:white; 
@@ -52,7 +51,6 @@ nav {
 .logo { font-weight: 800; font-size: 1.4rem; letter-spacing: -0.5px; }
 .logo span { color: var(--secondary); }
 
-/* Hero Section */
 .hero { 
     background: var(--dark);
     background-image: radial-gradient(circle at top right, #1e293b, #0f172a);
@@ -60,13 +58,11 @@ nav {
     text-align:center; 
     padding:80px 20px;
     position: relative;
-    overflow: hidden;
 }
 
 .hero h1 { font-size: 2.8rem; margin-bottom: 10px; font-weight: 800; }
 .hero p { opacity: 0.8; font-size: 1.1rem; }
 
-/* Grid Container */
 .container { 
     max-width:1200px; 
     margin:-50px auto 0; 
@@ -76,20 +72,16 @@ nav {
     gap:25px; 
 }
 
-/* Attractive Cards */
 .card { 
     background: white; 
     padding:25px; 
     border-radius:20px; 
     box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
     border: 1px solid rgba(0,0,0,0.05);
 }
 
-.card:hover { 
-    transform: translateY(-5px); 
-    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
-}
+.card:hover { transform: translateY(-5px); }
 
 .card h3 { 
     margin-top: 0; 
@@ -110,15 +102,8 @@ textarea, input {
     border-radius:12px; 
     font-family: inherit;
     box-sizing: border-box;
-    transition: border-color 0.2s;
 }
 
-textarea:focus, input:focus { 
-    outline: none; 
-    border-color: var(--primary); 
-}
-
-/* Buttons */
 .btn-group { display: flex; gap: 10px; }
 
 button { 
@@ -132,12 +117,10 @@ button {
     align-items: center; 
     justify-content: center; 
     gap: 8px;
-    transition: filter 0.2s;
 }
 
 .btn-primary { background: var(--gradient); color:white; }
 .btn-copy { background: #e0f2fe; color: var(--primary); }
-button:active { transform: scale(0.98); }
 
 .result-box { 
     margin-top:15px; 
@@ -150,7 +133,6 @@ button:active { transform: scale(0.98); }
     border-left: 4px solid var(--secondary);
 }
 
-/* Special Offer Section */
 .special { 
     background: white; 
     text-align:center; 
@@ -175,13 +157,9 @@ button:active { transform: scale(0.98); }
     text-decoration:none; 
     font-weight:800; 
     font-size: 1.2rem;
-    box-shadow: 0 10px 15px -3px rgba(251, 191, 36, 0.4);
     transition: 0.3s;
 }
 
-.offer-btn:hover { transform: scale(1.05); background: #f59e0b; }
-
-/* Sticky Bar */
 .sticky-bar { 
     position:fixed; 
     bottom:0; 
@@ -195,7 +173,6 @@ button:active { transform: scale(0.98); }
     padding:12px; 
     gap:20px; 
     z-index:1000;
-    box-shadow: 0 -4px 10px rgba(0,0,0,0.2);
 }
 
 .sticky-bar a { 
@@ -205,13 +182,9 @@ button:active { transform: scale(0.98); }
     border-radius:8px; 
     text-decoration:none; 
     font-weight:bold; 
-    font-size: 0.9rem;
 }
 
-@media (max-width: 600px) {
-    .hero h1 { font-size: 2rem; }
-    .sticky-bar span { display: none; }
-}
+footer { text-align: center; padding: 20px; opacity: 0.7; }
 </style>
 </head>
 
@@ -231,12 +204,12 @@ button:active { transform: scale(0.98); }
 
 <div class="card">
     <h3><i class="fa-solid fa-arrow-down-9-1"></i> Word Counter</h3>
-    <textarea id="wordIn" rows="4" placeholder="तुमचा मजकूर इथे पेस्ट करा..."></textarea>
+    <textarea id="wordIn" rows="4" placeholder="Paste your text here..."></textarea>
     <div class="btn-group">
         <button class="btn-primary" onclick="doWord()"><i class="fa-solid fa-calculator"></i> Analyze</button>
         <button class="btn-copy" onclick="copyText('wordRes')"><i class="fa-solid fa-copy"></i></button>
     </div>
-    <div id="wordRes" class="result-box">शब्दांची संख्या इथे दिसेल...</div>
+    <div id="wordRes" class="result-box">Word count will appear here...</div>
 </div>
 
 <div class="card">
@@ -246,105 +219,81 @@ button:active { transform: scale(0.98); }
         <button class="btn-primary" onclick="doTags()"><i class="fa-solid fa-bolt"></i> Generate</button>
         <button class="btn-copy" onclick="copyText('tagRes')"><i class="fa-solid fa-copy"></i></button>
     </div>
-    <div id="tagRes" class="result-box">संबंधित हॅशटॅग्स इथे येतील...</div>
+    <div id="tagRes" class="result-box">Relevant hashtags will appear here...</div>
 </div>
 
 <div class="card">
     <h3><i class="fa-solid fa-pen-nib"></i> Caption Generator</h3>
-    <input id="capIn" placeholder="तुमचा फोटो कशाबद्दल आहे?">
+    <input id="capIn" placeholder="What is your photo about?">
     <div class="btn-group">
         <button class="btn-primary" onclick="doCaption()"><i class="fa-solid fa-sparkles"></i> Create</button>
         <button class="btn-copy" onclick="copyText('capRes')"><i class="fa-solid fa-copy"></i></button>
     </div>
-    <div id="capRes" class="result-box">आकर्षक कॅप्शन इथे तयार होईल...</div>
+    <div id="capRes" class="result-box">Attractive caption will be generated here...</div>
 </div>
 
 <div class="card">
     <h3><i class="fa-solid fa-rotate"></i> Paraphraser</h3>
-    <textarea id="paraIn" rows="3" placeholder="वाक्य पुन्हा लिहिण्यासाठी इथे लिहा..."></textarea>
+    <textarea id="paraIn" rows="3" placeholder="Type sentence to rewrite..."></textarea>
     <div class="btn-group">
         <button class="btn-primary" onclick="doPara()"><i class="fa-solid fa-sync"></i> Rewrite</button>
         <button class="btn-copy" onclick="copyText('paraRes')"><i class="fa-solid fa-copy"></i></button>
     </div>
-    <div id="paraRes" class="result-box">बदललेले वाक्य इथे दिसेल...</div>
+    <div id="paraRes" class="result-box">Rewritten sentence will appear here...</div>
 </div>
 
 </div>
 
 <div class="special">
     <span style="background:#fef3c7; color:#d97706; padding:5px 15px; border-radius:20px; font-weight:bold; font-size:0.8rem;">LIMITED TIME OFFER</span>
-    <h2 style="font-size:2rem; margin:15px 0;">🚀 स्वतःचा यशस्वी व्यवसाय सुरू करा!</h2>
-    <p style="font-size:1.1rem; color:#64748b;">नवीन उद्योजकांसाठी खास मराठी ई-बुक मार्गदर्शक.</p>
-    <p style="font-size:1.5rem; font-weight:800; color:var(--dark);">फक्त <span style="color:var(--success)">₹99</span> <del style="font-size:1rem; opacity:0.5;">₹499</del></p>
+    <h2 style="font-size:2rem; margin:15px 0;">🚀 Start Your Successful Business!</h2>
+    <p style="font-size:1.1rem; color:#64748b;">Complete Marathi guide for new entrepreneurs.</p>
+    <p style="font-size:1.5rem; font-weight:800; color:var(--dark);">Only <span style="color:var(--success)">₹99</span> <del style="font-size:1rem; opacity:0.5;">₹499</del></p>
 
     <a href="https://imojo.in/10ucjGy" target="_blank" onclick="trackEbookClick('Main_Button');" class="offer-btn">
-        <i class="fa-solid fa-cart-shopping"></i> ई-बुक आता घ्या
+        <i class="fa-solid fa-cart-shopping"></i> Get E-Book Now
     </a>
 </div>
 
 <footer>
-    <p>© 2026 <strong>ToolxRP</strong> | Made with ❤️ for Creators</p>
+    <p>© 2026 <strong>ToolxRP</strong> | Made for Creators</p>
 </footer>
 
 <div class="sticky-bar">
-    <span>📘 यशस्वी व्यवसायाचे रहस्य (मराठी ई-बुक)</span>
+    <span>📘 The Secret of Successful Business (Marathi E-Book)</span>
     <a href="https://imojo.in/10ucjGy" target="_blank" onclick="trackEbookClick('Sticky_Bar');">
-        ऑफर ₹99 मध्ये घ्या
+        Get Offer @ ₹99
     </a>
 </div>
 
 <script>
-// Word Counter Logic
 function doWord(){
  let t=document.getElementById("wordIn").value.trim();
  let words=t? t.split(/\s+/).length:0;
- document.getElementById("wordRes").innerHTML="<i class='fa-solid fa-check-circle'></i> एकूण शब्द: <strong>"+words+"</strong>";
+ document.getElementById("wordRes").innerHTML="Total Words: <strong>"+words+"</strong>";
 }
 
-// Smart Hashtag Logic
 function doTags(){
  let topic = document.getElementById("tagIn").value.trim().toLowerCase();
- if(!topic) { alert("कृपया विषय टाका!"); return; }
- 
- let common = ["viral", "trending", "explore"];
- let smartTags = "";
- 
- if(topic.includes("gym") || topic.includes("fitness")) {
-    smartTags = "#fitness #workout #gymlife #motivation #health";
- } else if(topic.includes("tech") || topic.includes("gadget")) {
-    smartTags = "#technology #gadgets #coding #innovation #techie";
- } else if(topic.includes("food") || topic.includes("cook")) {
-    smartTags = "#foodie #recipe #delicious #streetfood #cooking";
- } else {
-    smartTags = "#" + topic + " #success #entrepreneur #growth #tips";
- }
-
- document.getElementById("tagRes").innerText = smartTags + " #" + common.join(" #");
+ if(!topic) { alert("Please enter a topic!"); return; }
+ let smartTags = "#" + topic + " #success #business #viral #trending";
+ document.getElementById("tagRes").innerText = smartTags;
 }
 
 function doCaption(){
- let topic=document.getElementById("capIn").value;
- let captions = [
-    "Work hard in silence, let your success be your noise. ✨",
-    "Consistency is the key to everything you want. 🚀",
-    "Focus on the goal, not the obstacles. 🔥",
-    "Success is not final, failure is not fatal. 💪"
- ];
- let randomCap = captions[Math.floor(Math.random() * captions.length)];
- document.getElementById("capRes").innerText = randomCap;
+ document.getElementById("capRes").innerText = "Success is not just about what you accomplish, it's about what you inspire others to do. ✨";
 }
 
 function doPara(){
  let text=document.getElementById("paraIn").value;
- let rewritten = text.replace(/business/gi,"enterprise").replace(/start/gi,"launch").replace(/make/gi,"create");
- document.getElementById("paraRes").innerText=rewritten;
+ document.getElementById("paraRes").innerText= "Rewritten: " + text.replace(/business/gi,"enterprise");
 }
 
 function copyText(id){
  let text=document.getElementById(id).innerText;
- if(text.includes("इथे")) return;
+ if(text.includes("here")) return;
  navigator.clipboard.writeText(text);
- alert("Copied: " + text);
+ alert("Copied to clipboard!");
 }
 </script>
 
