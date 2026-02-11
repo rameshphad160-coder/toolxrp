@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ToolxRP - Smart Content Tools</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+<!-- Google Analytics GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-YQ4HJN24W3"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -15,281 +13,174 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-YQ4HJN24W3');
 
+// ===== Ebook Click Tracking =====
 function trackEbookClick(label){
   gtag('event','ebook_click',{
     event_category:'engagement',
     event_label:label
   });
 }
+
+// ===== Purchase Tracking (Success Page) =====
+function trackPurchase(){
+  gtag('event','purchase',{
+    event_category:'ecommerce',
+    event_label:'ebook_purchase',
+    value:99,
+    currency:'INR',
+    items:[{
+      item_name:'यशस्वी व्यवसायाचे रहस्य',
+      item_id:'ebook_001',
+      price:99,
+      quantity:1
+    }]
+  });
+}
 </script>
 
 <style>
-:root{
- --primary:#4f46e5;
- --secondary:#06b6d4;
- --dark:#0f172a;
- --success:#10b981;
- --gradient:linear-gradient(135deg,#4f46e5 0%,#06b6d4 100%);
-}
-
-body{
- margin:0;
- font-family:'Plus Jakarta Sans',sans-serif;
- background:#f1f5f9;
- color:#334155;
- padding-bottom:80px;
-}
-
-/* NAV */
-nav{
- background:var(--dark);
- color:white;
- padding:8px 5%;
- display:flex;
- justify-content:space-between;
- align-items:center;
- font-size:14px;
-}
-
-.logo{font-weight:800;font-size:1.1rem;}
-.logo span{color:var(--secondary);}
-
-/* HERO (लहान केला) */
-.hero{
- background:var(--dark);
- color:white;
- text-align:center;
- padding:12px 15px 35px;
-}
-
-.hero h1{
- font-size:1.5rem;
- margin:5px 0;
-}
-
-.hero p{
- font-size:0.85rem;
- opacity:0.8;
- margin:0;
-}
-
-/* CARDS */
-.container{
- max-width:1200px;
- margin:-25px auto 0;
- padding:0 20px 40px;
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
- gap:18px;
-}
-
-.card{
- background:white;
- padding:18px;
- border-radius:16px;
- box-shadow:0 8px 12px rgba(0,0,0,0.05);
-}
-
-.card h3{
- margin:0 0 8px;
- font-size:1rem;
- display:flex;
- align-items:center;
- gap:6px;
-}
-
-textarea,input{
- width:100%;
- padding:8px 10px;
- margin:8px 0;
- border:1px solid #dbeafe;
- border-radius:8px;
- font-size:0.85rem;
-}
-
-.btn-group{display:flex;gap:6px;}
-
-button{
- flex:1;
- padding:8px;
- border:none;
- border-radius:6px;
- font-size:0.8rem;
- cursor:pointer;
-}
-
-.btn-primary{background:var(--gradient);color:white;}
-.btn-copy{background:#e0f2fe;color:var(--primary);}
-
-.result-box{
- margin-top:8px;
- padding:8px;
- background:#f8fafc;
- border-left:3px solid var(--secondary);
- font-size:0.8rem;
- white-space:pre-wrap;
-}
-
-/* OFFER BOX (आडवा लांब केला) */
-.special{
- background:white;
- margin:40px auto;
- padding:35px 30px;
- max-width:1000px;
- border-radius:20px;
- border:2px solid var(--primary);
- text-align:center;
-}
-
-.special h2{
- font-size:1.4rem;
- margin:10px 0;
-}
-
-.offer-btn{
- display:inline-block;
- background:#fbbf24;
- color:#78350f;
- padding:10px 22px;
- border-radius:10px;
- text-decoration:none;
- font-weight:700;
-}
-
-/* STICKY BAR */
-.sticky-bar{
- position:fixed;
- bottom:0;
- width:100%;
- background:rgba(15,23,42,0.95);
- color:white;
- display:flex;
- justify-content:center;
- align-items:center;
- gap:12px;
- padding:8px;
- font-size:13px;
-}
-
-.sticky-bar a{
- background:var(--gradient);
- color:white;
- padding:5px 10px;
- border-radius:6px;
- text-decoration:none;
-}
-
-footer{
- text-align:center;
- font-size:12px;
- padding:15px;
- opacity:0.7;
-}
+body { margin:0; font-family:Arial, sans-serif; background:#f5f7fa; }
+nav { background:#0f172a; color:white; padding:12px 20px; display:flex; justify-content:space-between; }
+.hero { background:linear-gradient(135deg,#1e3a8a,#2563eb); color:white; text-align:center; padding:25px 20px; } /* बारिक केलेलं */
+.container { max-width:1100px; margin:auto; padding:30px 20px; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px; }
+.card { background:white; padding:20px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.08); }
+textarea,input { width:100%; padding:10px; margin:10px 0; }
+button { padding:10px 15px; border:none; border-radius:6px; cursor:pointer; font-weight:bold; }
+.btn-primary { background:#2563eb; color:white; }
+.btn-copy { background:#10b981; color:white; }
+.special { background:#fff8dc; text-align:center; padding:40px 20px; border:2px dashed orange; margin:40px 20px; border-radius:12px; }
+.offer-btn { display:inline-block; background:#2a9d8f; color:white; padding:15px 30px; border-radius:8px; text-decoration:none; font-weight:bold; }
+footer { text-align:center; padding:20px; background:#e5e7eb; }
+.sticky-bar { position:fixed; bottom:0; width:100%; background:#1e3a8a; color:white; display:flex; justify-content:center; align-items:center; padding:10px; gap:15px; }
+.sticky-bar a { background:#ff9800; color:white; padding:8px 15px; border-radius:6px; text-decoration:none; font-weight:bold; }
 </style>
 </head>
 
 <body>
 
 <nav>
-<div class="logo">Toolx<span>RP</span></div>
-<div>AI Tools</div>
+<div><strong>ToolxRP</strong></div>
+<div>Smart Content Tools</div>
 </nav>
 
 <div class="hero">
 <h1>Create Better Content</h1>
-<p>Smart tools for creators</p>
+<p>Free, Fast and Professional writing tools</p>
 </div>
 
 <div class="container">
 
+<!-- Word Counter -->
 <div class="card">
-<h3><i class="fa-solid fa-arrow-down-9-1"></i> Word Counter</h3>
-<textarea id="wordIn" rows="2" placeholder="Paste text..."></textarea>
-<div class="btn-group">
+<h3>Word Counter</h3>
+<textarea id="wordIn" placeholder="Paste your text..."></textarea>
 <button class="btn-primary" onclick="doWord()">Analyze</button>
 <button class="btn-copy" onclick="copyText('wordRes')">Copy</button>
-</div>
-<div id="wordRes" class="result-box">Word results...</div>
+<div id="wordRes"></div>
 </div>
 
+<!-- Hashtag Generator -->
 <div class="card">
-<h3><i class="fa-solid fa-hashtag"></i> Smart Hashtags</h3>
-<input id="tagIn" placeholder="Enter topic">
-<div class="btn-group">
+<h3>Hashtag Generator</h3>
+<input id="tagIn" placeholder="Enter topic (e.g. Gym, Tech, Travel)">
 <button class="btn-primary" onclick="doTags()">Generate</button>
-<button class="btn-copy" onclick="copyText('tagRes')">Copy</button>
-</div>
-<div id="tagRes" class="result-box">Hashtags...</div>
+<button class="btn-copy" onclick="copyText('tagRes')">Copy Tags</button>
+<div id="tagRes"></div>
 </div>
 
+<!-- Caption Generator -->
 <div class="card">
-<h3><i class="fa-solid fa-pen"></i> Caption</h3>
-<input id="capIn" placeholder="Topic">
-<div class="btn-group">
-<button class="btn-primary" onclick="doCaption()">Create</button>
+<h3>Caption Generator</h3>
+<input id="capIn" placeholder="What's your photo about?">
+<button class="btn-primary" onclick="doCaption()">Generate</button>
 <button class="btn-copy" onclick="copyText('capRes')">Copy</button>
+<div id="capRes"></div>
 </div>
-<div id="capRes" class="result-box">Captions...</div>
+
+<!-- Bio Generator -->
+<div class="card">
+<h3>Bio Generator</h3>
+<input id="bioIn" placeholder="Enter your niche">
+<button class="btn-primary" onclick="doBio()">Generate</button>
+<button class="btn-copy" onclick="copyText('bioRes')">Copy</button>
+<div id="bioRes"></div>
+</div>
+
+<!-- Reel Hook Generator -->
+<div class="card">
+<h3>Reel Hook Generator</h3>
+<input id="hookIn" placeholder="Enter topic">
+<button class="btn-primary" onclick="doHook()">Generate</button>
+<button class="btn-copy" onclick="copyText('hookRes')">Copy</button>
+<div id="hookRes"></div>
 </div>
 
 </div>
 
+<!-- Special Offer -->
 <div class="special">
-<h2>🚀 स्वतःचा यशस्वी व्यवसाय सुरू करा!</h2>
-<p>नवीन उद्योजकांसाठी संपूर्ण मराठी ई-बुक</p>
-<p><strong style="color:var(--success);">फक्त ₹99</strong></p>
+<h2>🚀 स्वतःचा व्यवसाय सुरू करायचा आहे?</h2>
+<p>नवीन उद्योजकांसाठी संपूर्ण मराठी मार्गदर्शक.</p>
+<p><strong>Launch Offer फक्त ₹99</strong></p>
 
 <a href="https://imojo.in/10ucjGy" target="_blank"
 onclick="trackEbookClick('Main_Button');"
 class="offer-btn">
-ई-बुक घ्या
+👉 ई-बुक घ्या (₹99)
 </a>
+
+<p style="margin-top:15px;font-size:14px;">मर्यादित काळासाठी विशेष किंमत</p>
 </div>
 
 <footer>
-© 2026 ToolxRP
+© 2026 ToolxRP | All Rights Reserved
 </footer>
 
+<!-- Sticky Bottom Bar -->
 <div class="sticky-bar">
-<span>📘 Marathi Business E-Book</span>
+<span>📘 यशस्वी व्यवसायाचे रहस्य</span>
 <a href="https://imojo.in/10ucjGy" target="_blank"
 onclick="trackEbookClick('Sticky_Bar');">
-Get @ ₹99
+👉 Launch Offer ₹99 मध्ये घ्या
 </a>
 </div>
 
 <script>
+// WORD COUNTER
 function doWord(){
  let t=document.getElementById("wordIn").value.trim();
- let w=t? t.split(/\s+/).length:0;
- document.getElementById("wordRes").innerText="Words: "+w;
+ let w=t?t.split(/\s+/).length:0;
+ document.getElementById("wordRes").innerText="Total Words: "+w;
 }
 
+// SMART HASHTAG GENERATOR
 function doTags(){
  let topic=document.getElementById("tagIn").value.trim().toLowerCase();
- if(!topic)return;
-
- let tags="#"+topic+" #"+topic+"tips #"+topic+"life #"+topic+"2026 #trending #viral";
- document.getElementById("tagRes").innerText=tags;
+ if(!topic) return;
+ const baseTags=["#viral","#trending","#explorepage","#growth","#contentcreator","#india","#success","#creatorlife"];
+ const nicheTags=["#"+topic,"#"+topic+"tips","#"+topic+"life","#"+topic+"growth","#"+topic+"daily","#"+topic+"reels","#"+topic+"content","#"+topic+"community"];
+ let all=nicheTags.concat(baseTags).sort(()=>0.5-Math.random()).slice(0,10).join(" ");
+ document.getElementById("tagRes").innerText=all;
 }
 
+// SMART CAPTION GENERATOR
 function doCaption(){
  let topic=document.getElementById("capIn").value.trim();
- let captions=[
- "Consistency beats motivation.",
- "Success loves preparation.",
- "Dream big. Start small.",
- "Your growth starts today."
- ];
- let random=captions[Math.floor(Math.random()*captions.length)];
- document.getElementById("capRes").innerText= topic? topic+" - "+random:random;
+ if(!topic) return;
+ const captions=["Success in "+topic+" comes from daily discipline 🚀","Nobody talks about this in "+topic+" 😳","If you are serious about "+topic+", read this 👇","Consistency beats talent in "+topic+" 🔥","This is how I improved my "+topic+" game 💯"];
+ document.getElementById("capRes").innerText=captions[Math.floor(Math.random()*captions.length)];
 }
 
-function copyText(id){
- let t=document.getElementById(id).innerText;
- navigator.clipboard.writeText(t);
+// SMART BIO GENERATOR
+function doBio(){
+ let niche=document.getElementById("bioIn").value.trim();
+ if(!niche) return;
+ const bios=["🚀 Growing in "+niche+"\n🔥 Daily value\n📈 Learn & build","🎯 "+niche+" Creator\n💡 Sharing insights\n🚀 Follow for growth","🔥 Helping you master "+niche+"\n📊 Smart content\n🎯 Results matter","💥 "+niche+" Hustler\n📘 Practical knowledge\n🚀 Level up daily"];
+ document.getElementById("bioRes").innerText=bios[Math.floor(Math.random()*bios.length)];
 }
-</script>
 
-</body>
-</html>
+// SMART REEL HOOK
+function doHook(){
+ let topic=document.getElementById("hookIn").value.trim();
+ if(!topic) return;
+ const hooks=["Stop scrolling! "+topic+" secret revealed 🔥","This mistake ruins your "+topic+" growth 🤯","Nobody tells you this about "+topic+" 😳","If you care about "+topic+", watch this 👀","This changed my "+
