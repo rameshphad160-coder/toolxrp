@@ -1,234 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="google-site-verification" content="2654eEOf0eCGDHLtJKkO3Ugf2HPE-Glm3NxpO8VFP4c" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolxRP - Free Content Creator Tools</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root { --primary: #2563eb; --secondary: #10b981; --bg: #f8fafc; --nav-dark: #0f172a; }
-        body { font-family: 'Poppins', sans-serif; background: var(--bg); margin: 0; padding: 0; }
-        
-        /* Navbar */
-        nav { background: var(--nav-dark); color: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.6rem; font-weight: 700; color: #fff; text-decoration: none; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToolxRP - Smart Content Tools</title>
 
-        /* Hero Banner */
-        .hero { background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%); color: white; text-align: center; padding: 70px 20px; }
-        .hero h1 { margin: 0; font-size: 2.8rem; }
-        .hero p { opacity: 0.9; font-size: 1.1rem; }
-
-        /* Tools Grid */
-        .container { max-width: 1200px; margin: -50px auto 40px; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; transition: 0.3s; display: flex; flex-direction: column; }
-        .card:hover { transform: translateY(-8px); }
-        h2 { color: var(--primary); font-size: 1.25rem; margin-top: 0; display: flex; align-items: center; gap: 10px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
-        
-        textarea, input { width: 100%; padding: 12px; margin: 10px 0; border: 1.5px solid #e2e8f0; border-radius: 8px; box-sizing: border-box; font-family: inherit; font-size: 0.95rem; outline: none; }
-        textarea:focus, input:focus { border-color: var(--primary); }
-
-        .btn-group { display: flex; gap: 10px; margin-top: 5px; }
-        .btn { flex: 1; background: var(--primary); color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.3s; }
-        .btn-copy { background: var(--secondary); }
-        .btn:hover { opacity: 0.9; transform: scale(1.02); }
-
-        /* Result Box */
-        .res { margin-top: 15px; padding: 12px; background: #f1f5f9; border-radius: 8px; font-size: 0.9rem; display: none; word-wrap: break-word; color: #1e293b; border-left: 4px solid var(--primary); }
-
-        /* Special Offer & Footer */
-        .special-box { max-width: 1100px; margin: 20px auto; background: #fffbeb; border: 2px dashed #f59e0b; padding: 30px; border-radius: 15px; text-align: center; }
-        .offer-btn { background: #059669; color: white; text-decoration: none; padding: 14px 35px; border-radius: 8px; display: inline-block; margin-top: 15px; font-weight: 700; }
-        footer { text-align: center; padding: 40px; color: #64748b; font-size: 0.9rem; background: #f1f5f9; margin-top: 40px; }
-        footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
-    </style>
-!-- Google Analytics (GA4) -->
+<!-- Google Analytics GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-YQ4HJN24W3"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-YQ4HJN24W3');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-YQ4HJN24W3');
 </script>
+
+<style>
+body {
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f5f7fa;
+}
+
+nav {
+    background:#0f172a;
+    color:white;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.hero {
+    background:linear-gradient(135deg,#1e3a8a,#2563eb);
+    color:white;
+    text-align:center;
+    padding:60px 20px;
+}
+
+.container {
+    max-width:1100px;
+    margin:auto;
+    padding:30px 20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.card {
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+textarea,input {
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+}
+
+button {
+    padding:10px 15px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.btn-primary {
+    background:#2563eb;
+    color:white;
+}
+
+.btn-copy {
+    background:#10b981;
+    color:white;
+}
+
+.special {
+    background:#fff8dc;
+    text-align:center;
+    padding:40px 20px;
+    border:2px dashed orange;
+    margin:40px 20px;
+    border-radius:12px;
+}
+
+.offer-btn {
+    display:inline-block;
+    background:#2a9d8f;
+    color:white;
+    padding:15px 30px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+footer {
+    text-align:center;
+    padding:20px;
+    background:#e5e7eb;
+}
+
+.sticky-bar {
+    position:fixed;
+    bottom:0;
+    width:100%;
+    background:#1e3a8a;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:10px;
+    gap:15px;
+}
+.sticky-bar a {
+    background:#ff9800;
+    color:white;
+    padding:8px 15px;
+    border-radius:6px;
+    text-decoration:none;
+    font-weight:bold;
+}
+</style>
 </head>
+
 <body>
 
 <nav>
-    <a href="#" class="logo">ToolxRP</a>
-    <div style="font-size: 0.85rem; opacity: 0.8;">Smart Content Tools</div>
+<div><strong>ToolxRP</strong></div>
+<div>Smart Content Tools</div>
 </nav>
 
 <div class="hero">
-    <h1>Create Better Content</h1>
-    <p>Free, Fast, and Professional writing tools for creators.</p>
+<h1>Create Better Content</h1>
+<p>Free, Fast and Professional writing tools</p>
 </div>
 
 <div class="container">
-    <div class="card">
-        <h2>📝 Word Counter</h2>
-        <textarea id="wordIn" rows="4" placeholder="Paste your text here..."></textarea>
-        <div class="btn-group">
-            <button class="btn" onclick="doWord()">Analyze</button>
-            <button class="btn btn-copy" onclick="copyIt('wordRes')">Copy</button>
-        </div>
-        <div id="wordRes" class="res"></div>
-    </div>
 
-    <div class="card">
-        <h2># Hashtag Generator</h2>
-        <input type="text" id="tagIn" placeholder="Enter topic (e.g. Gym, Tech, Travel)">
-        <div class="btn-group">
-            <button class="btn" onclick="doTags()">Generate</button>
-            <button class="btn btn-copy" onclick="copyIt('tagRes')">Copy Tags</button>
-        </div>
-        <div id="tagRes" class="res"></div>
-    </div>
-
-    <div class="card">
-        <h2>✍️ Caption Generator</h2>
-        <input type="text" id="capIn" placeholder="What's your photo about?">
-        <div class="btn-group">
-            <button class="btn" onclick="doCaps()">Generate</button>
-            <button class="btn btn-copy" onclick="copyIt('capRes')">Copy</button>
-        </div>
-        <div id="capRes" class="res"></div>
-    </div>
-
-    <div class="card">
-        <h2>🔄 Paraphraser Tool</h2>
-        <textarea id="paraIn" rows="4" placeholder="Paste sentence to rewrite..."></textarea>
-        <div class="btn-group">
-            <button class="btn" onclick="doPara()">Rewrite</button>
-            <button class="btn btn-copy" onclick="copyIt('paraRes')">Copy</button>
-        </div>
-        <div id="paraRes" class="res"></div>
-    </div>
+<div class="card">
+<h3>Word Counter</h3>
+<textarea id="wordIn" placeholder="Paste your text..."></textarea>
+<button class="btn-primary" onclick="doWord()">Analyze</button>
+<div id="wordRes"></div>
 </div>
 
-<!-- Special Offer Section -->
-<div style="border:2px dashed #f4a261; padding:40px; border-radius:15px; text-align:center; background:#fefae0; margin:40px 0;">
+<div class="card">
+<h3>Hashtag Generator</h3>
+<input id="tagIn" placeholder="Enter topic">
+<button class="btn-primary" onclick="doTags()">Generate</button>
+<div id="tagRes"></div>
+</div>
 
-    <a href="https://imojo.in/10ucjGy" target="_blank"
-   onclick="gtag('event','ebook_click',{event_category:'engagement',event_label:'ToolXRP_Ebook'});"
-        🚀 स्वतःचा व्यवसाय सुरू करायचा आहे?
-    </h2>
+</div>
 
-    <p style="font-size:18px; margin-bottom:20px; color:#333;">
-        नवीन उद्योजकांसाठी संपूर्ण मराठी व्यवसाय मार्गदर्शक.<br>
-        ⏳ Launch Offer फक्त <strong>₹99</strong>
-    </p>
+<!-- Special Offer -->
+<div class="special">
+<h2>🚀 स्वतःचा व्यवसाय सुरू करायचा आहे?</h2>
+<p>नवीन उद्योजकांसाठी संपूर्ण मराठी मार्गदर्शक.</p>
+<p><strong>Launch Offer फक्त ₹99</strong></p>
 
-  <a href="https://imojo.in/10ucjGy" 
-   target="_blank"
-   onclick="gtag('event','ebook_click',{
-      event_category:'engagement',
-      event_label:'ToolXRP_Ebook_Button'
-   });"
-   style="display:inline-block; background:#2a9d8f; color:#fff;
-   padding:15px 30px; font-size:18px;
-   border-radius:8px; text-decoration:none;
-   font-weight:bold; transition:0.3s;">
-   👉 ई-बुक घ्या (₹99)
+<a href="https://imojo.in/10ucjGy" target="_blank"
+onclick="gtag('event','ebook_click',{event_category:'engagement',event_label:'Main_Button'});"
+class="offer-btn">
+👉 ई-बुक घ्या (₹99)
 </a>
 
-    </a>
-
-    <p style="margin-top:15px; font-size:14px; color:#555;">
-        मर्यादित काळासाठी विशेष किंमत
-    </p>
-
+<p style="margin-top:15px;font-size:14px;">मर्यादित काळासाठी विशेष किंमत</p>
 </div>
-
 
 <footer>
-    <p>© 2026 ToolxRP | All Rights Reserved</p>
-    <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+© 2026 ToolxRP | All Rights Reserved
 </footer>
+
 <!-- Sticky Bottom Bar -->
-<div id="stickyBar">
-  🚀 व्यवसाय सुरू करायचा आहे?  
-  <a href="https://imojo.in/10ucjGy" target="_blank">ई-बुक फक्त ₹99 मध्ये घ्या</a>
+<div class="sticky-bar">
+<span>📘 व्यवसाय सुरू करणार?</span>
+<a href="https://imojo.in/10ucjGy" target="_blank"
+onclick="gtag('event','ebook_click',{event_category:'engagement',event_label:'Sticky_Bar'});">
+ई-बुक ₹99 मध्ये घ्या
+</a>
 </div>
 
-<style>
-#stickyBar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: #1f3c88;
-  color: #fff;
-  text-align: center;
-  padding: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  z-index: 9999;
-}
-
-#stickyBar a {
-  background: #ff9800;
-  color: #fff;
-  padding: 8px 15px;
-  margin-left: 10px;
-  border-radius: 6px;
-  text-decoration: none;
-}
-</style>
-
 <script>
-    // --- Shared Copy Function ---
-    function copyIt(id) {
-        let text = document.getElementById(id).innerText;
-        if (!text || text.includes("Total")) { alert("Generate result first!"); return; }
-        navigator.clipboard.writeText(text).then(() => alert("Copied to clipboard! ✅"));
-    }
+function doWord(){
+let t=document.getElementById("wordIn").value.trim();
+let words=t? t.split(/\s+/).length:0;
+document.getElementById("wordRes").innerText="Words: "+words;
+}
 
-    // --- 1. Word Counter ---
-    function doWord() {
-        let t = document.getElementById("wordIn").value.trim();
-        let w = t ? t.split(/\s+/).length : 0;
-        let r = document.getElementById("wordRes");
-        r.style.display = "block"; r.innerText = "Word Count: " + w + " | Characters: " + t.length;
-    }
-
-    // --- 2. Hashtag Generator (Unlimited/Shuffle) ---
-    function doTags() {
-        let i = document.getElementById("tagIn").value.toLowerCase().trim();
-        let r = document.getElementById("tagRes");
-        const bank = {
-            "gym": ["#fitness", "#workout", "#gymlife", "#motivation", "#health", "#bodybuilding", "#training", "#fitfam", "#lifestyle", "#muscle", "#exercise", "#gymmotivation"],
-            "travel": ["#travel", "#nature", "#adventure", "#explore", "#wanderlust", "#travelgram", "#landscape", "#trip", "#vacation", "#beautifullocations", "#travelblogger"],
-            "tech": ["#technology", "#coding", "#ai", "#innovation", "#gadgets", "#software", "#developer", "#programming", "#future", "#techworld", "#datascience"],
-            "food": ["#foodie", "#yummy", "#instafood", "#cooking", "#delicious", "#foodstagram", "#healthyfood", "#dinner", "#chef", "#foodlover"]
-        };
-        let base = bank[i] || ["#trending", "#viral", "#foryou", "#explorepage", "#instagood", "#popular", "#follow", "#success", "#instagram"];
-        let shuffled = base.sort(() => 0.5 - Math.random()).slice(0, 12).join(" ");
-        r.style.display = "block"; r.innerText = shuffled;
-    }
-
-    // --- 3. Caption Generator ---
-    function doCaps() {
-        let r = document.getElementById("capRes");
-        const list = [
-            "Making every single moment count.", 
-            "Success is not final, failure is not fatal.", 
-            "Adventure is out there, go find it.", 
-            "Stay focused and never give up.", 
-            "Collect moments, not things.",
-            "Dream big. Work hard. Stay humble."
-        ];
-        r.style.display = "block";
-        r.innerText = list[Math.floor(Math.random() * list.length)];
-    }
-
-    // --- 4. Paraphraser ---
-    function doPara() {
-        let t = document.getElementById("paraIn").value;
-        let r = document.getElementById("paraRes");
-        if(!t) return;
-        r.style.display = "block";
-        r.innerText = "Suggested: " + t.replace(/good/g, "excellent").replace(/hard/g, "challenging").replace(/happy/g, "joyful").replace(/easy/g, "simple");
-    }
+function doTags(){
+let topic=document.getElementById("tagIn").value;
+document.getElementById("tagRes").innerText="#"+topic+" #viral #success #entrepreneur #business";
+}
 </script>
 
 </body>
