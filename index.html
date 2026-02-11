@@ -1,95 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToolxRP - Smart Content Tools</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YQ4HJN24W3"></script>
 <script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-YQ4HJN24W3');
 
-// WORD COUNTER
-function doWord(){
-let t=document.getElementById("wordIn").value.trim();
-let w=t?t.split(/\s+/).length:0;
-document.getElementById("wordRes").innerText="Total Words: "+w;
-}
-
-// SMART HASHTAG GENERATOR
-function doTags(){
-let topic=document.getElementById("tagIn").value.trim().toLowerCase();
-if(!topic) return;
-
-const baseTags = [
-"#viral","#trending","#explorepage","#growth",
-"#contentcreator","#india","#success","#creatorlife"
-];
-
-const nicheTags = [
-"#"+topic,
-"#"+topic+"tips",
-"#"+topic+"life",
-"#"+topic+"growth",
-"#"+topic+"daily",
-"#"+topic+"reels",
-"#"+topic+"content",
-"#"+topic+"community"
-];
-
-// shuffle
-let all = nicheTags.concat(baseTags)
-.sort(()=>0.5-Math.random())
-.slice(0,10)
-.join(" ");
-
-document.getElementById("tagRes").innerText = all;
-}
-
-// SMART CAPTION GENERATOR
-function doCaption(){
-let topic=document.getElementById("capIn").value.trim();
-if(!topic) return;
-
-const captions = [
-"Success in "+topic+" comes from daily discipline 🚀",
-"Nobody talks about this in "+topic+" 😳",
-"If you are serious about "+topic+", read this 👇",
-"Consistency beats talent in "+topic+" 🔥",
-"This is how I improved my "+topic+" game 💯"
-];
-
-document.getElementById("capRes").innerText =
-captions[Math.floor(Math.random()*captions.length)];
-}
-
-// SMART BIO GENERATOR
-function doBio(){
-let niche=document.getElementById("bioIn").value.trim();
-if(!niche) return;
-
-const bios = [
-"🚀 Growing in "+niche+"\n🔥 Daily value\n📈 Learn & build",
-"🎯 "+niche+" Creator\n💡 Sharing insights\n🚀 Follow for growth",
-"🔥 Helping you master "+niche+"\n📊 Smart content\n🎯 Results matter",
-"💥 "+niche+" Hustler\n📘 Practical knowledge\n🚀 Level up daily"
-];
-
-document.getElementById("bioRes").innerText =
-bios[Math.floor(Math.random()*bios.length)];
-}
-
-// SMART REEL HOOK
-function doHook(){
-let topic=document.getElementById("hookIn").value.trim();
-if(!topic) return;
-
-const hooks = [
-"Stop scrolling! "+topic+" secret revealed 🔥",
-"This mistake ruins your "+topic+" growth 🤯",
-"Nobody tells you this about "+topic+" 😳",
-"If you care about "+topic+", watch this 👀",
-"This changed my "+topic+" strategy completely 🚀"
-];
-
-document.getElementById("hookRes").innerText =
-hooks[Math.floor(Math.random()*hooks.length)];
-}
-
-// COPY
-function copyText(id){
-let text=document.getElementById(id).innerText;
-navigator.clipboard.writeText(text);
+function trackEbookClick(label){
+  gtag('event','ebook_click',{'event_category':'engagement','event_label':label});
 }
 </script>
+
+<style>
+:root {
+    --primary: #4f46e5;
+    --secondary: #06b6d4;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --success: #10b981;
+    --gradient: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+}
+
+body { 
+    margin:0; 
+    font-family: 'Plus Jakarta Sans', sans-serif; 
+    background:#f1f5f9; 
+    color: #334155;
+    padding-bottom: 80px;
+}
+
+nav { 
+    background: var(--dark); 
+    color:white; 
+    padding:15px 5%; 
+    display:flex; 
+    justify-content:space-between;
+    align-items: center;
+}
+
+.logo { font-weight: 800; font-size: 1.4rem; letter-spacing: -0.5px; }
+.logo span { color: var(--secondary); }
+
+.hero { 
+    background: var(--dark);
+    background-image: radial-gradient(circle at top right, #1e293b, #0f172a);
+    color:white; 
+    text-align:center; 
+    padding:40px 20px 80px; 
+    position: relative;
+}
+
+.hero h1 { font-size: 2.2rem; margin-bottom: 5px; font-weight: 800; }
+.hero p { opacity: 0.8; font-size: 1rem; margin-top: 0; }
+
+.container { 
+    max-width:1200px; 
+    margin:-60px auto 0; 
+    padding:0 20px 40px; 
+    display:grid; 
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); 
+    gap:25px; 
+}
+
+.card { 
+    background: white; 
+    padding:25px; 
+    border-radius:20px; 
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.card h3 { 
+    margin-top: 0; 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    color: var(--dark);
+    font-size: 1.25rem;
+}
+
+.card i { color: var(--primary); }
+
+textarea, input { 
+    width:100%; 
+    padding:12px 15px; 
+    margin:15px 0; 
+    border:2px solid #e2e8f0; 
+    border-radius:12px; 
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.btn-group { display: flex; gap: 10px; }
+
+button { 
+    flex: 1;
+    padding:12px; 
+    border:none; 
+    border-radius:10px; 
+    cursor:pointer; 
+    font-weight:600; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 8px;
+}
+
+.btn-primary { background: var(--gradient); color:white; }
+.btn-copy { background: #e0f2fe; color: var(--primary); }
+
+.result-box { 
+    margin-top:15px; 
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    min-height: 20px;
+    color: #475569;
+    border-left: 4px solid var(--secondary);
+}
+
+.special { 
+    background: white; 
+    text-align:center; 
+    padding:50px 20px; 
+    border: 2px solid #4f46e5;
+    margin:40px auto; 
+    max-width: 800px;
+    border-radius:24px; 
+}
+
+.offer-btn { 
+    display:inline-flex; 
+    align-items: center;
+    gap: 10px;
+    background: #fbbf24; 
+    color: #78350f; 
+    padding:15px 30px; 
+    border-radius:14px; 
+    text-decoration:none; 
+    font-weight:800; 
+    font-size: 1.1rem;
+}
+
+.sticky-bar { 
+    position:fixed; 
+    bottom:0; 
+    width:100%; 
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    color:white; 
+    display:flex; 
+    justify-content:center; 
+    align-items:center; 
+    padding:12px; 
+    gap:20px; 
+    z-index:1000;
+}
+
+.sticky-bar a { 
+    background: var(--gradient); 
+    color:white; 
+    padding:8px 15px; 
+    border-radius:8px; 
+    text-decoration:none; 
+    font-weight:bold; 
+}
+
+footer { text-align: center; padding: 20px; opacity: 0.7; }
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">Toolx<span>RP</span></div>
+<div><i class="fa-solid fa-wand-magic-sparkles"></i> AI Tools</div>
+</nav>
+
+<div class="hero">
+    <h1>Create Better Content</h1>
+    <p>Professional writing tools for modern creators</p>
+</div>
+
+<div class="container">
+
+<div class="card">
+    <h3><i class="fa-solid fa-arrow-down-9-1"></i> Word Counter</h3>
+    <textarea id="wordIn" rows="4" placeholder="Paste your text here..."></textarea>
+    <div class="btn-group">
+        <button class="btn-primary" onclick="doWord()"><i class="fa-solid fa-calculator"></i> Analyze</button>
+        <button class="btn-copy" onclick="copyText('wordRes')"><i class="fa-solid fa-copy"></i></button>
+    </div>
+    <div id="wordRes" class="result-box">Word count will appear here...</div>
+</div>
+
+<div class="card">
+    <h3><i class="fa-solid fa-hashtag"></i> Hashtag Generator</h3>
+    <input id="tagIn" placeholder="Enter topic (e.g. Gym, Tech, Cooking)">
+    <div class="btn-group">
+        <button class="btn-primary" onclick="doTags()"><i class="fa-solid fa-bolt"></i> Generate</button>
+        <button class="btn-copy" onclick="copyText('tagRes')"><i class="fa-solid fa-copy"></i></button>
+    </div>
+    <div id="tagRes" class="result-box">Relevant hashtags will appear here...</div>
+</div>
+
+<div class="card">
+    <h3><i class="fa-solid fa-pen-nib"></i> Caption Generator</h3>
+    <input id="capIn" placeholder="What is your photo about?">
+    <div class="btn-group">
+        <button class="btn-primary" onclick="doCaption()"><i class="fa-solid fa-sparkles"></i> Create</button>
+        <button class="btn-copy" onclick="copyText('capRes')"><i class="fa-solid fa-copy"></i></button>
+    </div>
+    <div id="capRes" class="result-box">Attractive caption will be generated here...</div>
+</div>
+
+<div class="card">
+    <h3><i class="fa-solid fa-rotate"></i> Paraphraser</h3>
+    <textarea id="paraIn" rows="3" placeholder="Type sentence to rewrite..."></textarea>
+    <div class="btn-group">
+        <button class="btn-primary" onclick="doPara()"><i class="fa-solid fa-sync"></i> Rewrite</button>
+        <button class="btn-copy" onclick="copyText('paraRes')"><i class="fa-solid fa-copy"></i></button>
+    </div>
+    <div id="paraRes" class="result-box">Rewritten sentence will appear here...</div>
+</div>
+
+</div>
+
+<div class="special">
+    <span style="background:#fef3c7; color:#d97706; padding:5px 15px; border-radius:20px; font-weight:bold; font-size:0.8rem;">LIMITED TIME OFFER</span>
+    <h2 style="font-size:1.8rem; margin:15px 0;">🚀 स्वतःचा यशस्वी व्यवसाय सुरू करा!</h2>
+    <p style="font-size:1.1rem; color:#64748b;">नवीन उद्योजकांसाठी संपूर्ण मराठी ई-बुक मार्गदर्शक.</p>
+    <p style="font-size:1.5rem; font-weight:800; color:var(--dark);">फक्त <span style="color:var(--success)">₹99</span> <del style="font-size:1rem; opacity:0.5;">₹499</del></p>
+
+    <a href="https://imojo.in/10ucjGy" target="_blank" onclick="trackEbookClick('Main_Button');" class="offer-btn">
+        <i class="fa-solid fa-cart-shopping"></i> ई-बुक आता घ्या
+    </a>
+</div>
+
+<footer>
+    <p>© 2026 <strong>ToolxRP</strong> | Made for Creators</p>
+</footer>
+
+<div class="sticky-bar">
+    <span>📘 यशस्वी व्यवसायाचे रहस्य (Marathi E-Book)</span>
+    <a href="https://imojo.in/10ucjGy" target="_blank" onclick="trackEbookClick('Sticky_Bar');">
+        ऑफर ₹99 मध्ये घ्या
+    </a>
+</div>
+
+<script>
+function doWord(){
+ let t=document.getElementById("wordIn").value.trim();
+ let words=t? t.split(/\s+/).length:0;
+ document.getElementById("wordRes").innerHTML="Total Words: <strong>"+words+"</strong>";
+}
+
+function doTags(){
+ let topic = document.getElementById("tagIn").value.trim().toLowerCase();
+ if(!topic) { alert("Please enter a topic!"); return; }
+ let smartTags = "#" + topic + " #success #business #viral #trending";
+ document.getElementById("tagRes").innerText = smartTags;
+}
+
+function doCaption(){
+ document.getElementById("capRes").innerText = "Success is the result of preparation, hard work, and learning from failure. ✨";
+}
+
+function doPara(){
+ let text=document.getElementById("paraIn").value;
+ document.getElementById("paraRes").innerText= text.replace(/business/gi,"enterprise");
+}
+
+function copyText(id){
+ let text=document.getElementById(id).innerText;
+ if(text.includes("here")) return;
+ navigator.clipboard.writeText(text);
+ alert("Copied to clipboard!");
+}
+</script>
+
+</body>
+</html>
