@@ -14,28 +14,127 @@ gtag('config', 'G-YQ4HJN24W3');
 
 function trackEbookClick(label){
   gtag('event','ebook_click',{
-    'event_category':'engagement',
-    'event_label':label
+    event_category:'engagement',
+    event_label:label
   });
 }
 </script>
 
 <style>
-body { margin:0; font-family:Arial; background:#f5f7fa; padding-bottom:70px; }
-nav { background:#0f172a; color:white; padding:12px 20px; display:flex; justify-content:space-between; }
-.hero { background:linear-gradient(135deg,#1e3a8a,#2563eb); color:white; text-align:center; padding:40px 20px; }
-.container { max-width:1100px; margin:auto; padding:30px 20px; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; }
-.card { background:white; padding:20px; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.08); }
-textarea,input { width:100%; padding:10px; margin:10px 0; border:1px solid #ddd; border-radius:6px; box-sizing:border-box; }
-button { padding:8px 12px; border:none; border-radius:6px; cursor:pointer; font-weight:bold; margin-right:5px; }
-.btn-primary { background:#2563eb; color:white; }
-.btn-copy { background:#10b981; color:white; }
-.result { margin-top:10px; font-weight:bold; color:#1e3a8a; word-wrap:break-word; }
-.special { background:#fff8dc; text-align:center; padding:40px 20px; border:2px dashed orange; margin:40px 20px; border-radius:12px; }
-.offer-btn { display:inline-block; background:#2a9d8f; color:white; padding:12px 25px; border-radius:8px; text-decoration:none; font-weight:bold; }
-footer { text-align:center; padding:20px; background:#e5e7eb; }
-.sticky-bar { position:fixed; bottom:0; width:100%; background:#1e3a8a; color:white; display:flex; justify-content:center; align-items:center; padding:10px; gap:15px; z-index:1000; }
-.sticky-bar a { background:#ff9800; color:white; padding:6px 12px; border-radius:6px; text-decoration:none; font-weight:bold; }
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f3f6fb;
+  padding-bottom:80px;
+}
+
+nav{
+  background:#0f172a;
+  color:white;
+  padding:12px 25px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.hero{
+  background:linear-gradient(135deg,#1e3a8a,#2563eb);
+  color:white;
+  text-align:center;
+  padding:45px 20px;
+}
+
+.container{
+  max-width:1150px;
+  margin:auto;
+  padding:35px 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:white;
+  padding:22px;
+  border-radius:14px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.07);
+}
+
+textarea,input{
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+  border:1px solid #ddd;
+  border-radius:6px;
+  box-sizing:border-box;
+}
+
+button{
+  padding:9px 14px;
+  border:none;
+  border-radius:6px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:5px;
+}
+
+.btn-primary{ background:#2563eb; color:white; }
+.btn-copy{ background:#10b981; color:white; }
+
+.result{
+  margin-top:12px;
+  font-weight:bold;
+  color:#1e3a8a;
+  white-space:pre-wrap;
+}
+
+.special{
+  background:#fff4d6;
+  text-align:center;
+  padding:45px 20px;
+  border:2px dashed orange;
+  margin:40px auto;
+  max-width:1000px;
+  border-radius:18px;
+}
+
+.offer-btn{
+  display:inline-block;
+  background:#2a9d8f;
+  color:white;
+  padding:14px 30px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+footer{
+  text-align:center;
+  padding:20px;
+  background:#e5e7eb;
+}
+
+.sticky-bar{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:#1e3a8a;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:10px;
+  gap:15px;
+  z-index:1000;
+}
+
+.sticky-bar a{
+  background:#ff9800;
+  color:white;
+  padding:8px 15px;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:bold;
+}
 </style>
 </head>
 
@@ -62,23 +161,31 @@ footer { text-align:center; padding:20px; background:#e5e7eb; }
 </div>
 
 <div class="card">
-<h3>Hashtag Generator</h3>
-<input id="tagIn" placeholder="Enter topic (e.g. gym, tech, travel)">
+<h3>Smart Hashtag Generator</h3>
+<input id="tagIn" placeholder="Enter topic">
 <button class="btn-primary" onclick="doTags()">Generate</button>
 <button class="btn-copy" onclick="copyText('tagRes')">Copy</button>
 <div id="tagRes" class="result"></div>
 </div>
 
 <div class="card">
-<h3>Caption Generator</h3>
-<input id="capIn" placeholder="Enter your topic (e.g. vlog, motivation)">
+<h3>Smart Caption Generator</h3>
+<input id="capIn" placeholder="Enter topic">
 <button class="btn-primary" onclick="doCaption()">Generate</button>
 <button class="btn-copy" onclick="copyText('capRes')">Copy</button>
 <div id="capRes" class="result"></div>
 </div>
 
 <div class="card">
-<h3>Paraphraser</h3>
+<h3>Instagram Bio Generator</h3>
+<input id="bioIn" placeholder="Enter niche (e.g. fitness, business)">
+<button class="btn-primary" onclick="doBio()">Generate</button>
+<button class="btn-copy" onclick="copyText('bioRes')">Copy</button>
+<div id="bioRes" class="result"></div>
+</div>
+
+<div class="card">
+<h3>Advanced Paraphraser</h3>
 <textarea id="paraIn" placeholder="Rewrite your sentence..."></textarea>
 <button class="btn-primary" onclick="doPara()">Rewrite</button>
 <button class="btn-copy" onclick="copyText('paraRes')">Copy</button>
@@ -90,14 +197,17 @@ footer { text-align:center; padding:20px; background:#e5e7eb; }
 <div class="special">
 <h2>🚀 स्वतःचा व्यवसाय सुरू करायचा आहे?</h2>
 <p>नवीन उद्योजकांसाठी संपूर्ण मराठी मार्गदर्शक.</p>
-<p><strong>ई-बुक घ्या (₹99)</strong></p>
-<p style="font-size:14px;">मर्यादित काळासाठी विशेष किंमत</p>
+<p><strong>फक्त ₹99 मध्ये ई-बुक घ्या</strong></p>
 
 <a href="https://imojo.in/10ucjGy" target="_blank"
 onclick="trackEbookClick('Main_Button');"
 class="offer-btn">
-Buy Now
+ई-बुक घ्या (₹99)
 </a>
+
+<p style="margin-top:15px;font-size:14px;">
+मर्यादित काळासाठी विशेष किंमत
+</p>
 </div>
 
 <footer>
@@ -105,7 +215,7 @@ Buy Now
 </footer>
 
 <div class="sticky-bar">
-<span>Marathi Business E-Book</span>
+<span>📘 Marathi Business E-Book</span>
 <a href="https://imojo.in/10ucjGy" target="_blank"
 onclick="trackEbookClick('Sticky_Bar');">
 Get Offer @ ₹99
@@ -114,90 +224,69 @@ Get Offer @ ₹99
 
 <script>
 
-// WORD COUNTER
 function doWord(){
- let t=document.getElementById("wordIn").value.trim();
- let words=t? t.split(/\s+/).length:0;
- let chars=t.length;
- document.getElementById("wordRes").innerText="Words: "+words+" | Characters: "+chars;
+ let text=document.getElementById("wordIn").value.trim();
+ let words=text? text.split(/\s+/).length:0;
+ let chars=text.length;
+ document.getElementById("wordRes").innerText=
+   "Words: "+words+" | Characters: "+chars;
 }
 
-// SMART HASHTAGS
 function doTags(){
  let topic=document.getElementById("tagIn").value.trim().toLowerCase();
- if(!topic){ alert("Enter topic"); return; }
+ if(!topic) return alert("Enter topic");
 
- const tagDB={
-   gym:["#fitness","#workout","#gymlife","#bodybuilding","#health"],
-   tech:["#technology","#coding","#innovation","#gadgets","#ai"],
-   travel:["#travelgram","#wanderlust","#explore","#adventure","#nature"],
-   food:["#foodie","#recipe","#delicious","#cooking","#yummy"],
-   vlog:["#vlogger","#dailyvlog","#youtube","#contentcreator","#creatorlife"]
- };
+ let tags=[
+   "#"+topic,
+   "#"+topic+"life",
+   "#"+topic+"tips",
+   "#"+topic+"daily",
+   "#viral","#trending","#explore","#foryou",
+   "#contentcreator","#growth","#success",
+   "#reels","#instagram","#india"
+ ];
 
- let finalTags="";
-
- for(let key in tagDB){
-   if(topic.includes(key)){
-     finalTags=tagDB[key].join(" ");
-     break;
-   }
- }
-
- if(!finalTags){
-   finalTags="#"+topic+" #"+topic+"life #"+topic+"tips #trending #viral";
- }
-
- document.getElementById("tagRes").innerText=finalTags;
+ document.getElementById("tagRes").innerText=tags.slice(0,15).join(" ");
 }
 
-// SMART CAPTIONS
 function doCaption(){
- let topic=document.getElementById("capIn").value.trim().toLowerCase();
- if(!topic){ alert("Enter topic"); return; }
+ let topic=document.getElementById("capIn").value.trim();
+ if(!topic) return alert("Enter topic");
 
- const captionDB={
-   vlog:[
-     "Lights, camera, vlog life 🎥",
-     "Welcome to my daily adventure 🚀",
-     "Real life. Real moments."
-   ],
-   motivation:[
-     "Push yourself beyond limits 💪",
-     "Success starts with discipline 🔥",
-     "Dream big. Execute bigger."
-   ],
-   fitness:[
-     "Train hard, stay focused 🏋️",
-     "No excuses. Just results.",
-     "Sweat today, shine tomorrow."
-   ]
- };
+ let captions=[
+   topic+" mode activated.",
+   "Consistency in "+topic+" brings success.",
+   "Level up your "+topic+" game.",
+   "Passion + "+topic+" = Growth."
+ ];
 
- let finalCaption="";
-
- for(let key in captionDB){
-   if(topic.includes(key)){
-     let arr=captionDB[key];
-     finalCaption=arr[Math.floor(Math.random()*arr.length)];
-     break;
-   }
- }
-
- if(!finalCaption){
-   finalCaption=topic.charAt(0).toUpperCase()+topic.slice(1)+" vibes only ✨";
- }
-
- document.getElementById("capRes").innerText=finalCaption;
+ document.getElementById("capRes").innerText=
+   captions[Math.floor(Math.random()*captions.length)];
 }
 
-// PARAPHRASER
+function doBio(){
+ let niche=document.getElementById("bioIn").value.trim();
+ if(!niche) return alert("Enter niche");
+
+ let bios=[
+   "🚀 Helping you grow in "+niche+"\n🔥 Daily insights\n📈 Learn & Earn",
+   "💡 "+niche+" Enthusiast\n🎯 Growth mindset\n📩 DM for collab",
+   "📚 Sharing "+niche+" knowledge\n⚡ Consistency wins\n🌍 India"
+ ];
+
+ document.getElementById("bioRes").innerText=
+   bios[Math.floor(Math.random()*bios.length)];
+}
+
 function doPara(){
  let text=document.getElementById("paraIn").value;
  let rewritten=text
   .replace(/business/gi,"enterprise")
   .replace(/start/gi,"launch")
-  .replace(/make/gi,"create");
+  .replace(/make/gi,"create")
+  .replace(/important/gi,"crucial")
+  .replace(/good/gi,"excellent");
+
  document.getElementById("paraRes").innerText=rewritten;
 }
 
@@ -205,7 +294,7 @@ function copyText(id){
  let text=document.getElementById(id).innerText;
  if(!text) return;
  navigator.clipboard.writeText(text);
- alert("Copied!");
+ alert("Copied");
 }
 
 </script>
