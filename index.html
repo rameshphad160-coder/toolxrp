@@ -1,232 +1,318 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ToolxRP - Marathi Creator Tools</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolxRP | All-in-One Marathi Creator Tools</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<style>
-body{
-margin:0;
-font-family:Arial, sans-serif;
-background:#f3f6fb;
-}
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #f59e0b;
+            --bg-dark: #0f172a;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --glass: rgba(255, 255, 255, 0.95);
+        }
 
-/* NAV */
-nav{
-background:#0f172a;
-color:white;
-padding:12px 25px;
-display:flex;
-justify-content:space-between;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
 
-/* HERO */
-.hero{
-background:linear-gradient(135deg,#1e3c72,#2563eb);
-color:white;
-text-align:center;
-padding:80px 20px;
-}
+        body {
+            background: #f1f5f9;
+            color: var(--text-main);
+        }
 
-.hero h1{
-font-size:42px;
-margin-bottom:15px;
-}
+        /* --- NAV --- */
+        nav {
+            background: var(--bg-dark);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
 
-.hero p{
-font-size:18px;
-margin-bottom:25px;
-}
+        .logo { font-size: 22px; font-weight: 700; color: white; }
+        .logo span { color: var(--secondary); }
 
-.cta-btn{
-display:inline-block;
-background:#ff9800;
-color:white;
-padding:16px 34px;
-text-decoration:none;
-border-radius:10px;
-font-weight:bold;
-font-size:18px;
-box-shadow:0 8px 20px rgba(0,0,0,0.2);
-transition:0.3s;
-}
+        /* --- HERO --- */
+        .hero {
+            background: linear-gradient(135deg, #4f46e5 0%, #0f172a 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+        }
 
-.cta-btn:hover{
-transform:scale(1.08);
-background:#e68900;
-}
+        .hero h1 { font-size: clamp(1.8rem, 5vw, 3rem); margin-bottom: 15px; }
+        .hero p { font-size: 1.1rem; opacity: 0.8; margin-bottom: 30px; }
 
-/* TRUST */
-.trust-section{
-text-align:center;
-padding:20px;
-background:#ffffff;
-font-weight:bold;
-display:flex;
-justify-content:center;
-gap:40px;
-flex-wrap:wrap;
-}
+        .cta-btn {
+            background: var(--secondary);
+            color: white;
+            padding: 14px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+            transition: 0.3s;
+        }
 
-/* TOOLS */
-.container{
-max-width:1100px;
-margin:auto;
-padding:40px 20px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
-}
+        /* --- CONTAINER --- */
+        .container {
+            max-width: 1200px;
+            margin: -40px auto 100px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
 
-.card{
-background:white;
-padding:20px;
-border-radius:12px;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
-}
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
 
-input, textarea{
-width:100%;
-padding:10px;
-margin:10px 0;
-border:1px solid #ddd;
-border-radius:6px;
-}
+        .card:hover { transform: translateY(-8px); }
 
-button{
-padding:8px 14px;
-border:none;
-border-radius:6px;
-font-weight:bold;
-cursor:pointer;
-margin-top:5px;
-}
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--bg-dark);
+        }
 
-.btn-primary{ background:#2563eb; color:white; }
-.btn-copy{ background:#10b981; color:white; }
+        .card i.icon { color: var(--primary); font-size: 1.5rem; }
 
-.result{
-margin-top:10px;
-font-weight:bold;
-color:#1e3a8a;
-white-space:pre-wrap;
-}
+        input, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 15px;
+            margin-bottom: 15px;
+            outline: none;
+        }
 
-/* STICKY BAR */
-.sticky-bar{
-position:fixed;
-bottom:0;
-width:100%;
-background:#1e3a8a;
-color:white;
-display:flex;
-justify-content:center;
-align-items:center;
-gap:20px;
-padding:10px;
-}
+        input:focus, textarea:focus { border-color: var(--primary); }
 
-.sticky-bar a{
-background:#ff9800;
-color:white;
-padding:8px 15px;
-text-decoration:none;
-border-radius:6px;
-font-weight:bold;
-}
+        .btn-group { display: flex; gap: 10px; }
 
-html{
-scroll-behavior:smooth;
-}
-</style>
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: var(--primary-dark); }
+
+        .btn-copy { background: #f1f5f9; color: var(--bg-dark); width: 50px; flex: none; }
+
+        .result-box {
+            margin-top: 15px;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 10px;
+            font-size: 14px;
+            border-left: 4px solid var(--primary);
+            display: none;
+            white-space: pre-wrap;
+        }
+
+        .counter-info {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: -5px;
+        }
+
+        /* --- STICKY OFFER --- */
+        .sticky-offer {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 450px;
+            background: #1e293b;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .sticky-offer a {
+            background: var(--secondary);
+            color: white;
+            padding: 6px 15px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+    </style>
 </head>
-
 <body>
 
-<nav>
-<div><strong>ToolxRP</strong></div>
-<div>Smart Marathi Creator Tools</div>
-</nav>
+    <nav>
+        <div class="logo">Toolx<span>RP</span></div>
+        <div style="color: #94a3b8; font-size: 0.8rem;">Creator Studio v2.0</div>
+    </nav>
 
-<div class="hero">
-<h1>Post टाकून Views नाही येत?</h1>
-<p>5 सेकंदात Viral Hashtags, Captions आणि Bio तयार करा – खास Marathi Creators साठी.</p>
-<a href="#tools" class="cta-btn">Free मध्ये Try करा</a>
-</div>
+    <header class="hero">
+        <h1>Marathi Creator टूल्स 🚀</h1>
+        <p>Hashtags, Hooks आणि स्क्रिप्ट्स आता एकाच ठिकाणी!</p>
+        <a href="#tools" class="cta-btn"><i class="fa-solid fa-bolt"></i> सुरू करा</a>
+    </header>
 
-<div class="trust-section">
-<div>⚡ 100% Free Tools</div>
-<div>🚀 Marathi Creators साठी खास</div>
-<div>🔥 Daily Viral Ideas</div>
-</div>
+    <main class="container" id="tools">
 
-<div class="container" id="tools">
+        <div class="card">
+            <h3><i class="fa-solid fa-magnet icon"></i> Viral Hooks</h3>
+            <input type="text" id="hookInput" placeholder="व्हिडिओचा विषय (उदा. अभ्यासाच्या टिप्स)">
+            <div class="btn-group">
+                <button class="btn-primary" onclick="generateHook()">Generate Hook</button>
+                <button class="btn-copy" onclick="copyText('hookRes')"><i class="fa-regular fa-copy"></i></button>
+            </div>
+            <div id="hookRes" class="result-box"></div>
+        </div>
 
-<div class="card">
-<h3>Hashtag Generator</h3>
-<input id="tagInput" placeholder="Enter topic">
-<button class="btn-primary" onclick="generateTags()">Generate</button>
-<button class="btn-copy" onclick="copyText('tagRes')">Copy</button>
-<div id="tagRes" class="result"></div>
-</div>
+        <div class="card">
+            <h3><i class="fa-solid fa-hashtag icon"></i> Hashtags</h3>
+            <input type="text" id="tagInput" placeholder="Topic लिहा...">
+            <div class="btn-group">
+                <button class="btn-primary" onclick="generateTags()">Get Hashtags</button>
+                <button class="btn-copy" onclick="copyText('tagRes')"><i class="fa-regular fa-copy"></i></button>
+            </div>
+            <div id="tagRes" class="result-box"></div>
+        </div>
 
-<div class="card">
-<h3>Caption Generator</h3>
-<input id="capInput" placeholder="Enter topic">
-<button class="btn-primary" onclick="generateCaption()">Generate</button>
-<button class="btn-copy" onclick="copyText('capRes')">Copy</button>
-<div id="capRes" class="result"></div>
-</div>
+        <div class="card">
+            <h3><i class="fa-solid fa-pen-nib icon"></i> Captions</h3>
+            <input type="text" id="capInput" placeholder="तुमच्या पोस्टचा विषय...">
+            <div class="btn-group">
+                <button class="btn-primary" onclick="generateCaption()">Generate</button>
+                <button class="btn-copy" onclick="copyText('capRes')"><i class="fa-regular fa-copy"></i></button>
+            </div>
+            <div id="capRes" class="result-box"></div>
+        </div>
 
-<div class="card">
-<h3>Bio Generator</h3>
-<input id="bioInput" placeholder="Enter niche">
-<button class="btn-primary" onclick="generateBio()">Generate</button>
-<button class="btn-copy" onclick="copyText('bioRes')">Copy</button>
-<div id="bioRes" class="result"></div>
-</div>
+        <div class="card">
+            <h3><i class="fa-solid fa-calculator icon"></i> Word Counter</h3>
+            <textarea id="wordArea" placeholder="येथे स्क्रिप्ट टाइप किंवा पेस्ट करा..." oninput="countWords()" rows="4"></textarea>
+            <div class="counter-info">
+                Words: <span id="wordCount">0</span> | Characters: <span id="charCount">0</span>
+            </div>
+        </div>
 
-</div>
+        <div class="card">
+            <h3><i class="fa-solid fa-user-tag icon"></i> Smart Bio</h3>
+            <input type="text" id="bioInput" placeholder="तुमचे Niche (उदा. Photographer)">
+            <div class="btn-group">
+                <button class="btn-primary" onclick="generateBio()">Generate Bio</button>
+                <button class="btn-copy" onclick="copyText('bioRes')"><i class="fa-regular fa-copy"></i></button>
+            </div>
+            <div id="bioRes" class="result-box"></div>
+        </div>
 
-<div class="sticky-bar">
-<span>📘 Marathi Business E-Book</span>
-<a href="YOUR_LINK_HERE" target="_blank">Get Offer @ ₹99</a>
-</div>
+    </main>
 
-<script>
-function generateTags(){
-let topic=document.getElementById("tagInput").value;
-if(!topic) return alert("Enter topic");
-let tags="#"+topic+" #marathi #reels #viral #growth #creator #india";
-document.getElementById("tagRes").innerText=tags;
-}
+    <div class="sticky-offer">
+        <span>📘 Marathi Business E-Book</span>
+        <a href="#">फक्त ₹99</a>
+    </div>
 
-function generateCaption(){
-let topic=document.getElementById("capInput").value;
-if(!topic) return alert("Enter topic");
-let captions=[
-topic+" mode activated 🔥",
-"Consistency in "+topic+" brings success 🚀",
-"Level up your "+topic+" game 💯"
-];
-document.getElementById("capRes").innerText=
-captions[Math.floor(Math.random()*captions.length)];
-}
+    <script>
+        // Helper to show results
+        function showRes(id, text) {
+            const el = document.getElementById(id);
+            el.innerText = text;
+            el.style.display = 'block';
+        }
 
-function generateBio(){
-let niche=document.getElementById("bioInput").value;
-if(!niche) return alert("Enter niche");
-let bio="🚀 Helping you grow in "+niche+"\n🔥 Daily insights\n📩 DM for collab";
-document.getElementById("bioRes").innerText=bio;
-}
+        // 1. Hook Generator
+        function generateHook() {
+            let topic = document.getElementById("hookInput").value;
+            if(!topic) return alert("विषय लिहा!");
+            let hooks = [
+                `हे कोणालाच माहित नाही, पण ${topic} साठी हे बेस्ट आहे! ✨`,
+                `तुम्ही ${topic} मध्ये ही मोठी चूक करताय का? 🤔`,
+                `फक्त ३ सोप्या स्टेप्समध्ये ${topic} शिका! 🔥`,
+                `${topic} बद्दल हे २ सीक्रेट्स तुम्हाला धक्का देतील! 🤫`
+            ];
+            showRes("hookRes", hooks[Math.floor(Math.random()*hooks.length)]);
+        }
 
-function copyText(id){
-let text=document.getElementById(id).innerText;
-navigator.clipboard.writeText(text);
-alert("Copied!");
-}
-</script>
+        // 2. Hashtags
+        function generateTags() {
+            let topic = document.getElementById("tagInput").value;
+            if(!topic) return alert("विषय लिहा!");
+            let tags = `#${topic.replace(/\s+/g, '')} #marathi #maharashtra #reelsindia #explorepage #viralmarathi #creator`;
+            showRes("tagRes", tags);
+        }
 
+        // 3. Captions
+        function generateCaption() {
+            let topic = document.getElementById("capInput").value;
+            if(!topic) return alert("विषय सांगा!");
+            let caps = [
+                `नवे विचार, नवी दिशा! ✨ \n#${topic} #marathi`,
+                `प्रयत्न करत रहा, यश नक्की मिळेल! 🚀 \n#motivation #${topic}`,
+                `आजचा दिवस काहीतरी खास आहे! ❤️ \n#vibes #${topic}`
+            ];
+            showRes("capRes", caps[Math.floor(Math.random()*caps.length)]);
+        }
+
+        // 4. Word Counter
+        function countWords() {
+            let text = document.getElementById("wordArea").value.trim();
+            document.getElementById("wordCount").innerText = text ? text.split(/\s+/).length : 0;
+            document.getElementById("charCount").innerText = text.length;
+        }
+
+        // 5. Bio
+        function generateBio() {
+            let niche = document.getElementById("bioInput").value;
+            if(!niche) return alert("Niche लिहा!");
+            let bios = `🚩 महाराष्ट्राची शान!\n🎬 ${niche}\n🚀 रोज नवीन शिका\n📩 DM for Business`;
+            showRes("bioRes", bios);
+        }
+
+        // Copy Function
+        async function copyText(id) {
+            let text = document.getElementById(id).innerText;
+            if(!text) return;
+            await navigator.clipboard.writeText(text);
+            alert("कॉपी झाले! ✅");
+        }
+    </script>
 </body>
 </html>
