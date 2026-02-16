@@ -251,68 +251,108 @@
     </div>
 
     <script>
-        // Helper to show results
-        function showRes(id, text) {
-            const el = document.getElementById(id);
-            el.innerText = text;
-            el.style.display = 'block';
-        }
 
-        // 1. Hook Generator
-        function generateHook() {
-            let topic = document.getElementById("hookInput").value;
-            if(!topic) return alert("विषय लिहा!");
-            let hooks = [
-                `हे कोणालाच माहित नाही, पण ${topic} साठी हे बेस्ट आहे! ✨`,
-                `तुम्ही ${topic} मध्ये ही मोठी चूक करताय का? 🤔`,
-                `फक्त ३ सोप्या स्टेप्समध्ये ${topic} शिका! 🔥`,
-                `${topic} बद्दल हे २ सीक्रेट्स तुम्हाला धक्का देतील! 🤫`
-            ];
-            showRes("hookRes", hooks[Math.floor(Math.random()*hooks.length)]);
-        }
+function cleanText(text){
+    return text.trim().toLowerCase();
+}
 
-        // 2. Hashtags
-        function generateTags() {
-            let topic = document.getElementById("tagInput").value;
-            if(!topic) return alert("विषय लिहा!");
-            let tags = `#${topic.replace(/\s+/g, '')} #marathi #maharashtra #reelsindia #explorepage #viralmarathi #creator`;
-            showRes("tagRes", tags);
-        }
+function showRes(id, text){
+    const el = document.getElementById(id);
+    el.innerText = text;
+    el.style.display = "block";
+}
 
-        // 3. Captions
-        function generateCaption() {
-            let topic = document.getElementById("capInput").value;
-            if(!topic) return alert("विषय सांगा!");
-            let caps = [
-                `नवे विचार, नवी दिशा! ✨ \n#${topic} #marathi`,
-                `प्रयत्न करत रहा, यश नक्की मिळेल! 🚀 \n#motivation #${topic}`,
-                `आजचा दिवस काहीतरी खास आहे! ❤️ \n#vibes #${topic}`
-            ];
-            showRes("capRes", caps[Math.floor(Math.random()*caps.length)]);
-        }
+/* 1. HOOK GENERATOR */
+function generateHook(){
+    let topic = cleanText(document.getElementById("hookInput").value);
+    if(!topic) return alert("विषय लिहा!");
 
-        // 4. Word Counter
-        function countWords() {
-            let text = document.getElementById("wordArea").value.trim();
-            document.getElementById("wordCount").innerText = text ? text.split(/\s+/).length : 0;
-            document.getElementById("charCount").innerText = text.length;
-        }
+    let hooks = [
+        `जर तुम्ही ${topic} करत असाल, तर हे नक्की बघा! 🔥`,
+        `${topic} मध्ये लोक ९०% वेळा ही चूक करतात! 😲`,
+        `फक्त ३० सेकंदात ${topic} बद्दल सगळं समजून घ्या! 🚀`,
+        `${topic} चे ३ सीक्रेट्स जे कोणी सांगत नाही! 🤫`,
+        `${topic} करून तुमचं आयुष्य बदलू शकतं! ✨`
+    ];
 
-        // 5. Bio
-        function generateBio() {
-            let niche = document.getElementById("bioInput").value;
-            if(!niche) return alert("Niche लिहा!");
-            let bios = `🚩 महाराष्ट्राची शान!\n🎬 ${niche}\n🚀 रोज नवीन शिका\n📩 DM for Business`;
-            showRes("bioRes", bios);
-        }
+    showRes("hookRes", hooks[Math.floor(Math.random()*hooks.length)]);
+}
 
-        // Copy Function
-        async function copyText(id) {
-            let text = document.getElementById(id).innerText;
-            if(!text) return;
-            await navigator.clipboard.writeText(text);
-            alert("कॉपी झाले! ✅");
-        }
-    </script>
-</body>
-</html>
+/* 2. HASHTAG GENERATOR */
+function generateTags(){
+    let topic = cleanText(document.getElementById("tagInput").value);
+    if(!topic) return alert("विषय लिहा!");
+
+    let base = topic.replace(/\s+/g, '');
+    let tags = [
+        `#${base}`,
+        `#${base}tips`,
+        `#learn${base}`,
+        `#${base}marathi`,
+        `#${base}india`,
+        `#marathi`,
+        `#maharashtra`,
+        `#contentcreator`,
+        `#viralreels`,
+        `#reelsindia`,
+        `#growth`,
+        `#explorepage`,
+        `#trending`,
+        `#digitalmarathi`,
+        `#creatorlife`
+    ];
+
+    showRes("tagRes", tags.join(" "));
+}
+
+/* 3. CAPTION GENERATOR */
+function generateCaption(){
+    let topic = cleanText(document.getElementById("capInput").value);
+    if(!topic) return alert("विषय सांगा!");
+
+    let captions = [
+        `आजचा विषय आहे ${topic}. शिकत रहा, वाढत रहा! 🚀`,
+        `${topic} म्हणजे फक्त काम नाही, ती एक सवय आहे. 🔥`,
+        `${topic} मध्ये consistency ठेवा, परिणाम आपोआप येतील. 💯`,
+        `जर ${topic} शिकायचं असेल, तर आजपासून सुरुवात करा! ✨`,
+        `${topic} तुमचं future बदलू शकतं. विश्वास ठेवा. ❤️`
+    ];
+
+    showRes("capRes", captions[Math.floor(Math.random()*captions.length)]);
+}
+
+/* 4. WORD COUNTER */
+function countWords(){
+    let text = document.getElementById("wordArea").value.trim();
+    let words = text ? text.split(/\s+/).length : 0;
+    document.getElementById("wordCount").innerText = words;
+    document.getElementById("charCount").innerText = text.length;
+}
+
+/* 5. BIO GENERATOR */
+function generateBio(){
+    let niche = cleanText(document.getElementById("bioInput").value);
+    if(!niche) return alert("Niche लिहा!");
+
+    let bio = `🚀 Passionate about ${niche}\n🔥 Marathi Creator\n📚 Daily Value & Insights\n📩 DM for Collab`;
+
+    showRes("bioRes", bio);
+}
+
+/* COPY FUNCTION WITH FEEDBACK */
+async function copyText(id){
+    let text = document.getElementById(id).innerText;
+    if(!text) return;
+
+    await navigator.clipboard.writeText(text);
+
+    const btns = document.querySelectorAll(".btn-copy");
+    btns.forEach(btn => {
+        btn.innerHTML = "✅";
+        setTimeout(() => {
+            btn.innerHTML = '<i class="fa-regular fa-copy"></i>';
+        }, 1000);
+    });
+}
+
+</script>
