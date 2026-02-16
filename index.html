@@ -134,91 +134,134 @@
         <a href="#">फक्त ₹99</a>
     </div>
 
-    <script>
-        // SMART DATA MAPPING
-        const categoryMap = {
-            "शेती": ["agri", "farming", "बळीराजा", "शेतकरी", "village", "nature"],
-            "business": ["entrepreneur", "startup", "उद्योजक", "मराठीपाऊल", "money"],
-            "gym": ["fitness", "workout", "आरोग्य", "bodybuilding", "diet"],
-            "food": ["cooking", "recipe", "जेवण", "खमंग", "मराठीजेवण"],
-            "travel": ["gadwat", " भटकंती", "forts", "maharashtra_desha", "explore"]
-        };
+   <script>
 
-        function showRes(id, text) {
-            const el = document.getElementById(id);
-            el.innerText = text;
-            el.style.display = "block";
-        }
+// Utility
+function clean(text){
+    return text.trim().toLowerCase();
+}
 
-        function generateHook() {
-            let topic = document.getElementById("hookInput").value;
-            if(!topic) return alert("विषय लिहा!");
-            let hooks = [
-                `हे कोणालाच माहित नाही, पण ${topic} साठी हे बेस्ट आहे! 🤫`,
-                `तुमच्या ${topic} मध्ये ही १ चूक तुमचं नुकसान करतेय! ❌`,
-                `फक्त ३० सेकंदात ${topic} चं गुपित जाणून घ्या! 🚀`,
-                `${topic} बद्दलच्या या ३ टिप्स तुमचं काम सोपं करतील! ✨`,
-                `जर तुम्हाला ${topic} आवडतं, तर हा व्हिडिओ शेवटपर्यंत पहा! 🔥`
-            ];
-            showRes("hookRes", hooks[Math.floor(Math.random()*hooks.length)]);
-        }
+function show(id,text){
+    const el=document.getElementById(id);
+    el.innerText=text;
+    el.style.display="block";
+}
 
-        function generateTags() {
-            let topic = document.getElementById("tagInput").value.toLowerCase();
-            if(!topic) return alert("विषय लिहा!");
-            
-            let baseTags = [`#${topic.replace(/\s+/g, '')}`, "#marathi", "#maharashtra", "#viral", "#reelsindia"];
-            
-            // Add smart tags based on category
-            for (let key in categoryMap) {
-                if (topic.includes(key)) {
-                    categoryMap[key].forEach(t => baseTags.push(`#${t}`));
-                }
-            }
-            
-            showRes("tagRes", baseTags.join(" "));
-        }
+// Category Detection
+function detectCategory(topic){
+    if(topic.includes("comedy")||topic.includes("funny")) return "funny";
+    if(topic.includes("motivation")||topic.includes("quotes")) return "motivation";
+    if(topic.includes("food")||topic.includes("recipe")) return "food";
+    if(topic.includes("study")||topic.includes("exam")) return "study";
+    if(topic.includes("business")||topic.includes("money")) return "business";
+    return "general";
+}
 
-        function generateCaption() {
-            let topic = document.getElementById("capInput").value;
-            if(!topic) return alert("विषय सांगा!");
-            let caps = [
-                `नवे विचार, नवी दिशा! ${topic} बद्दल आज काहीतरी खास. ✨ \n\n#मराठी #प्रेरणा #${topic.replace(/\s/g,'')}`,
-                `${topic} मध्ये सातत्य ठेवा, यश नक्कीच तुमचं असेल. 🔥 \n\n#success #hardwork #${topic.replace(/\s/g,'')}`,
-                `स्वतःची ओळख अशी निर्माण करा की जग पाहतच राहील! ❤️ \n\n#marathicreator #${topic.replace(/\s/g,'')}`
-            ];
-            showRes("capRes", caps[Math.floor(Math.random()*caps.length)]);
-        }
+// Hook Generator
+function generateHook(){
+    let topic=clean(document.getElementById("hookInput").value);
+    if(!topic) return alert("विषय लिहा!");
 
-        function countWords() {
-            let text = document.getElementById("wordArea").value.trim();
-            document.getElementById("wordCount").innerText = text ? text.split(/\s+/).length : 0;
-            document.getElementById("charCount").innerText = text.length;
-        }
+    let type=detectCategory(topic);
+    let hooks={
+        funny:[
+            `लोकांना वाटतं ${topic} सोपं आहे… पण खरी कॉमेडी पडद्यामागे असते! 😂`,
+            `${topic} करताना जे घडलं ते बघून तुम्ही हसणारच! 🤣`
+        ],
+        motivation:[
+            `${topic} हवंय? मग कारणं नाही — action सुरू करा! 🚀`,
+            `${topic} रोज करा. सातत्य म्हणजेच शक्ती. 🔥`
+        ],
+        food:[
+            `ही ${topic} रेसिपी करून बघा… घरचे थांबणार नाहीत! 😋`,
+            `${topic} खाल्ल्यावर mood बदलणारच! 🍽️`
+        ],
+        study:[
+            `${topic} करताना ही चूक टाळा नाहीतर मेहनत वाया जाईल! 📚`,
+            `${topic} सोपं करायचंय? हा उपाय वापरा! ✍️`
+        ],
+        business:[
+            `${topic} मध्ये यशस्वी व्हायचंय? विचार बदलला पाहिजे. 💰`,
+            `${topic} मध्ये risk घ्या, पण strategy सोबत. 📈`
+        ],
+        general:[
+            `${topic} बद्दल हे कोणी सांगत नाही! 🔥`,
+            `${topic} मध्ये पुढे जायचंय? हे लक्षात ठेवा!`
+        ]
+    };
 
-        function generateBio() {
-            let niche = document.getElementById("bioInput").value;
-            if(!niche) return alert("Niche लिहा!");
-            let bio = `🚩 महाराष्ट्राची शान!\n🎬 ${niche}\n🚀 दररोज नवीन शिका\n📍 स्वप्नांचा पाठलाग..\n📩 DM for Collaboration`;
-            showRes("bioRes", bio);
-        }
+    let list=hooks[type];
+    show("hookRes",list[Math.floor(Math.random()*list.length)]);
+}
 
-        async function copyText(id, btn) {
-            let text = document.getElementById(id).innerText;
-            if(!text) return;
-            await navigator.clipboard.writeText(text);
-            
-            let original = btn.innerHTML;
-            btn.innerHTML = "✅";
-            btn.style.background = "#10b981";
-            btn.style.color = "white";
-            
-            setTimeout(() => {
-                btn.innerHTML = original;
-                btn.style.background = "#f1f5f9";
-                btn.style.color = "var(--bg-dark)";
-            }, 1500);
-        }
-    </script>
-</body>
-</html>
+// Hashtag Generator
+function generateTags(){
+    let topic=clean(document.getElementById("tagInput").value);
+    if(!topic) return alert("विषय लिहा!");
+
+    let base=topic.replace(/\s+/g,"");
+    let tags=[
+        `#${base}`,
+        `#${base}reels`,
+        `#${base}tips`,
+        "#marathi","#maharashtra","#reelsindia",
+        "#viral","#explorepage","#contentcreator",
+        "#creatorlife","#digitalmarathi",
+        "#trending","#growth","#instagramreels","#india"
+    ];
+
+    show("tagRes",tags.join(" "));
+}
+
+// Caption Generator
+function generateCaption(){
+    let topic=clean(document.getElementById("capInput").value);
+    if(!topic) return alert("विषय लिहा!");
+
+    let type=detectCategory(topic);
+    let captions={
+        funny:`आज ${topic} करताना जे झालं ते तुम्ही बघायलाच पाहिजे! 😂`,
+        motivation:`${topic} रोज करा. हार मानू नका. यश तुमचंच आहे. 🚀`,
+        food:`${topic} म्हणजे प्रेम! ❤️ तुम्ही खाल्लंय का?`,
+        study:`${topic} मध्ये consistency ठेवा. निकाल आपोआप लागेल. 📚`,
+        business:`${topic} मध्ये smart काम करा, फक्त hard नाही. 💼`,
+        general:`${topic} बद्दल तुमचं मत काय? कमेंट करा! 👇`
+    };
+
+    show("capRes",captions[type]);
+}
+
+// Bio Generator
+function generateBio(){
+    let niche=clean(document.getElementById("bioInput").value);
+    if(!niche) return alert("Niche लिहा!");
+
+    let bio=`🚀 ${niche} Creator
+🔥 Marathi Content
+📈 Growth Mindset
+📩 DM for Collab`;
+
+    show("bioRes",bio);
+}
+
+// Word Counter
+function countWords(){
+    let text=document.getElementById("wordArea").value.trim();
+    document.getElementById("wordCount").innerText=text?text.split(/\s+/).length:0;
+    document.getElementById("charCount").innerText=text.length;
+}
+
+// Copy
+async function copyText(id,btn){
+    let text=document.getElementById(id).innerText;
+    if(!text) return;
+    await navigator.clipboard.writeText(text);
+
+    if(btn){
+        let original=btn.innerHTML;
+        btn.innerHTML="✅";
+        setTimeout(()=>{btn.innerHTML=original;},1000);
+    }
+}
+
+</script>
