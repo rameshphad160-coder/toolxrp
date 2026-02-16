@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolxRP | All-in-One Marathi Creator Tools</title>
+    <title>ToolxRP | Ultimate Marathi Creator Studio</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -16,229 +16,113 @@
             --bg-dark: #0f172a;
             --card-bg: #ffffff;
             --text-main: #1e293b;
-            --glass: rgba(255, 255, 255, 0.95);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: #f1f5f9;
-            color: var(--text-main);
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        body { background: #f1f5f9; color: var(--text-main); overflow-x: hidden; }
 
         /* --- NAV --- */
-        nav {
-            background: var(--bg-dark);
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .logo { font-size: 22px; font-weight: 700; color: white; }
+        nav { background: var(--bg-dark); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .logo { font-size: 24px; font-weight: 700; color: white; letter-spacing: 1px; }
         .logo span { color: var(--secondary); }
 
         /* --- HERO --- */
-        .hero {
-            background: linear-gradient(135deg, #4f46e5 0%, #0f172a 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
-        }
-
-        .hero h1 { font-size: clamp(1.8rem, 5vw, 3rem); margin-bottom: 15px; }
-        .hero p { font-size: 1.1rem; opacity: 0.8; margin-bottom: 30px; }
-
-        .cta-btn {
-            background: var(--secondary);
-            color: white;
-            padding: 14px 35px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
-            transition: 0.3s;
-        }
+        .hero { background: radial-gradient(circle at top right, #4f46e5, #0f172a); color: white; padding: 100px 20px; text-align: center; clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 15px; font-weight: 800; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto 30px; }
 
         /* --- CONTAINER --- */
-        .container {
-            max-width: 1200px;
-            margin: -40px auto 100px;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
+        .container { max-width: 1200px; margin: -50px auto 100px; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
 
-        .card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            transition: 0.3s;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
+        .card { background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: 0.3s; border: 1px solid rgba(0,0,0,0.02); position: relative; }
+        .card:hover { transform: translateY(-10px); }
 
-        .card:hover { transform: translateY(-8px); }
-
-        .card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--bg-dark);
-        }
-
+        .card h3 { font-size: 1.3rem; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; color: var(--bg-dark); }
         .card i.icon { color: var(--primary); font-size: 1.5rem; }
 
-        input, textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            font-size: 15px;
-            margin-bottom: 15px;
-            outline: none;
-        }
-
-        input:focus, textarea:focus { border-color: var(--primary); }
+        input, textarea { width: 100%; padding: 14px 18px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 15px; margin-bottom: 15px; outline: none; transition: 0.3s; }
+        input:focus { border-color: var(--primary); background: #fdfdff; }
 
         .btn-group { display: flex; gap: 10px; }
-
-        button {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
+        button { flex: 1; padding: 14px; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .btn-primary { background: var(--primary); color: white; }
-        .btn-primary:hover { background: var(--primary-dark); }
+        .btn-primary:hover { background: var(--primary-dark); letter-spacing: 0.5px; }
 
-        .btn-copy { background: #f1f5f9; color: var(--bg-dark); width: 50px; flex: none; }
+        .btn-copy { background: #f1f5f9; color: var(--bg-dark); width: 60px; flex: none; font-size: 1.2rem; }
+        .btn-copy:hover { background: #e2e8f0; }
 
-        .result-box {
-            margin-top: 15px;
-            padding: 12px;
-            background: #f8fafc;
-            border-radius: 10px;
-            font-size: 14px;
-            border-left: 4px solid var(--primary);
-            display: none;
-            white-space: pre-wrap;
-        }
+        .result-box { margin-top: 15px; padding: 15px; background: #f8fafc; border-radius: 12px; font-size: 14px; border-left: 5px solid var(--primary); display: none; animation: fadeIn 0.5s ease; white-space: pre-wrap; line-height: 1.6; color: #334155; }
 
-        .counter-info {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--primary);
-            margin-top: -5px;
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- STICKY OFFER --- */
-        .sticky-offer {
-            position: fixed;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 450px;
-            background: #1e293b;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            z-index: 1000;
-        }
+        .sticky-offer { position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 480px; background: #1e293b; color: white; padding: 12px 25px; border-radius: 50px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 15px 35px rgba(0,0,0,0.3); z-index: 2000; }
+        .sticky-offer a { background: var(--secondary); color: white; padding: 8px 20px; text-decoration: none; border-radius: 25px; font-size: 14px; font-weight: 700; transition: 0.3s; }
+        .sticky-offer a:hover { transform: scale(1.05); }
 
-        .sticky-offer a {
-            background: var(--secondary);
-            color: white;
-            padding: 6px 15px;
-            text-decoration: none;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 700;
-        }
+        .counter-info { font-size: 13px; font-weight: 600; color: var(--primary); margin-top: -5px; background: #eef2ff; padding: 5px 10px; border-radius: 5px; display: inline-block; }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="logo">Toolx<span>RP</span></div>
-        <div style="color: #94a3b8; font-size: 0.8rem;">Creator Studio v2.0</div>
+        <div style="color: #94a3b8; font-size: 0.85rem; font-weight: 600;">Marathi Creator Hub</div>
     </nav>
 
     <header class="hero">
-        <h1>Marathi Creator टूल्स 🚀</h1>
-        <p>Hashtags, Hooks आणि स्क्रिप्ट्स आता एकाच ठिकाणी!</p>
-        <a href="#tools" class="cta-btn"><i class="fa-solid fa-bolt"></i> सुरू करा</a>
+        <h1>क्रेझी एंगेजमेंट हवीये? 🚀</h1>
+        <p>मराठी क्रिएटर्ससाठी बनवलेले सर्वात अ‍ॅडव्हान्स टूल्स. आता तुमची प्रत्येक पोस्ट होईल व्हायरल!</p>
+        <a href="#tools" class="cta-btn" style="background:var(--secondary); color:white; padding:15px 35px; border-radius:50px; text-decoration:none; font-weight:700;">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> फ्री मध्ये वापरा
+        </a>
     </header>
 
     <main class="container" id="tools">
 
         <div class="card">
-            <h3><i class="fa-solid fa-magnet icon"></i> Viral Hooks</h3>
-            <input type="text" id="hookInput" placeholder="व्हिडिओचा विषय (उदा. अभ्यासाच्या टिप्स)">
+            <h3><i class="fa-solid fa-bolt icon"></i> Viral Hooks</h3>
+            <input type="text" id="hookInput" placeholder="उदा. वजन कमी करणे, शेअर मार्केट...">
             <div class="btn-group">
                 <button class="btn-primary" onclick="generateHook()">Generate Hook</button>
-                <button class="btn-copy" onclick="copyText('hookRes')"><i class="fa-regular fa-copy"></i></button>
+                <button class="btn-copy" onclick="copyText('hookRes', this)"><i class="fa-regular fa-copy"></i></button>
             </div>
             <div id="hookRes" class="result-box"></div>
         </div>
 
         <div class="card">
-            <h3><i class="fa-solid fa-hashtag icon"></i> Hashtags</h3>
-            <input type="text" id="tagInput" placeholder="Topic लिहा...">
+            <h3><i class="fa-solid fa-hashtag icon"></i> Smart Hashtags</h3>
+            <input type="text" id="tagInput" placeholder="तुमचा मुख्य विषय लिहा...">
             <div class="btn-group">
-                <button class="btn-primary" onclick="generateTags()">Get Hashtags</button>
-                <button class="btn-copy" onclick="copyText('tagRes')"><i class="fa-regular fa-copy"></i></button>
+                <button class="btn-primary" onclick="generateTags()">Get Viral Tags</button>
+                <button class="btn-copy" onclick="copyText('tagRes', this)"><i class="fa-regular fa-copy"></i></button>
             </div>
             <div id="tagRes" class="result-box"></div>
         </div>
 
         <div class="card">
-            <h3><i class="fa-solid fa-pen-nib icon"></i> Captions</h3>
-            <input type="text" id="capInput" placeholder="तुमच्या पोस्टचा विषय...">
+            <h3><i class="fa-solid fa-quote-left icon"></i> Creative Captions</h3>
+            <input type="text" id="capInput" placeholder="पोस्ट कशाबद्दल आहे?">
             <div class="btn-group">
-                <button class="btn-primary" onclick="generateCaption()">Generate</button>
-                <button class="btn-copy" onclick="copyText('capRes')"><i class="fa-regular fa-copy"></i></button>
+                <button class="btn-primary" onclick="generateCaption()">Write Caption</button>
+                <button class="btn-copy" onclick="copyText('capRes', this)"><i class="fa-regular fa-copy"></i></button>
             </div>
             <div id="capRes" class="result-box"></div>
         </div>
 
         <div class="card">
-            <h3><i class="fa-solid fa-calculator icon"></i> Word Counter</h3>
-            <textarea id="wordArea" placeholder="येथे स्क्रिप्ट टाइप किंवा पेस्ट करा..." oninput="countWords()" rows="4"></textarea>
+            <h3><i class="fa-solid fa-file-lines icon"></i> Script Counter</h3>
+            <textarea id="wordArea" placeholder="तुमची स्क्रिप्ट येथे पेस्ट करा..." oninput="countWords()" rows="4"></textarea>
             <div class="counter-info">
-                Words: <span id="wordCount">0</span> | Characters: <span id="charCount">0</span>
+                शब्दांची संख्या: <span id="wordCount">0</span> | अक्षरे: <span id="charCount">0</span>
             </div>
         </div>
 
         <div class="card">
-            <h3><i class="fa-solid fa-user-tag icon"></i> Smart Bio</h3>
-            <input type="text" id="bioInput" placeholder="तुमचे Niche (उदा. Photographer)">
+            <h3><i class="fa-solid fa-id-card icon"></i> Premium Bio</h3>
+            <input type="text" id="bioInput" placeholder="तुमची ओळख (उदा. डान्सर, उद्योजक)">
             <div class="btn-group">
-                <button class="btn-primary" onclick="generateBio()">Generate Bio</button>
-                <button class="btn-copy" onclick="copyText('bioRes')"><i class="fa-regular fa-copy"></i></button>
+                <button class="btn-primary" onclick="generateBio()">Design Bio</button>
+                <button class="btn-copy" onclick="copyText('bioRes', this)"><i class="fa-regular fa-copy"></i></button>
             </div>
             <div id="bioRes" class="result-box"></div>
         </div>
@@ -246,113 +130,95 @@
     </main>
 
     <div class="sticky-offer">
-        <span>📘 Marathi Business E-Book</span>
+        <span>📘 मराठी बिझनेस ई-बुक (Offer)</span>
         <a href="#">फक्त ₹99</a>
     </div>
 
     <script>
+        // SMART DATA MAPPING
+        const categoryMap = {
+            "शेती": ["agri", "farming", "बळीराजा", "शेतकरी", "village", "nature"],
+            "business": ["entrepreneur", "startup", "उद्योजक", "मराठीपाऊल", "money"],
+            "gym": ["fitness", "workout", "आरोग्य", "bodybuilding", "diet"],
+            "food": ["cooking", "recipe", "जेवण", "खमंग", "मराठीजेवण"],
+            "travel": ["gadwat", " भटकंती", "forts", "maharashtra_desha", "explore"]
+        };
 
-function cleanText(text){
-    return text.trim().toLowerCase();
-}
+        function showRes(id, text) {
+            const el = document.getElementById(id);
+            el.innerText = text;
+            el.style.display = "block";
+        }
 
-function showRes(id, text){
-    const el = document.getElementById(id);
-    el.innerText = text;
-    el.style.display = "block";
-}
+        function generateHook() {
+            let topic = document.getElementById("hookInput").value;
+            if(!topic) return alert("विषय लिहा!");
+            let hooks = [
+                `हे कोणालाच माहित नाही, पण ${topic} साठी हे बेस्ट आहे! 🤫`,
+                `तुमच्या ${topic} मध्ये ही १ चूक तुमचं नुकसान करतेय! ❌`,
+                `फक्त ३० सेकंदात ${topic} चं गुपित जाणून घ्या! 🚀`,
+                `${topic} बद्दलच्या या ३ टिप्स तुमचं काम सोपं करतील! ✨`,
+                `जर तुम्हाला ${topic} आवडतं, तर हा व्हिडिओ शेवटपर्यंत पहा! 🔥`
+            ];
+            showRes("hookRes", hooks[Math.floor(Math.random()*hooks.length)]);
+        }
 
-/* 1. HOOK GENERATOR */
-function generateHook(){
-    let topic = cleanText(document.getElementById("hookInput").value);
-    if(!topic) return alert("विषय लिहा!");
+        function generateTags() {
+            let topic = document.getElementById("tagInput").value.toLowerCase();
+            if(!topic) return alert("विषय लिहा!");
+            
+            let baseTags = [`#${topic.replace(/\s+/g, '')}`, "#marathi", "#maharashtra", "#viral", "#reelsindia"];
+            
+            // Add smart tags based on category
+            for (let key in categoryMap) {
+                if (topic.includes(key)) {
+                    categoryMap[key].forEach(t => baseTags.push(`#${t}`));
+                }
+            }
+            
+            showRes("tagRes", baseTags.join(" "));
+        }
 
-    let hooks = [
-        `जर तुम्ही ${topic} करत असाल, तर हे नक्की बघा! 🔥`,
-        `${topic} मध्ये लोक ९०% वेळा ही चूक करतात! 😲`,
-        `फक्त ३० सेकंदात ${topic} बद्दल सगळं समजून घ्या! 🚀`,
-        `${topic} चे ३ सीक्रेट्स जे कोणी सांगत नाही! 🤫`,
-        `${topic} करून तुमचं आयुष्य बदलू शकतं! ✨`
-    ];
+        function generateCaption() {
+            let topic = document.getElementById("capInput").value;
+            if(!topic) return alert("विषय सांगा!");
+            let caps = [
+                `नवे विचार, नवी दिशा! ${topic} बद्दल आज काहीतरी खास. ✨ \n\n#मराठी #प्रेरणा #${topic.replace(/\s/g,'')}`,
+                `${topic} मध्ये सातत्य ठेवा, यश नक्कीच तुमचं असेल. 🔥 \n\n#success #hardwork #${topic.replace(/\s/g,'')}`,
+                `स्वतःची ओळख अशी निर्माण करा की जग पाहतच राहील! ❤️ \n\n#marathicreator #${topic.replace(/\s/g,'')}`
+            ];
+            showRes("capRes", caps[Math.floor(Math.random()*caps.length)]);
+        }
 
-    showRes("hookRes", hooks[Math.floor(Math.random()*hooks.length)]);
-}
+        function countWords() {
+            let text = document.getElementById("wordArea").value.trim();
+            document.getElementById("wordCount").innerText = text ? text.split(/\s+/).length : 0;
+            document.getElementById("charCount").innerText = text.length;
+        }
 
-/* 2. HASHTAG GENERATOR */
-function generateTags(){
-    let topic = cleanText(document.getElementById("tagInput").value);
-    if(!topic) return alert("विषय लिहा!");
+        function generateBio() {
+            let niche = document.getElementById("bioInput").value;
+            if(!niche) return alert("Niche लिहा!");
+            let bio = `🚩 महाराष्ट्राची शान!\n🎬 ${niche}\n🚀 दररोज नवीन शिका\n📍 स्वप्नांचा पाठलाग..\n📩 DM for Collaboration`;
+            showRes("bioRes", bio);
+        }
 
-    let base = topic.replace(/\s+/g, '');
-    let tags = [
-        `#${base}`,
-        `#${base}tips`,
-        `#learn${base}`,
-        `#${base}marathi`,
-        `#${base}india`,
-        `#marathi`,
-        `#maharashtra`,
-        `#contentcreator`,
-        `#viralreels`,
-        `#reelsindia`,
-        `#growth`,
-        `#explorepage`,
-        `#trending`,
-        `#digitalmarathi`,
-        `#creatorlife`
-    ];
-
-    showRes("tagRes", tags.join(" "));
-}
-
-/* 3. CAPTION GENERATOR */
-function generateCaption(){
-    let topic = cleanText(document.getElementById("capInput").value);
-    if(!topic) return alert("विषय सांगा!");
-
-    let captions = [
-        `आजचा विषय आहे ${topic}. शिकत रहा, वाढत रहा! 🚀`,
-        `${topic} म्हणजे फक्त काम नाही, ती एक सवय आहे. 🔥`,
-        `${topic} मध्ये consistency ठेवा, परिणाम आपोआप येतील. 💯`,
-        `जर ${topic} शिकायचं असेल, तर आजपासून सुरुवात करा! ✨`,
-        `${topic} तुमचं future बदलू शकतं. विश्वास ठेवा. ❤️`
-    ];
-
-    showRes("capRes", captions[Math.floor(Math.random()*captions.length)]);
-}
-
-/* 4. WORD COUNTER */
-function countWords(){
-    let text = document.getElementById("wordArea").value.trim();
-    let words = text ? text.split(/\s+/).length : 0;
-    document.getElementById("wordCount").innerText = words;
-    document.getElementById("charCount").innerText = text.length;
-}
-
-/* 5. BIO GENERATOR */
-function generateBio(){
-    let niche = cleanText(document.getElementById("bioInput").value);
-    if(!niche) return alert("Niche लिहा!");
-
-    let bio = `🚀 Passionate about ${niche}\n🔥 Marathi Creator\n📚 Daily Value & Insights\n📩 DM for Collab`;
-
-    showRes("bioRes", bio);
-}
-
-/* COPY FUNCTION WITH FEEDBACK */
-async function copyText(id){
-    let text = document.getElementById(id).innerText;
-    if(!text) return;
-
-    await navigator.clipboard.writeText(text);
-
-    const btns = document.querySelectorAll(".btn-copy");
-    btns.forEach(btn => {
-        btn.innerHTML = "✅";
-        setTimeout(() => {
-            btn.innerHTML = '<i class="fa-regular fa-copy"></i>';
-        }, 1000);
-    });
-}
-
-</script>
+        async function copyText(id, btn) {
+            let text = document.getElementById(id).innerText;
+            if(!text) return;
+            await navigator.clipboard.writeText(text);
+            
+            let original = btn.innerHTML;
+            btn.innerHTML = "✅";
+            btn.style.background = "#10b981";
+            btn.style.color = "white";
+            
+            setTimeout(() => {
+                btn.innerHTML = original;
+                btn.style.background = "#f1f5f9";
+                btn.style.color = "var(--bg-dark)";
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
