@@ -60,6 +60,49 @@
         .sticky-offer a:hover { transform: scale(1.05); }
 
         .counter-info { font-size: 13px; font-weight: 600; color: var(--primary); margin-top: -5px; background: #eef2ff; padding: 5px 10px; border-radius: 5px; display: inline-block; }
+
+        /* --- AMAZON AFFILIATE SECTION CSS --- */
+        .affiliate-box {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            grid-column: 1 / -1; /* This makes it span full width in the grid */
+            border: 1px solid rgba(0,0,0,0.02);
+            margin-top: 20px;
+        }
+
+        .affiliate-box h2 {
+            margin-bottom: 10px;
+            color: var(--bg-dark);
+            font-size: 1.6rem;
+        }
+
+        .affiliate-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .affiliate-btn {
+            display: block;
+            padding: 14px;
+            background: linear-gradient(45deg, #ff9900, #ff6600);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(255, 153, 0, 0.2);
+        }
+
+        .affiliate-btn:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(45deg, #ff6600, #ff3300);
+            box-shadow: 0 8px 15px rgba(255, 153, 0, 0.4);
+        }
     </style>
 </head>
 <body>
@@ -127,143 +170,156 @@
             <div id="bioRes" class="result-box"></div>
         </div>
 
+        <div class="affiliate-box">
+            <h2>🛒 Recommended on Amazon</h2>
+            <p style="color: #64748b; font-size: 14px;">माझे आवडते गॅजेट्स आणि बुक्स जे मी रोज वापरतो!</p>
+
+            <div class="affiliate-links">
+                <a href="https://amzn.to/4ckL0su" target="_blank" class="affiliate-btn"><i class="fa-solid fa-camera"></i> Product 1</a>
+                <a href="https://amzn.to/4rygC2n" target="_blank" class="affiliate-btn"><i class="fa-solid fa-microphone"></i> Product 2</a>
+                <a href="https://amzn.to/link3" target="_blank" class="affiliate-btn"><i class="fa-solid fa-laptop"></i> Product 3</a>
+                <a href="https://amzn.to/link4" target="_blank" class="affiliate-btn"><i class="fa-solid fa-book"></i> Product 4</a>
+                <a href="https://amzn.to/link5" target="_blank" class="affiliate-btn"><i class="fa-solid fa-mobile-screen"></i> Product 5</a>
+                
+                </div>
+        </div>
+
     </main>
 
-   <div class="sticky-offer">
-    <span>📘 मराठी बिझनेस ई-बुक (Offer)</span>
-    <a href="https://payhip.com/b/Sjkca" target="_blank">
-        🚀 आत्ताच मिळवा – ₹199
-    </a>
-</div>
+    <div class="sticky-offer">
+        <span>📘 मराठी बिझनेस ई-बुक (Offer)</span>
+        <a href="https://payhip.com/b/Sjkca" target="_blank">
+            🚀 आत्ताच मिळवा – ₹199
+        </a>
+    </div>
 
-   <script>
+    <script>
 
-// Utility
-function clean(text){
-    return text.trim().toLowerCase();
-}
+        // Utility
+        function clean(text){
+            return text.trim().toLowerCase();
+        }
 
-function show(id,text){
-    const el=document.getElementById(id);
-    el.innerText=text;
-    el.style.display="block";
-}
+        function show(id,text){
+            const el=document.getElementById(id);
+            el.innerText=text;
+            el.style.display="block";
+        }
 
-// Category Detection
-function detectCategory(topic){
-    if(topic.includes("comedy")||topic.includes("funny")) return "funny";
-    if(topic.includes("motivation")||topic.includes("quotes")) return "motivation";
-    if(topic.includes("food")||topic.includes("recipe")) return "food";
-    if(topic.includes("study")||topic.includes("exam")) return "study";
-    if(topic.includes("business")||topic.includes("money")) return "business";
-    return "general";
-}
+        // Category Detection
+        function detectCategory(topic){
+            if(topic.includes("comedy")||topic.includes("funny")) return "funny";
+            if(topic.includes("motivation")||topic.includes("quotes")) return "motivation";
+            if(topic.includes("food")||topic.includes("recipe")) return "food";
+            if(topic.includes("study")||topic.includes("exam")) return "study";
+            if(topic.includes("business")||topic.includes("money")) return "business";
+            return "general";
+        }
 
-// Hook Generator
-function generateHook(){
-    let topic=clean(document.getElementById("hookInput").value);
-    if(!topic) return alert("विषय लिहा!");
+        // Hook Generator
+        function generateHook(){
+            let topic=clean(document.getElementById("hookInput").value);
+            if(!topic) return alert("विषय लिहा!");
 
-    let type=detectCategory(topic);
-    let hooks={
-        funny:[
-            `लोकांना वाटतं ${topic} सोपं आहे… पण खरी कॉमेडी पडद्यामागे असते! 😂`,
-            `${topic} करताना जे घडलं ते बघून तुम्ही हसणारच! 🤣`
-        ],
-        motivation:[
-            `${topic} हवंय? मग कारणं नाही — action सुरू करा! 🚀`,
-            `${topic} रोज करा. सातत्य म्हणजेच शक्ती. 🔥`
-        ],
-        food:[
-            `ही ${topic} रेसिपी करून बघा… घरचे थांबणार नाहीत! 😋`,
-            `${topic} खाल्ल्यावर mood बदलणारच! 🍽️`
-        ],
-        study:[
-            `${topic} करताना ही चूक टाळा नाहीतर मेहनत वाया जाईल! 📚`,
-            `${topic} सोपं करायचंय? हा उपाय वापरा! ✍️`
-        ],
-        business:[
-            `${topic} मध्ये यशस्वी व्हायचंय? विचार बदलला पाहिजे. 💰`,
-            `${topic} मध्ये risk घ्या, पण strategy सोबत. 📈`
-        ],
-        general:[
-            `${topic} बद्दल हे कोणी सांगत नाही! 🔥`,
-            `${topic} मध्ये पुढे जायचंय? हे लक्षात ठेवा!`
-        ]
-    };
+            let type=detectCategory(topic);
+            let hooks={
+                funny:[
+                    `लोकांना वाटतं ${topic} सोपं आहे… पण खरी कॉमेडी पडद्यामागे असते! 😂`,
+                    `${topic} करताना जे घडलं ते बघून तुम्ही हसणारच! 🤣`
+                ],
+                motivation:[
+                    `${topic} हवंय? मग कारणं नाही — action सुरू करा! 🚀`,
+                    `${topic} रोज करा. सातत्य म्हणजेच शक्ती. 🔥`
+                ],
+                food:[
+                    `ही ${topic} रेसिपी करून बघा… घरचे थांबणार नाहीत! 😋`,
+                    `${topic} खाल्ल्यावर mood बदलणारच! 🍽️`
+                ],
+                study:[
+                    `${topic} करताना ही चूक टाळा नाहीतर मेहनत वाया जाईल! 📚`,
+                    `${topic} सोपं करायचंय? हा उपाय वापरा! ✍️`
+                ],
+                business:[
+                    `${topic} मध्ये यशस्वी व्हायचंय? विचार बदलला पाहिजे. 💰`,
+                    `${topic} मध्ये risk घ्या, पण strategy सोबत. 📈`
+                ],
+                general:[
+                    `${topic} बद्दल हे कोणी सांगत नाही! 🔥`,
+                    `${topic} मध्ये पुढे जायचंय? हे लक्षात ठेवा!`
+                ]
+            };
 
-    let list=hooks[type];
-    show("hookRes",list[Math.floor(Math.random()*list.length)]);
-}
+            let list=hooks[type];
+            show("hookRes",list[Math.floor(Math.random()*list.length)]);
+        }
 
-// Hashtag Generator
-function generateTags(){
-    let topic=clean(document.getElementById("tagInput").value);
-    if(!topic) return alert("विषय लिहा!");
+        // Hashtag Generator
+        function generateTags(){
+            let topic=clean(document.getElementById("tagInput").value);
+            if(!topic) return alert("विषय लिहा!");
 
-    let base=topic.replace(/\s+/g,"");
-    let tags=[
-        `#${base}`,
-        `#${base}reels`,
-        `#${base}tips`,
-        "#marathi","#maharashtra","#reelsindia",
-        "#viral","#explorepage","#contentcreator",
-        "#creatorlife","#digitalmarathi",
-        "#trending","#growth","#instagramreels","#india"
-    ];
+            let base=topic.replace(/\s+/g,"");
+            let tags=[
+                `#${base}`,
+                `#${base}reels`,
+                `#${base}tips`,
+                "#marathi","#maharashtra","#reelsindia",
+                "#viral","#explorepage","#contentcreator",
+                "#creatorlife","#digitalmarathi",
+                "#trending","#growth","#instagramreels","#india"
+            ];
 
-    show("tagRes",tags.join(" "));
-}
+            show("tagRes",tags.join(" "));
+        }
 
-// Caption Generator
-function generateCaption(){
-    let topic=clean(document.getElementById("capInput").value);
-    if(!topic) return alert("विषय लिहा!");
+        // Caption Generator
+        function generateCaption(){
+            let topic=clean(document.getElementById("capInput").value);
+            if(!topic) return alert("विषय लिहा!");
 
-    let type=detectCategory(topic);
-    let captions={
-        funny:`आज ${topic} करताना जे झालं ते तुम्ही बघायलाच पाहिजे! 😂`,
-        motivation:`${topic} रोज करा. हार मानू नका. यश तुमचंच आहे. 🚀`,
-        food:`${topic} म्हणजे प्रेम! ❤️ तुम्ही खाल्लंय का?`,
-        study:`${topic} मध्ये consistency ठेवा. निकाल आपोआप लागेल. 📚`,
-        business:`${topic} मध्ये smart काम करा, फक्त hard नाही. 💼`,
-        general:`${topic} बद्दल तुमचं मत काय? कमेंट करा! 👇`
-    };
+            let type=detectCategory(topic);
+            let captions={
+                funny:`आज ${topic} करताना जे झालं ते तुम्ही बघायलाच पाहिजे! 😂`,
+                motivation:`${topic} रोज करा. हार मानू नका. यश तुमचंच आहे. 🚀`,
+                food:`${topic} म्हणजे प्रेम! ❤️ तुम्ही खाल्लंय का?`,
+                study:`${topic} मध्ये consistency ठेवा. निकाल आपोआप लागेल. 📚`,
+                business:`${topic} मध्ये smart काम करा, फक्त hard नाही. 💼`,
+                general:`${topic} बद्दल तुमचं मत काय? कमेंट करा! 👇`
+            };
 
-    show("capRes",captions[type]);
-}
+            show("capRes",captions[type]);
+        }
 
-// Bio Generator
-function generateBio(){
-    let niche=clean(document.getElementById("bioInput").value);
-    if(!niche) return alert("Niche लिहा!");
+        // Bio Generator
+        function generateBio(){
+            let niche=clean(document.getElementById("bioInput").value);
+            if(!niche) return alert("Niche लिहा!");
 
-    let bio=`🚀 ${niche} Creator
-🔥 Marathi Content
-📈 Growth Mindset
-📩 DM for Collab`;
+            let bio=`🚀 ${niche} Creator\n🔥 Marathi Content\n📈 Growth Mindset\n📩 DM for Collab`;
 
-    show("bioRes",bio);
-}
+            show("bioRes",bio);
+        }
 
-// Word Counter
-function countWords(){
-    let text=document.getElementById("wordArea").value.trim();
-    document.getElementById("wordCount").innerText=text?text.split(/\s+/).length:0;
-    document.getElementById("charCount").innerText=text.length;
-}
+        // Word Counter
+        function countWords(){
+            let text=document.getElementById("wordArea").value.trim();
+            document.getElementById("wordCount").innerText=text?text.split(/\s+/).length:0;
+            document.getElementById("charCount").innerText=text.length;
+        }
 
-// Copy
-async function copyText(id,btn){
-    let text=document.getElementById(id).innerText;
-    if(!text) return;
-    await navigator.clipboard.writeText(text);
+        // Copy
+        async function copyText(id,btn){
+            let text=document.getElementById(id).innerText;
+            if(!text) return;
+            await navigator.clipboard.writeText(text);
 
-    if(btn){
-        let original=btn.innerHTML;
-        btn.innerHTML="✅";
-        setTimeout(()=>{btn.innerHTML=original;},1000);
-    }
-}
+            if(btn){
+                let original=btn.innerHTML;
+                btn.innerHTML="✅";
+                setTimeout(()=>{btn.innerHTML=original;},1000);
+            }
+        }
 
-</script>
+    </script>
+</body>
+</html>
