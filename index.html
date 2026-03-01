@@ -21,88 +21,97 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
         body { background: #f1f5f9; color: var(--text-main); overflow-x: hidden; }
 
-        /* --- NAV --- */
+        /* --- NAV & HERO --- */
         nav { background: var(--bg-dark); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .logo { font-size: 24px; font-weight: 700; color: white; letter-spacing: 1px; }
         .logo span { color: var(--secondary); }
-
-        /* --- HERO --- */
         .hero { background: radial-gradient(circle at top right, #4f46e5, #0f172a); color: white; padding: 100px 20px; text-align: center; clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); }
         .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 15px; font-weight: 800; }
         .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto 30px; }
 
-        /* --- CONTAINER --- */
+        /* --- CONTAINER & CARDS --- */
         .container { max-width: 1200px; margin: -50px auto 100px; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-
-        .card { background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: 0.3s; border: 1px solid rgba(0,0,0,0.02); position: relative; }
+        .card { background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: 0.3s; border: 1px solid rgba(0,0,0,0.02); }
         .card:hover { transform: translateY(-10px); }
-
         .card h3 { font-size: 1.3rem; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; color: var(--bg-dark); }
         .card i.icon { color: var(--primary); font-size: 1.5rem; }
-
         input, textarea { width: 100%; padding: 14px 18px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 15px; margin-bottom: 15px; outline: none; transition: 0.3s; }
         input:focus { border-color: var(--primary); background: #fdfdff; }
-
         .btn-group { display: flex; gap: 10px; }
         button { flex: 1; padding: 14px; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .btn-primary { background: var(--primary); color: white; }
-        .btn-primary:hover { background: var(--primary-dark); letter-spacing: 0.5px; }
-
+        .btn-primary:hover { background: var(--primary-dark); }
         .btn-copy { background: #f1f5f9; color: var(--bg-dark); width: 60px; flex: none; font-size: 1.2rem; }
-        .btn-copy:hover { background: #e2e8f0; }
-
-        .result-box { margin-top: 15px; padding: 15px; background: #f8fafc; border-radius: 12px; font-size: 14px; border-left: 5px solid var(--primary); display: none; animation: fadeIn 0.5s ease; white-space: pre-wrap; line-height: 1.6; color: #334155; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .sticky-offer { position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 480px; background: #1e293b; color: white; padding: 12px 25px; border-radius: 50px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 15px 35px rgba(0,0,0,0.3); z-index: 2000; }
-        .sticky-offer a { background: var(--secondary); color: white; padding: 8px 20px; text-decoration: none; border-radius: 25px; font-size: 14px; font-weight: 700; transition: 0.3s; }
-        .sticky-offer a:hover { transform: scale(1.05); }
-
+        .result-box { margin-top: 15px; padding: 15px; background: #f8fafc; border-radius: 12px; font-size: 14px; border-left: 5px solid var(--primary); display: none; white-space: pre-wrap; line-height: 1.6; color: #334155; }
         .counter-info { font-size: 13px; font-weight: 600; color: var(--primary); margin-top: -5px; background: #eef2ff; padding: 5px 10px; border-radius: 5px; display: inline-block; }
 
-        /* --- AMAZON AFFILIATE SECTION CSS --- */
-        .affiliate-box {
+        /* --- NEW STOREFRONT CSS (WITH IMAGES) --- */
+        .storefront-box {
             background: var(--card-bg);
             padding: 30px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            text-align: center;
             grid-column: 1 / -1; 
             border: 1px solid rgba(0,0,0,0.02);
             margin-top: 20px;
+            text-align: center;
         }
-
-        .affiliate-box h2 {
-            margin-bottom: 10px;
-            color: var(--bg-dark);
-            font-size: 1.6rem;
-        }
-
-        .affiliate-links {
+        .storefront-box h2 { color: var(--bg-dark); font-size: 1.8rem; margin-bottom: 5px; }
+        .storefront-box p { color: #64748b; font-size: 14px; margin-bottom: 25px; }
+        
+        .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
         }
 
-        .affiliate-btn {
-            display: block;
-            padding: 14px;
-            background: linear-gradient(45deg, #ff9900, #ff6600);
-            color: white;
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 15px;
             text-decoration: none;
-            border-radius: 10px;
-            font-weight: bold;
-            transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(255, 153, 0, 0.2);
+            color: var(--text-main);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
 
-        .affiliate-btn:hover {
-            transform: translateY(-5px);
-            background: linear-gradient(45deg, #ff6600, #ff3300);
-            box-shadow: 0 8px 15px rgba(255, 153, 0, 0.4);
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+            border-color: var(--primary);
         }
+
+        .product-img {
+            width: 100%;
+            height: 140px;
+            object-fit: contain; /* Keeps full product visible */
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .product-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .buy-btn {
+            background: #ff9900;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .sticky-offer { position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 480px; background: #1e293b; color: white; padding: 12px 25px; border-radius: 50px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 15px 35px rgba(0,0,0,0.3); z-index: 2000; }
+        .sticky-offer a { background: var(--secondary); color: white; padding: 8px 20px; text-decoration: none; border-radius: 25px; font-size: 14px; font-weight: 700; }
     </style>
 </head>
 <body>
@@ -115,212 +124,138 @@
     <header class="hero">
         <h1>क्रेझी एंगेजमेंट हवीये? 🚀</h1>
         <p>मराठी क्रिएटर्ससाठी बनवलेले सर्वात अ‍ॅडव्हान्स टूल्स. आता तुमची प्रत्येक पोस्ट होईल व्हायरल!</p>
-        <a href="#tools" class="cta-btn" style="background:var(--secondary); color:white; padding:15px 35px; border-radius:50px; text-decoration:none; font-weight:700;">
+        <a href="#tools" class="btn-primary" style="padding:15px 35px; border-radius:50px; text-decoration:none; display:inline-block;">
             <i class="fa-solid fa-wand-magic-sparkles"></i> फ्री मध्ये वापरा
         </a>
     </header>
 
     <main class="container" id="tools">
-
         <div class="card">
             <h3><i class="fa-solid fa-bolt icon"></i> Viral Hooks</h3>
-            <input type="text" id="hookInput" placeholder="उदा. वजन कमी करणे, शेअर मार्केट...">
+            <input type="text" id="hookInput" placeholder="उदा. वजन कमी करणे...">
             <div class="btn-group">
-                <button class="btn-primary" onclick="generateHook()">Generate Hook</button>
+                <button class="btn-primary" onclick="generateHook()">Generate</button>
                 <button class="btn-copy" onclick="copyText('hookRes', this)"><i class="fa-regular fa-copy"></i></button>
-            </div>
-            <div id="hookRes" class="result-box"></div>
+            </div><div id="hookRes" class="result-box"></div>
         </div>
 
         <div class="card">
             <h3><i class="fa-solid fa-hashtag icon"></i> Smart Hashtags</h3>
-            <input type="text" id="tagInput" placeholder="तुमचा मुख्य विषय लिहा...">
+            <input type="text" id="tagInput" placeholder="तुमचा मुख्य विषय...">
             <div class="btn-group">
-                <button class="btn-primary" onclick="generateTags()">Get Viral Tags</button>
+                <button class="btn-primary" onclick="generateTags()">Get Tags</button>
                 <button class="btn-copy" onclick="copyText('tagRes', this)"><i class="fa-regular fa-copy"></i></button>
-            </div>
-            <div id="tagRes" class="result-box"></div>
+            </div><div id="tagRes" class="result-box"></div>
         </div>
 
         <div class="card">
-            <h3><i class="fa-solid fa-quote-left icon"></i> Creative Captions</h3>
+            <h3><i class="fa-solid fa-quote-left icon"></i> Captions</h3>
             <input type="text" id="capInput" placeholder="पोस्ट कशाबद्दल आहे?">
             <div class="btn-group">
-                <button class="btn-primary" onclick="generateCaption()">Write Caption</button>
+                <button class="btn-primary" onclick="generateCaption()">Write</button>
                 <button class="btn-copy" onclick="copyText('capRes', this)"><i class="fa-regular fa-copy"></i></button>
-            </div>
-            <div id="capRes" class="result-box"></div>
+            </div><div id="capRes" class="result-box"></div>
         </div>
 
         <div class="card">
             <h3><i class="fa-solid fa-file-lines icon"></i> Script Counter</h3>
             <textarea id="wordArea" placeholder="तुमची स्क्रिप्ट येथे पेस्ट करा..." oninput="countWords()" rows="4"></textarea>
-            <div class="counter-info">
-                शब्दांची संख्या: <span id="wordCount">0</span> | अक्षरे: <span id="charCount">0</span>
-            </div>
+            <div class="counter-info">Words: <span id="wordCount">0</span> | Chars: <span id="charCount">0</span></div>
         </div>
 
-        <div class="card">
-            <h3><i class="fa-solid fa-id-card icon"></i> Premium Bio</h3>
-            <input type="text" id="bioInput" placeholder="तुमची ओळख (उदा. डान्सर, उद्योजक)">
-            <div class="btn-group">
-                <button class="btn-primary" onclick="generateBio()">Design Bio</button>
-                <button class="btn-copy" onclick="copyText('bioRes', this)"><i class="fa-regular fa-copy"></i></button>
-            </div>
-            <div id="bioRes" class="result-box"></div>
-        </div>
+        <div class="storefront-box">
+            <h2>🛒 My Amazon Storefront</h2>
+            <p>मी माझे व्हिडिओ बनवण्यासाठी वापरत असलेले बेस्ट गिअर्स!</p>
 
-        <div class="affiliate-box">
-            <h2>🛒 Recommended on Amazon</h2>
-            <p style="color: #64748b; font-size: 14px;">माझे आवडते गॅजेट्स आणि प्रॉडक्ट्स जे मी रोज वापरतो!</p>
+            <div class="product-grid">
+                
+                <a href="https://amzn.to/4ch0Zrv" target="_blank" class="product-card">
+                    <img src="https://m.media-amazon.com/images/I/61vYQyL5pBL._SL1500_.jpg" alt="Boya Mic" class="product-img">
+                    <div class="product-title">Boya Wireless Mic</div>
+                    <div class="buy-btn">Check Price</div>
+                </a>
 
-            <div class="affiliate-links">
-                <a href="https://amzn.to/4ch0Zrv" target="_blank" class="affiliate-btn"><i class="fa-solid fa-camera"></i> Product 1</a>
-                <a href="https://amzn.to/4sap5Zw" target="_blank" class="affiliate-btn"><i class="fa-solid fa-microphone"></i> Product 2</a>
-                <a href="https://amzn.to/4smderE" target="_blank" class="affiliate-btn"><i class="fa-solid fa-lightbulb"></i> Product 3</a>
-                <a href="https://amzn.to/4bduLwa" target="_blank" class="affiliate-btn"><i class="fa-solid fa-laptop"></i> Product 4</a>
-                <a href="https://amzn.to/4qYB8bl" target="_blank" class="affiliate-btn"><i class="fa-solid fa-book"></i> Product 5</a>
-                <a href="https://amzn.to/4tZ66To" target="_blank" class="affiliate-btn"><i class="fa-solid fa-headphones"></i> Product 6</a>
-                <a href="https://amzn.to/4qYK3d3" target="_blank" class="affiliate-btn"><i class="fa-solid fa-mobile-screen"></i> Product 7</a>
+                <a href="https://amzn.to/4sap5Zw" target="_blank" class="product-card">
+                    <img src="https://m.media-amazon.com/images/I/71XmP7K2LWL._SL1500_.jpg" alt="Ring Light" class="product-img">
+                    <div class="product-title">Digitek Ring Light</div>
+                    <div class="buy-btn">Check Price</div>
+                </a>
+
+                <a href="https://amzn.to/4smderE" target="_blank" class="product-card">
+                    <img src="https://m.media-amazon.com/images/I/61y88L15eRL._SL1500_.jpg" alt="Tripod" class="product-img">
+                    <div class="product-title">Camera Tripod</div>
+                    <div class="buy-btn">Check Price</div>
+                </a>
+
+                <a href="https://amzn.to/4bduLwa" target="_blank" class="product-card">
+                    <img src="https://m.media-amazon.com/images/I/71jG+e7roIG._SL1500_.jpg" alt="Mouse" class="product-img">
+                    <div class="product-title">Wireless Mouse</div>
+                    <div class="buy-btn">Check Price</div>
+                </a>
+
+                <a href="https://amzn.to/4qYB8bl" target="_blank" class="product-card">
+                    <img src="https://m.media-amazon.com/images/I/81jwK4bA40L._SL1500_.jpg" alt="Book" class="product-img">
+                    <div class="product-title">Atomic Habits Book</div>
+                    <div class="buy-btn">Check Price</div>
+                </a>
+
+                <a href="https://amzn.to/4tZ66To" target="_blank" class="product-card">
+                    <img src="https://m.media-amazon.com/images/I/61kWB+uzR2L._SL1500_.jpg" alt="Headphones" class="product-img">
+                    <div class="product-title">Sony Headphones</div>
+                    <div class="buy-btn">Check Price</div>
+                </a>
+
+                <a href="https://amzn.to/4qYK3d3" target="_blank" class="product-card">
+                    <img src="https://m.media-amazon.com/images/I/81xG4gS8p0L._SL1500_.jpg" alt="Gimbal" class="product-img">
+                    <div class="product-title">Mobile Gimbal</div>
+                    <div class="buy-btn">Check Price</div>
+                </a>
+
             </div>
         </div>
 
     </main>
 
     <div class="sticky-offer">
-        <span>📘 मराठी बिझनेस ई-बुक (Offer)</span>
-        <a href="https://payhip.com/b/Sjkca" target="_blank">
-            🚀 आत्ताच मिळवा – ₹199
-        </a>
+        <span>📘 मराठी बिझनेस ई-बुक</span>
+        <a href="https://payhip.com/b/Sjkca" target="_blank">🚀 ₹199 मिळवा</a>
     </div>
 
     <script>
+        function clean(text){ return text.trim().toLowerCase(); }
+        function show(id,text){ const el=document.getElementById(id); el.innerText=text; el.style.display="block"; }
 
-        // Utility
-        function clean(text){
-            return text.trim().toLowerCase();
-        }
-
-        function show(id,text){
-            const el=document.getElementById(id);
-            el.innerText=text;
-            el.style.display="block";
-        }
-
-        // Category Detection
-        function detectCategory(topic){
-            if(topic.includes("comedy")||topic.includes("funny")) return "funny";
-            if(topic.includes("motivation")||topic.includes("quotes")) return "motivation";
-            if(topic.includes("food")||topic.includes("recipe")) return "food";
-            if(topic.includes("study")||topic.includes("exam")) return "study";
-            if(topic.includes("business")||topic.includes("money")) return "business";
-            return "general";
-        }
-
-        // Hook Generator
         function generateHook(){
             let topic=clean(document.getElementById("hookInput").value);
             if(!topic) return alert("विषय लिहा!");
-
-            let type=detectCategory(topic);
-            let hooks={
-                funny:[
-                    `लोकांना वाटतं ${topic} सोपं आहे… पण खरी कॉमेडी पडद्यामागे असते! 😂`,
-                    `${topic} करताना जे घडलं ते बघून तुम्ही हसणारच! 🤣`
-                ],
-                motivation:[
-                    `${topic} हवंय? मग कारणं नाही — action सुरू करा! 🚀`,
-                    `${topic} रोज करा. सातत्य म्हणजेच शक्ती. 🔥`
-                ],
-                food:[
-                    `ही ${topic} रेसिपी करून बघा… घरचे थांबणार नाहीत! 😋`,
-                    `${topic} खाल्ल्यावर mood बदलणारच! 🍽️`
-                ],
-                study:[
-                    `${topic} करताना ही चूक टाळा नाहीतर मेहनत वाया जाईल! 📚`,
-                    `${topic} सोपं करायचंय? हा उपाय वापरा! ✍️`
-                ],
-                business:[
-                    `${topic} मध्ये यशस्वी व्हायचंय? विचार बदलला पाहिजे. 💰`,
-                    `${topic} मध्ये risk घ्या, पण strategy सोबत. 📈`
-                ],
-                general:[
-                    `${topic} बद्दल हे कोणी सांगत नाही! 🔥`,
-                    `${topic} मध्ये पुढे जायचंय? हे लक्षात ठेवा!`
-                ]
-            };
-
-            let list=hooks[type];
-            show("hookRes",list[Math.floor(Math.random()*list.length)]);
+            let hooks=[`${topic} करताना जे घडलं ते बघून तुम्ही थक्क व्हाल! 😲`, `${topic} बद्दल हे कोणी सांगत नाही! 🔥`];
+            show("hookRes",hooks[Math.floor(Math.random()*hooks.length)]);
         }
 
-        // Hashtag Generator
         function generateTags(){
             let topic=clean(document.getElementById("tagInput").value);
             if(!topic) return alert("विषय लिहा!");
-
-            let base=topic.replace(/\s+/g,"");
-            let tags=[
-                `#${base}`,
-                `#${base}reels`,
-                `#${base}tips`,
-                "#marathi","#maharashtra","#reelsindia",
-                "#viral","#explorepage","#contentcreator",
-                "#creatorlife","#digitalmarathi",
-                "#trending","#growth","#instagramreels","#india"
-            ];
-
-            show("tagRes",tags.join(" "));
+            show("tagRes",`#${topic.replace(/\s+/g,"")} #${topic.replace(/\s+/g,"")}reels #marathi #maharashtra #viral`);
         }
 
-        // Caption Generator
         function generateCaption(){
             let topic=clean(document.getElementById("capInput").value);
             if(!topic) return alert("विषय लिहा!");
-
-            let type=detectCategory(topic);
-            let captions={
-                funny:`आज ${topic} करताना जे झालं ते तुम्ही बघायलाच पाहिजे! 😂`,
-                motivation:`${topic} रोज करा. हार मानू नका. यश तुमचंच आहे. 🚀`,
-                food:`${topic} म्हणजे प्रेम! ❤️ तुम्ही खाल्लंय का?`,
-                study:`${topic} मध्ये consistency ठेवा. निकाल आपोआप लागेल. 📚`,
-                business:`${topic} मध्ये smart काम करा, फक्त hard नाही. 💼`,
-                general:`${topic} बद्दल तुमचं मत काय? कमेंट करा! 👇`
-            };
-
-            show("capRes",captions[type]);
+            show("capRes",`आज ${topic} करताना मजा आली! तुमचं मत काय? 👇\n\n#Marathi`);
         }
 
-        // Bio Generator
-        function generateBio(){
-            let niche=clean(document.getElementById("bioInput").value);
-            if(!niche) return alert("Niche लिहा!");
-
-            let bio=`🚀 ${niche} Creator\n🔥 Marathi Content\n📈 Growth Mindset\n📩 DM for Collab`;
-
-            show("bioRes",bio);
-        }
-
-        // Word Counter
         function countWords(){
             let text=document.getElementById("wordArea").value.trim();
             document.getElementById("wordCount").innerText=text?text.split(/\s+/).length:0;
             document.getElementById("charCount").innerText=text.length;
         }
 
-        // Copy
         async function copyText(id,btn){
             let text=document.getElementById(id).innerText;
             if(!text) return;
             await navigator.clipboard.writeText(text);
-
-            if(btn){
-                let original=btn.innerHTML;
-                btn.innerHTML="✅";
-                setTimeout(()=>{btn.innerHTML=original;},1000);
-            }
+            let original=btn.innerHTML; btn.innerHTML="✅"; setTimeout(()=>{btn.innerHTML=original;},1000);
         }
-
     </script>
 </body>
 </html>
